@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
+﻿import { Component } from '@angular/core';
+import {AuthService} from '@app/_services/'
+@Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-  title = 'swipe-your-job';
-}
+    isLoggedIn: boolean;
+    constructor(private authService: AuthService) {
+        this.isLoggedIn = this.authService.isLoggedIn();
+    }
+    
+    logout() {
+        this.authService.logout();
+    }
+ }
