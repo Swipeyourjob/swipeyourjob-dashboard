@@ -13,42 +13,27 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private userSubject: BehaviorSubject<User>;
-    public user: Observable<User>;
+    // user: User;
 
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
+      // this.user = '{}';
     }
-
-    public get userValue(): User {
-        return this.userSubject.value;
+    
+    public get userValue(): string {
+      // return this.user;
+      return "thanks";
     }
-
-    login(username: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
-                this.userSubject.next(user);
-                return user;
-            }));
-    }
-
     login(username: string, password: string): Observable<any> {
         return this.http.post(environment.apiUrl + 'login', {
           username,
           password
         }, httpOptions);
+        //TODO: ADD user TO Sessionstorage 
       }
     
-    logout() {
-        // remove user from local storage and set current user to null
-        localStorage.removeItem('user');
-        this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
-    }
     // TODO:: ask zyad for CRUD api capability GET/POST/PUT/DELETE for users
     register(username: string, email: string, password: string): Observable<any> {
         return this.http.post(environment.apiUri + 'login', {

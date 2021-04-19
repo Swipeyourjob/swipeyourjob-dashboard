@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUri: 'https://api.swipeyourjob.nl:8082',
+    apiUri: 'https://api.swipeyourjob.nl:8082/web',
     apiUrl: 'http://localhost:4000'
 };
 

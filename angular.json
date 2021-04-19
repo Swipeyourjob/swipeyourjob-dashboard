@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-crud-example": {
+    "syj-angular11": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-crud-example",
+            "outputPath": "dist/syj-angular11",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-crud-example:build"
+            "browserTarget": "syj-angular11:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-crud-example:build:production"
+              "browserTarget": "syj-angular11:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-crud-example:build"
+            "browserTarget": "syj-angular11:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-crud-example:serve"
+            "devServerTarget": "syj-angular11:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-crud-example:serve:production"
+              "devServerTarget": "syj-angular11:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-crud-example"
+  "defaultProject": "syj-angular11"
 }

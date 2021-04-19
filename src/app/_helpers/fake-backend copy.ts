@@ -9,13 +9,6 @@ import { Role } from '@app/_models';
 const usersKey = 'angular-11-crud-example-users';
 const usersJSON = localStorage.getItem(usersKey);
 let users: any[] = usersJSON ? JSON.parse(usersJSON) : [{
-    id: 1,
-    title: 'Mr',
-    firstName: 'Joe',
-    lastName: 'Bloggs',
-    email: 'joe@bloggs.com',
-    role: Role.User,
-    password: 'joe123'
 }];
 
 @Injectable()

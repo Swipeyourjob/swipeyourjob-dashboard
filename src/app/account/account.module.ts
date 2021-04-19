@@ -14,9 +14,9 @@ import { RegisterComponent } from './register.component';
         AccountRoutingModule
     ],
     declarations: [
-        LayoutComponent,
-        LoginComponent,
-        RegisterComponent
+        // LayoutComponent,
+        // LoginComponent,
+        // RegisterComponent
     ]
 })
 export class AccountModule { }
