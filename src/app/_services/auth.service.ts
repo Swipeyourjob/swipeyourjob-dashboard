@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { TokenStorageService } from './token-storage.service';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
+
+import * as moment from "moment";
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,21 +19,24 @@ export class AuthService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private tokenService: TokenStorageService
     ) {
       // this.user = '{}';
     }
-    
-    public get userValue(): string {
-      // return this.user;
-      return "thanks";
-    }
-    login(username: string, password: string): Observable<any> {
-        return this.http.post(environment.apiUrl + 'login', {
+
+    login(username: string, password: string) {
+        console.log("in llogin")
+        return this.http.post<any>(environment.apiUri + '/login', {
           username,
           password
-        }, httpOptions);
-        //TODO: ADD user TO Sessionstorage 
+        }, httpOptions)
+        .subscribe( (res) => {
+            this.tokenService.saveToken(res.token);
+            this.tokenService.saveUser(res)
+        }
+            //
+        ); 
       }
     
     // TODO:: ask zyad for CRUD api capability GET/POST/PUT/DELETE for users
@@ -41,7 +46,15 @@ export class AuthService {
           email,
           password
         }, httpOptions);
-      }
+      }         
+
+    logout() {
+       return this.tokenService.signOut();
+    }
+
+    public isLoggedIn() {
+        return this.tokenService.getToken();
+    }   
 
 
 }
