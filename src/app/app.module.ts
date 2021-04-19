@@ -27,6 +27,7 @@ import { HomeComponent } from './home';
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         
+        //TODO remove fakebackend asap
         // provider used to create fake backend
         fakeBackendProvider
     ],
