@@ -34,6 +34,7 @@ export class AuthService {
         .subscribe( (res) => {
             this.tokenService.saveToken(res.token);
             this.tokenService.saveUser(res)
+            this.router.navigateByUrl('/');
         }
             //
         ); 
@@ -53,7 +54,12 @@ export class AuthService {
     }
 
     public isLoggedIn() {
-        return this.tokenService.getToken();
+        if(this.tokenService.getToken()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }   
 
 

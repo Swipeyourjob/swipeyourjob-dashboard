@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit {
             this.alertService.success("Logged in.")
         }
     }
+    reloadPage(): void {
+        window.location.reload();
+      }
     // onSubmit() {
     //     this.submitted = true;
 

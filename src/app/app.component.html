@@ -1,41 +1,13 @@
-﻿<div class="syj_content">
+﻿<div class="syj_content row">
     <!-- nav -->
-    <nav class="navbar navbar-expand navbar-dark bg-dark theme">
+    <nav class="sidebar theme" *ngIf="isLoggedIn">
         <div class="navbar-nav">
             <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
             <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-            <a class="nav-item nav-link" routerLink="/jobs" routerLinkActive="active">Jobs</a>
+            <a class="nav-item nav-link" routerLink="/jobs" routerLinkActive="active">Jobs <i class="bi bi-archive"></i></a>
             <a class="nav-item nav-link" (click)="logout()">Uitloggen</a>
         </div>
     </nav>
-    <div class="d-flex flex-column bg-light" style="width: 4.5rem;">
-        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-          <li class="nav-item">
-            <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link active py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-              <svg class="bi" width="24" height="24"><use xlink:href="#home"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-            </a>
-          </li>
-          <li>
-            <a routerLink="/jobs" routerLinkActive="active" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-              
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-              <svg class="bi" width="24" height="24"><use xlink:href="#grid"></use></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-              <svg class="bi" width="24" height="24"><use xlink:href="#people-circle"></use></svg>
-            </a>
-          </li>
-        </ul>
-      </div>
 
     <!-- main app container -->
     <div class="app-container bg-light">

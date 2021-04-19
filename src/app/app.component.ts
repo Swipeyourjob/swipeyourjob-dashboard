@@ -2,9 +2,9 @@
 import {AuthService} from '@app/_services/'
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-
+    isLoggedIn: boolean;
     constructor(private authService: AuthService) {
-        this.authService.isLoggedIn();
+        this.isLoggedIn = this.authService.isLoggedIn();
     }
     
     logout() {
