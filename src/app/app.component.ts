@@ -1,13 +1,35 @@
-﻿import { Component } from '@angular/core';
-import {AuthService} from '@app/_services/'
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+import { Component } from '@angular/core';
+import { AuthService, TokenStorageService } from './_services';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
 export class AppComponent {
-    isLoggedIn: boolean;
-    constructor(private authService: AuthService) {
-        this.isLoggedIn = this.authService.isLoggedIn();
+    private roles: string[] = [];
+    isLoggedIn = false;
+    showAdminBoard = false;
+    showModeratorBoard = false;
+    username?: string;
+    constructor(private tokenStorageService: TokenStorageService) { }
+
+    ngOnInit(): void {
+        this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+        if (this.isLoggedIn) {
+            const user = this.tokenStorageService.getUser();
+            this.roles = user.roles;
+
+            this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+            this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+            this.username = user.username;
+        }
     }
-    
-    logout() {
-        this.authService.logout();
+
+    logout(): void {
+        this.tokenStorageService.signOut();
+        window.location.reload();
     }
- }
+}
