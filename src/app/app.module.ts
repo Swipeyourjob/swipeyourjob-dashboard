@@ -11,10 +11,10 @@ import { HomeComponent } from './home';
 
 @NgModule({
     imports: [
+        AppRoutingModule,
         BrowserModule,
         ReactiveFormsModule,
-        HttpClientModule,
-        AppRoutingModule
+        HttpClientModule
     ],
     declarations: [
         AppComponent,
