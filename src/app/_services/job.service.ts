@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { Job } from '../_models';
 
-import { environment } from '@environments/environment';
-import { Job } from '@app/_models';
+
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
@@ -25,14 +26,15 @@ export class JobService {
     }
 
     create(job: Job) {
+        
         return this.http.post(`${environment.apiUrl}/job/create`, job);
     }
 
     getAll() {
-        return this.http.get<Job[]>(`${environment.apiUrl}/jobs`);
+        return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
     }
 
     getById(id: string) {
-        return this.http.get<Job>(`${environment.apiUrl}/web/getjobs?companyid=${id}`);
+        return this.http.get<Job>(`${environment.apiUrl}/getjobs?companyid=${id}`);
     }
 }

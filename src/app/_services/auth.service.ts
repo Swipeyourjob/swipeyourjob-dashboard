@@ -1,13 +1,12 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
-import { environment } from '@environments/environment';
-import { User } from '@app/_models';
+import { environment } from '../../environments/environment';
+import { User } from '../_models';
 
-import * as moment from "moment";
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -27,22 +26,15 @@ export class AuthService {
 
     login(username: string, password: string) {
         console.log("in llogin")
-        return this.http.post<any>(environment.apiUri + '/login', {
+        return this.http.post<any>(environment.apiUrl + '/login', {
           username,
           password
-        }, httpOptions)
-        .subscribe( (res) => {
-            this.tokenService.saveToken(res.token);
-            this.tokenService.saveUser(res)
-            this.router.navigateByUrl('/');
-        }
-            //
-        ); 
+        }, httpOptions); 
       }
     
     // TODO:: ask zyad for CRUD api capability GET/POST/PUT/DELETE for users
     register(username: string, email: string, password: string): Observable<any> {
-        return this.http.post(environment.apiUri + 'login', {
+        return this.http.post(environment.apiUrl + 'register', {
           username,
           email,
           password
