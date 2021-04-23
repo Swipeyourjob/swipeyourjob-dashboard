@@ -1,5 +1,13 @@
 <div class="col-md-12">
-    <div class="card card-container">
+    <div class="container">
+
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4"><h2>Registreren</h2></div>
+          <div class="col-4"></div>
+        </div>
+    </div>
+    <div class="card card-container register-form">
         <form
         *ngIf="!isLoggedIn"
         name="form"
@@ -8,7 +16,7 @@
         novalidate
       >
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">E-mailadres:</label>
         <input
           type="email"
           class="form-control col-md-6"
@@ -19,7 +27,7 @@
           #email="ngModel"
         />
         <div
-          class="alert alert-danger"
+          class="alert alert-danger col-md-6  "
           role="alert"
           *ngIf="email.errors"
         >
@@ -27,7 +35,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Wachtwoord:</label>
         <input
           type="password"
           class="form-control col-md-6"
@@ -37,12 +45,89 @@
           #password="ngModel"
         />
         <div
-          class="alert alert-danger"
+          class="alert alert-danger col-md-6"
           role="alert"
-          *ngIf="password.errors && f.submitted"
+          *ngIf="password.errors"
         >
-          email is required!
+          Password moet een nummer en een hoofdletter bevatten. 
         </div>
+      </div>
+      <div class="form-group">
+        <label for="passwordrepeat">Herhaal wachtwoord:</label>
+        <input
+          type="password"
+          class="form-control col-md-6"
+          name="passwordrepeat"
+          [(ngModel)]="form.passwordrepeat"
+          required
+          #passwordrepeat="ngModel"
+        />
+        <div
+          class="alert alert-danger col-md-6"
+          role="alert"
+          *ngIf="passwordrepeat.errors"
+        >
+          Password does not match
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="companyname">Bedrijfsnaam:</label>
+        <input
+          type="text"
+          class="form-control col-md-6"
+          name="companyname"
+          [(ngModel)]="form.companyname"
+          required
+          #companyname="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Postcode:</label>
+        <input
+          type="text"
+          class="form-control col-md-6"
+          name="zipcode"
+          [(ngModel)]="form.zipcode"
+          required
+          #zipcode="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Hou mij up-to-date via e-mails:</label><br>
+        <input
+          type="radio"
+         
+          name="subscribe"
+          value="yes"
+          [(ngModel)]="form.subscribe"
+          required
+          #subscribe="ngModel"
+        /> Ja
+        <input
+          type="radio"
+          name="subscribe"
+          value="no"
+          [(ngModel)]="form.subscribe"
+          required
+          #subscribe="ngModel"
+        /> Nee
+      </div>
+      <div class="form-group">
+        <input
+        type="checkbox"
+        name="terms"
+        id="terms"
+        value="no"
+        [(ngModel)]="form.terms"
+        required
+        #terms="ngModel"
+      />
+        <label for="terms">Ik heb de Algemene Voorwaarden en Privacyverklaringen gelezen en ga hiermee akkoord.</label><br>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block col-md-5">
+          Bevestig registratie
+        </button>
       </div>
     </form>
     </div>

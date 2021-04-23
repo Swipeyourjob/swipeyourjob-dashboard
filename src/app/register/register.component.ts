@@ -15,7 +15,8 @@ import {TokenStorageService } from '../_services';
 })
 export class RegisterComponent implements OnInit {
   form: any = {
-    email: "",
+    email: null,
+    passwordrepeat: null,
     password: null
   };
   isLoggedIn = false;
