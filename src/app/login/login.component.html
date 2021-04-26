@@ -9,21 +9,21 @@
         novalidate
       >
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="emailadress">Emailadress</label>
           <input
-            type="text"
+            type="email"
             class="form-control"
-            name="username"
-            [(ngModel)]="form.username"
+            name="emailadress"
+            [(ngModel)]="form.emailadress"
             required
-            #username="ngModel"
+            #emailadress="ngModel"
           />
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="username.errors && f.submitted"
+            *ngIf="emailadress.errors && f.submitted"
           >
-            Username is required!
+            Emailadress is required!
           </div>
         </div>
         <div class="form-group">

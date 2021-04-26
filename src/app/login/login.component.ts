@@ -12,7 +12,7 @@ import { AuthService, AlertService, TokenStorageService } from '../_services';
   })
 export class LoginComponent implements OnInit {
     form: any = {
-        username: null,
+        emailadress: null,
         password: null
     };
     isLoggedIn = false;
@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(): void {
-        const { username, password } = this.form;
+        const { emailadress, password } = this.form;
 
-        this.authService.login(username, password).subscribe(
+        this.authService.login(emailadress, password).subscribe(
             data => {
-                console.log(username, " + ",password + "= POST DATA");
+                console.log(emailadress, " + ",password + "= POST DATA");
                 console.log(data + "Response DATA");
 
                 this.tokenStorage.saveToken(data.token);

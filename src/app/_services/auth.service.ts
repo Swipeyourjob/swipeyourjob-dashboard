@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -24,10 +24,10 @@ export class AuthService {
       // this.user = '{}';
     }
 
-    login(username: string, password: string) {
+    login(emailadress: string, password: string) {
         console.log("in llogin")
         return this.http.post<any>(environment.apiUrl + '/login', {
-          username,
+          emailadress,
           password
         }, httpOptions); 
       }
