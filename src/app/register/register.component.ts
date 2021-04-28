@@ -6,7 +6,7 @@ import { first } from 'rxjs/operators';
 
 
 import { faCheck,faTimes  } from '@fortawesome/free-solid-svg-icons';
-import {TokenStorageService } from '../_services';
+import {TokenStorageService ,AuthService} from '../_services';
 import { PasswordValidator } from 'app/_helpers/passwordvalidator';
 
 @Component({
@@ -16,9 +16,14 @@ import { PasswordValidator } from 'app/_helpers/passwordvalidator';
 })
 export class RegisterComponent implements OnInit {
   form: any = {
+    companyname: null,
+    zipcode: null,
+    kvk: null,
     email: null,
+    password: null,
     passwordrepeat: null,
-    password: null
+    subscribe: null,
+    terms: null
   };
   icons: any = {
     faCheck:faCheck,
@@ -35,12 +40,13 @@ export class RegisterComponent implements OnInit {
     zipcodeNameDialog: false,
     emailNameDialog: false,
     passwordDialog : false,
-    passwordRepeatDialog : false
+    passwordRepeatDialog : false,
+    kvkdDialog : false
   };
   
 
   isLoggedIn = false;
-  constructor(private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
+  constructor(private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
   passwordchange(event: KeyboardEvent): void {
     let password      = this.form.password;
     this.dialogChecks.passwordDialog = true;
@@ -62,7 +68,29 @@ export class RegisterComponent implements OnInit {
     }
   }
   onSubmit(): void {
-    
+    const {   companyname,
+      zipcode,
+      kvk,
+      email,
+      password,
+      passwordrepeat,
+      mails,
+      privacy} = this.form;
+      this.authService.companyRegister(companyname,
+        zipcode,
+        kvk,
+        email,
+        password,
+        passwordrepeat,
+        mails,
+        privacy).subscribe(
+          data => {
+            console.log(data);
+          },
+          err => {
+              console.log(err);
+          }
+        );
   }
 
 }
