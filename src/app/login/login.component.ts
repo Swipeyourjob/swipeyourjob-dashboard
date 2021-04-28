@@ -9,11 +9,12 @@ import { AuthService, AlertService, TokenStorageService } from '../_services';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
-  })
+})
 export class LoginComponent implements OnInit {
     form: any = {
         emailadress: null,
-        password: null
+        password: null,
+        rememberMe: false
     };
     isLoggedIn = false;
     isLoginFailed = false;
@@ -30,14 +31,12 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(): void {
-        const { emailadress, password } = this.form;
+        const { emailadress, password, rememberMe } = this.form;
+        console.log(this.form);
 
         this.authService.login(emailadress, password).subscribe(
             data => {
-                console.log(emailadress, " + ",password + "= POST DATA");
-                console.log(data + "Response DATA");
-
-                this.tokenStorage.saveToken(data.token);
+                this.tokenStorage.saveToken(data.token, rememberMe);
                 this.tokenStorage.saveUser(data);
 
                 this.isLoginFailed = false;
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
                 this.reloadPage();
             },
             err => {
-                this.errorMessage = err.error.message;
+                this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
                 this.isLoginFailed = true;
             }
         );

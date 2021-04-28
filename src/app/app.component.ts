@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService, TokenStorageService } from './_services';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -13,9 +14,11 @@ export class AppComponent {
     showModeratorBoard = false;
     username?: string;
 
-    constructor(private tokenStorageService: TokenStorageService) { }
+    constructor(
+        private router: Router, private tokenStorageService: TokenStorageService) { }
 
     ngOnInit(): void {
+        this.tokenStorageService.useRememberMe();
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 
         if (this.isLoggedIn) {
@@ -31,6 +34,7 @@ export class AppComponent {
 
     logout(): void {
         this.tokenStorageService.signOut();
-        window.location.reload();
+        // window.location.reload();
+        this.router.navigate(['/login']);
     }
 }
