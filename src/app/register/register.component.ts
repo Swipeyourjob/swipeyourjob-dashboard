@@ -21,9 +21,8 @@ export class RegisterComponent implements OnInit {
     password: null
   };
   icons: any = {
-   
-  faCheck:faCheck,
-  faTimes: faTimes
+    faCheck:faCheck,
+    faTimes: faTimes
   }
   passwordchecks: any = {
     passwordCapitalCheck  : false,
@@ -35,7 +34,8 @@ export class RegisterComponent implements OnInit {
     companyNamedialog : false,
     zipcodeNameDialog: false,
     emailNameDialog: false,
-    passwordErrorDialog : false
+    passwordDialog : false,
+    passwordRepeatDialog : false
   };
   
 
@@ -43,10 +43,15 @@ export class RegisterComponent implements OnInit {
   constructor(private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
   passwordchange(event: KeyboardEvent): void {
     let password      = this.form.password;
-    this.dialogChecks.passwordErrorDialog = true;
+    this.dialogChecks.passwordDialog = true;
     this.passwordchecks.passwordCapitalCheck = this.passwordvalidator.checkCapital(password);
     this.passwordchecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
     this.passwordchecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
+  }
+  passwordrepeatf(event: KeyboardEvent): void{
+    const {passwordrepeat,password} = this.form;
+    let passval = this.passwordvalidator.passwordeqauls(password,passwordrepeat);
+    this.dialogChecks.passwordRepeatDialog = !passval;
   }
   adddialog(attributeName: string): void{
     this.dialogChecks[attributeName] = true;
