@@ -31,15 +31,33 @@ export class AuthService {
           password
         }, httpOptions); 
       }
-    
+    companyRegister(companyname: string,
+      zipcode: string,
+      kvk: string,
+      email: string,
+      password: string,
+      passwordrepeat: string,
+      mails: string,
+      privacy: string){
+      return this.http.post(environment.apiUrl + '/newCompany',{
+        companyname,
+      zipcode,
+      kvk,
+      email,
+      password,
+      passwordrepeat,
+      mails,
+      privacy
+      },httpOptions);
+    }
     // TODO:: ask zyad for CRUD api capability GET/POST/PUT/DELETE for users
-    register(username: string, email: string, password: string): Observable<any> {
-        return this.http.post(environment.apiUrl + 'register', {
-          username,
-          email,
-          password
-        }, httpOptions);
-      }         
+    // register(username: string, email: string, password: string): Observable<any> {
+    //     return this.http.post(environment.apiUrl + 'register', {
+    //       username,
+    //       email,
+    //       password
+    //     }, httpOptions);
+    //   }         
 
     logout() {
        return this.tokenService.signOut();
