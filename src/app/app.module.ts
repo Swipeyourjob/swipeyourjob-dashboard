@@ -13,6 +13,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { AlertComponent } from './_components';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,11 @@ import { AlertComponent } from './_components';
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
