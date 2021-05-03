@@ -9,18 +9,19 @@ import { AuthService, AlertService, TokenStorageService } from '../_services';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
-  })
+})
 export class LoginComponent implements OnInit {
     form: any = {
-        username: null,
-        password: null
+        emailadress: null,
+        password: null,
+        rememberMe: false
     };
     isLoggedIn = false;
     isLoginFailed = false;
-    errorMessage = '';
     roles: string[] = [];
 
-    constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+    constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+        private alertService: AlertService) { }
 
     ngOnInit(): void {
         if (this.tokenStorage.getToken()) {
@@ -30,26 +31,28 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(): void {
-        const { username, password } = this.form;
+        const { emailadress, password, rememberMe } = this.form;
+        console.log(this.form);
+        // reset alerts on submit
+        this.alertService.clear();
+        this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+        // this.authService.login(emailadress, password).subscribe(
+        //     data => {
+        //         this.tokenStorage.saveToken(data.token, rememberMe);
+        //         this.tokenStorage.saveUser(data);
 
-        this.authService.login(username, password).subscribe(
-            data => {
-                console.log(username, " + ",password + "= POST DATA");
-                console.log(data + "Response DATA");
-
-                this.tokenStorage.saveToken(data.token);
-                this.tokenStorage.saveUser(data);
-
-                this.isLoginFailed = false;
-                this.isLoggedIn = true;
-                this.roles = this.tokenStorage.getUser().roles;
-                this.reloadPage();
-            },
-            err => {
-                this.errorMessage = err.error.message;
-                this.isLoginFailed = true;
-            }
-        );
+        //         this.isLoginFailed = false;
+        //         this.isLoggedIn = true;
+        //         this.roles = this.tokenStorage.getUser().roles;
+        //         this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+        //         this.reloadPage();
+        //     },
+        //     err => {
+        //         this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");
+        //         //this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
+        //         this.isLoginFailed = true;
+        //     }
+        // );
     }
 
     reloadPage(): void {
