@@ -73,17 +73,16 @@ export class RegisterComponent implements OnInit {
       kvk,
       email,
       password,
-      passwordrepeat,
-      mails,
-      privacy} = this.form;
+      subscribe,
+      terms} = this.form;
+    
       this.authService.companyRegister(companyname,
         zipcode,
         kvk,
         email,
         password,
-        passwordrepeat,
-        mails,
-        privacy).subscribe(
+        subscribe,
+        terms).subscribe(
           data => {
             console.log(data);
           },
