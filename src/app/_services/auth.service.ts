@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
 import { environment } from '../../environments/environment';
-import { User } from '../_models';
+import { User, ForgotPassword } from '@app/models';
 
 
 const httpOptions = {
@@ -20,10 +20,10 @@ export class AuthService {
         private http: HttpClient,
         private tokenService: TokenStorageService
     ) {
-       
+
     }
 
-    login(emailadress: string, password: string) {
+    public login(emailadress: string, password: string) {
         console.log("in llogin")
         return this.http.post<any>(environment.apiUrl + '/login', {
             emailadress,
@@ -31,7 +31,7 @@ export class AuthService {
         }, httpOptions);
     }
 
-    companyRegister(companyname: string,
+    public companyRegister(companyname: string,
         zipcode: string,
         kvk: string,
         email: string,
@@ -51,7 +51,7 @@ export class AuthService {
         }, httpOptions);
     }
 
-    logout() {
+    public logout() {
         return this.tokenService.signOut();
     }
 
@@ -62,6 +62,13 @@ export class AuthService {
         else {
             return false;
         }
+    }
+
+    public forgotPassword(forgotinfo: ForgotPassword) {
+        // throw new Error('Method not implemented.');
+        console.log(forgotinfo);
+        //TODO :: add api call to send mailinfo to server
+        return true;
     }
 
 
