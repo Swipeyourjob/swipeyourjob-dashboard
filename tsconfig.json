@@ -19,6 +19,9 @@
         "lib": ["es2018", "dom"],
         "paths": {
             "@app/*": ["src/app/*"],
+            "@app/services": ["app/_services/index.ts"],
+            "@app/models": ["app/_models/index.ts"],
+            "@app/helpers": ["app/_helpers/index.ts"],
             "@environments/*": ["src/environments/*"]
         }
     },
