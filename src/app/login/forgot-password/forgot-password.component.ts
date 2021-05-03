@@ -16,7 +16,8 @@ export class ForgotPasswordComponent implements OnInit {
 
     ngOnInit(): void {
         this.forgotPasswordForm = new FormGroup({
-            email: new FormControl("", [Validators.required])
+            // TODO:: ASK ZYAD of validatie aan beide kanten nodig zijn. aan de front-end en/of back-end?
+            email: new FormControl("", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])
         });
     }
 
