@@ -4,6 +4,7 @@ export class Company {
         public companylocation: CompanyLocation,
         public companyimages: string
     ) { }
+
 }
 export class CompanyInfo {
     id!: number;
@@ -26,3 +27,4 @@ export interface Company {
     mails: string;
     privacy: string;
 }
+
