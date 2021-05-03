@@ -36,18 +36,17 @@ export class AuthService {
       kvk: string,
       email: string,
       password: string,
-      passwordrepeat: string,
-      mails: string,
-      privacy: string){
+      subscribe: string,
+      terms: string){
+        console.log(subscribe);
       return this.http.post(environment.apiUrl + '/newCompany',{
         companyname,
       zipcode,
       kvk,
       email,
       password,
-      passwordrepeat,
-      mails,
-      privacy
+      subscribe,
+      terms
       },httpOptions);
     }
     // TODO:: ask zyad for CRUD api capability GET/POST/PUT/DELETE for users
