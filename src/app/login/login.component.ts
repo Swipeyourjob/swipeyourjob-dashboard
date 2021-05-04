@@ -12,7 +12,7 @@ import { AuthService, AlertService, TokenStorageService } from '../_services';
 })
 export class LoginComponent implements OnInit {
     form: any = {
-        emailadress: null,
+        email: null,
         password: null,
         rememberMe: false
     };
@@ -31,28 +31,28 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(): void {
-        const { emailadress, password, rememberMe } = this.form;
+        const { email, password, rememberMe } = this.form;
         console.log(this.form);
         // reset alerts on submit
         this.alertService.clear();
-        this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
-        // this.authService.login(emailadress, password).subscribe(
-        //     data => {
-        //         this.tokenStorage.saveToken(data.token, rememberMe);
-        //         this.tokenStorage.saveUser(data);
+        // this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+        this.authService.login(email, password).subscribe(
+            data => {
+                this.tokenStorage.saveToken(data.token, rememberMe);
+                this.tokenStorage.saveUser(data);
 
-        //         this.isLoginFailed = false;
-        //         this.isLoggedIn = true;
-        //         this.roles = this.tokenStorage.getUser().roles;
-        //         this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
-        //         this.reloadPage();
-        //     },
-        //     err => {
-        //         this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");
-        //         //this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
-        //         this.isLoginFailed = true;
-        //     }
-        // );
+                this.isLoginFailed = false;
+                this.isLoggedIn = true;
+                this.roles = this.tokenStorage.getUser().roles;
+                this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+                this.reloadPage();
+            },
+            err => {
+                this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");
+                //this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
+                this.isLoginFailed = true;
+            }
+        );
     }
 
     reloadPage(): void {

@@ -14,19 +14,19 @@
         novalidate
       >
         <div class="form-group">
-          <label for="emailadress">Emailadress</label>
+          <label for="email">Emailadress</label>
           <input
             type="email"
             class="form-control"
-            name="emailadress"
-            [(ngModel)]="form.emailadress"
+            name="email"
+            [(ngModel)]="form.email"
             required
-            #emailadress="ngModel"
+            #email="ngModel"
           />
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="emailadress.errors && f.submitted"
+            *ngIf="email.errors && f.submitted"
           >
             Emailadress is verplicht
           </div>

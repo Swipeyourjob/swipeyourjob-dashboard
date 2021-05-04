@@ -23,31 +23,30 @@ export class AuthService {
 
     }
 
-    public login(emailadress: string, password: string) {
+    public login(email: string, password: string) {
         console.log("in llogin")
         return this.http.post<any>(environment.apiUrl + '/login', {
-            emailadress,
+            email,
             password
         }, httpOptions);
     }
 
-    public companyRegister(companyname: string,
+    public companyRegister(
+        companyname: string,
         zipcode: string,
         kvk: string,
         email: string,
         password: string,
-        passwordrepeat: string,
-        mails: string,
-        privacy: string) {
+        subscribe: string,
+        terms: string) {
         return this.http.post(environment.apiUrl + '/newCompany', {
             companyname,
             zipcode,
             kvk,
             email,
             password,
-            passwordrepeat,
-            mails,
-            privacy
+            subscribe,
+            terms
         }, httpOptions);
     }
 

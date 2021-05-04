@@ -76,7 +76,8 @@ export class RegisterComponent implements OnInit {
       subscribe,
       terms} = this.form;
     
-      this.authService.companyRegister(companyname,
+      this.authService.companyRegister(
+        companyname,
         zipcode,
         kvk,
         email,

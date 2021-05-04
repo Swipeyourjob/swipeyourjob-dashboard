@@ -3,9 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:8082/web',
-    devUrl: 'http://localhost:4000'
+    production: true,
+    apiUrl: 'http://api.swipeyourjob.nl:8085/web',
 };
 
 /*
