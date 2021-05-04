@@ -17,7 +17,7 @@ export class CompanyLocation {
     housenumber!: string;
     zipcode!: string;
 }
-export interface Company {
+export interface CompanyI {
     companyname: string;
     zipcode: string;
     kvk: string;
