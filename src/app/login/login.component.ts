@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     roles: string[] = [];
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-        private alertService: AlertService) { }
+        private alertService: AlertService, private router: Router) { }
 
     ngOnInit(): void {
         if (this.tokenStorage.getToken()) {
@@ -39,18 +39,20 @@ export class LoginComponent implements OnInit {
         console.log(this.form);
         // reset alerts on submit
         this.alertService.clear();
-        this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+
         //TODO:: Vul UserInterface 
         // this.authService.login(emailadress, password).subscribe(
         //     data => {
         //         this.tokenStorage.saveToken(data.token, rememberMe);
         //         this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveToken(emailadress, rememberMe);
+        this.tokenStorage.saveUser(password);
 
-        //         this.isLoginFailed = false;
-        //         this.isLoggedIn = true;
+                this.isLoginFailed = false;
+                this.isLoggedIn = true;
         //         this.roles = this.tokenStorage.getUser().roles;
-        //         this.alertService.success('Welkom', { keepAfterRouteChange: true });
-        //         this.reloadPage();
+                this.alertService.success('Welkom', { keepAfterRouteChange: true });
+                this.reloadPage();
         //     },
         //     err => {
         //         this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");
@@ -61,6 +63,8 @@ export class LoginComponent implements OnInit {
     }
 
     reloadPage(): void {
+        this.router.navigate(['']);
         window.location.reload();
+
     }
 }
