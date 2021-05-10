@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component'
 
 import { AuthGuard } from './_helpers';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
 const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
     { path: 'user', component: BoardUserComponent, canActivate: [AuthGuard] },
     { path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard] },
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
+    { path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard] },
+    
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ];
 

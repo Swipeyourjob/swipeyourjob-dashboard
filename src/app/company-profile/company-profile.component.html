@@ -1,0 +1,118 @@
+<div class="col-md-12">
+    <div class="container">
+
+       
+
+    <div class="card card-container companyprofile">
+        <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="row">
+          <div class="col-md-6"><h3>Bedrijfsprofiel aanmaken:</h3>
+          <sub>* Deze gegevens kunnen laten nog worden aangepast</sub></div>
+          <div class="col-md-8"></div>
+        </div>
+        <div class="form-group">
+          <label for="CompanyIntroduction">Bedrijfs omschrijving:</label>
+          <!-- <ckeditor 
+             tagName="textarea"
+            name="CompanyIntroduction"
+            [(ngModel)]="form.CompanyIntroduction"
+            (ngModelChange)="companydescriptionChanged($event)"
+            change
+            required
+            #CompanyIntroduction="ngModel"></ckeditor> -->
+            <ckeditor [editor]="Editor"
+            
+            tagName="textarea"
+            name="CompanyIntroduction"
+            [(ngModel)]="form.CompanyIntroduction"
+            (keydown)="companydescriptionChanged($event)"
+            change
+            required
+            #CompanyIntroduction="ngModel">
+              
+            </ckeditor>
+            <span>Karakters {{wordcount}} / 250</span>
+          </div>
+          <div class="form-group">
+            <label for="Companylogo">Bedrijfslogo</label>
+            <input 
+              type="file" 
+              name="Companylogo" 
+              accept="image/png, image/jpeg"
+              [(ngModel)]="form.Companylogo"
+              #Companylogo="ngModel"
+              >
+          </div>
+          <div class="form-group">
+            <label for="Firstname">Voornaam:</label>
+            <input 
+              type="text" name="Firstname"
+              [(ngModel)]="form.Firstname"
+              #Firstname="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="Lastname">Achternaam:</label>
+            <input 
+              type="text" name="Lastname"
+              [(ngModel)]="form.Lastname"
+              #Lastname="ngModel"
+              value = "form.Lastname">
+          </div>
+          <div class="form-group">
+            <label for="profileUrl">Profile</label>
+            <input type="file" name="profileUrl" accept="image/png, image/jpeg" [(ngModel)]="form.profileUrl"
+              #profileUrl="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="facebooklink">Facebook:</label>
+            <input type="text" name="facebooklink" [(ngModel)]="form.facebooklink" #facebooklink="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="instagramlink">Instagram:</label>
+            <input type="text" name="instagramlink" [(ngModel)]="form.instagramlink" #instagramlink="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="linkedinlink">Linkedin:</label>
+            <input type="text" name="linkedinlink" [(ngModel)]="form.linkedinlink" #linkedinlink="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="Place">Plaats:</label>
+            <input type="text" name="Place" [(ngModel)]="form.Place" #Place="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="Streetname">Straat:</label>
+            <input type="text" name="Streetname" [(ngModel)]="form.Streetname" #Streetname="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="housenumber">Huisnummer:</label>
+            <input type="text" name="housenumber" [(ngModel)]="form.housenumber" #housenumber="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Postcode:</label>
+            <input type="text" name="zipcode" [(ngModel)]="form.zipcode" #zipcode="ngModel">
+          </div>
+         
+      </form>
+
+
+      <!--  form: any = {
+    CompanyIntroduction: null,
+    Companylogo: null,
+    Firstname: null,
+    Lastname: null,
+    profileUrl: null,
+    facebooklink: null,
+    instagramlink: null,
+    linkedinlink: null,
+    Place: null,
+    Streetname: null,
+    housenumber: null,
+    zipcode: null
+  }; -->
+      </div>
+      </div>

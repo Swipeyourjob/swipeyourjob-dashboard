@@ -17,6 +17,10 @@ import { AlertComponent } from './_components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import { ResetPasswordComponent } from './login/reset-password/reset-password.co
     BoardModeratorComponent,
     AlertComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CompanyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,8 @@ import { ResetPasswordComponent } from './login/reset-password/reset-password.co
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
