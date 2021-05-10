@@ -11,7 +11,7 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 
 import { AuthGuard } from './_helpers';
 const routes: Routes = [
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },
@@ -19,7 +19,7 @@ const routes: Routes = [
     { path: 'user', component: BoardUserComponent, canActivate: [AuthGuard] },
     { path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard] },
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: '**', component: HomeComponent }
   ];
 
 @NgModule({
