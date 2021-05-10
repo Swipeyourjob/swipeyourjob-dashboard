@@ -1,11 +1,11 @@
-export interface CompanyI {
-    companyname: string;
-    zipcode: string;
-    kvk: string;
-    email: string;
-    password: string;
-    passwordrepeat: string;
-    mails: string;
-    privacy: string;
+export interface CompanyInfo {
+    id: number;
+    title: string;
+    description: string;
 }
-
+export interface CompanyLocation {
+    city: string;
+    streetname: string;
+    housenumber: string;
+    zipcode: string;
+}

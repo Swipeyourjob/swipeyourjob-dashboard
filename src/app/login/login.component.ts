@@ -30,12 +30,17 @@ export class LoginComponent implements OnInit {
         }
     }
 
+    getConfigValue(key: string): any {
+
+    }
     onSubmit(): void {
+        //TODO:: Maak UserInterface ipv const en geef die hier mee.
         const { emailadress, password, rememberMe } = this.form;
         console.log(this.form);
         // reset alerts on submit
         this.alertService.clear();
         this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+        //TODO:: Vul UserInterface 
         // this.authService.login(emailadress, password).subscribe(
         //     data => {
         //         this.tokenStorage.saveToken(data.token, rememberMe);
@@ -44,7 +49,7 @@ export class LoginComponent implements OnInit {
         //         this.isLoginFailed = false;
         //         this.isLoggedIn = true;
         //         this.roles = this.tokenStorage.getUser().roles;
-        //         this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+        //         this.alertService.success('Welkom', { keepAfterRouteChange: true });
         //         this.reloadPage();
         //     },
         //     err => {
