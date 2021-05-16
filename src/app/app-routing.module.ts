@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component'
+import { VerificationComponent } from './verification/verification.component'
 
 import { AuthGuard } from './_helpers';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard] },
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
     { path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard] },
+    { path: 'verification', component: VerificationComponent, canActivate: [AuthGuard] },
     
     { path: '', redirectTo: 'home', pathMatch: 'full' }
   ];

@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     passwordRepeatDialog : false,
     kvkdDialog : false
   };
-  
+
 
   isLoggedIn = false;
   constructor(private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
       password,
       subscribe,
       terms} = this.form;
-    
+
       this.authService.companyRegister(
         companyname,
         zipcode,
