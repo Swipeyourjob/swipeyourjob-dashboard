@@ -23,10 +23,10 @@ export class AuthService {
 
     }
 
-    public login(email: string, password: string) {
+    public login(username: string, password: string) {
         console.log("in llogin")
         return this.http.post<any>(environment.apiUrl + '/login', {
-            email,
+            username,
             password
         }, httpOptions);
     }
