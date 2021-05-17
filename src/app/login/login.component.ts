@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     roles: string[] = [];
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-        private alertService: AlertService) { }
+        private alertService: AlertService, private router: Router) { }
 
     ngOnInit(): void {
         if (this.tokenStorage.getToken()) {
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
+    getConfigValue(key: string): any{ }
     onSubmit(): void {
         const { email, password, rememberMe } = this.form;
         console.log(this.form);
@@ -56,6 +57,8 @@ export class LoginComponent implements OnInit {
     }
 
     reloadPage(): void {
+        this.router.navigate(['']);
         window.location.reload();
+
     }
 }

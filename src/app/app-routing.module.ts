@@ -13,7 +13,7 @@ import { VerificationComponent } from './verification/verification.component'
 import { AuthGuard } from './_helpers';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 const routes: Routes = [
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },
@@ -23,8 +23,7 @@ const routes: Routes = [
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
     { path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard] },
     { path: 'verification', component: VerificationComponent, canActivate: [AuthGuard] },
-    
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: '**', component: HomeComponent }
   ];
 
 @NgModule({
