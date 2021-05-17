@@ -21,7 +21,7 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
-
+import { authInterceptorProviders } from '@app/helpers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ReactiveFormsModule, 
     CKEditorModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
