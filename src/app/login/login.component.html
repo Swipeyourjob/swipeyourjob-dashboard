@@ -1,12 +1,10 @@
-<div class="col-md-12">
+<div class="col-md-12 login center">
     <div class="container">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 text-center">
-            <h1 id="title" class="title">Login</h1>
-            <p class="sub-title">Hallo! Log in met je email.</p>
+        <div class="">
+            <div class="text-center">
+                <h1 id="title" class="title">Login</h1>
+                <p class="sub-title">Hallo! Log in met je email.</p>
             </div>
-            <div class="col-4"></div>
         </div>
         <div class="row card card-container p-4">
             <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate aria-labelledby="title"  >
@@ -34,15 +32,6 @@
                     [attr.aria-invalid]="emailadress.invalid && emailadress.touched ? true : null"
                     [required]="getConfigValue('forms.validation.email.required')"
                     />
-                    <!-- 
-                    <div
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="emailadress.errors && f.submitted"
-                    >
-                    Emailadress is verplicht
-                    </div> 
-                    -->
                     <ng-container *ngIf="emailadress.invalid && emailadress.touched">
                     <p class="caption status-danger" *ngIf="emailadress.errors?.required">
                         Emailadres is verplicht!

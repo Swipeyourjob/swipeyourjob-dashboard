@@ -30,9 +30,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    getConfigValue(key: string): any {
-
-    }
+    getConfigValue(key: string): any{ }
     onSubmit(): void {
         //TODO:: Maak UserInterface ipv const en geef die hier mee.
         const { emailadress, password, rememberMe } = this.form;

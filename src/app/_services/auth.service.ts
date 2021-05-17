@@ -37,8 +37,7 @@ export class AuthService {
         email: string,
         password: string,
         passwordrepeat: string,
-        mails: string,
-        privacy: string) {
+        mails: string) {
         return this.http.post(environment.apiUrl + '/newCompany', {
             companyname,
             zipcode,
@@ -46,8 +45,7 @@ export class AuthService {
             email,
             password,
             passwordrepeat,
-            mails,
-            privacy
+            mails
         }, httpOptions);
     }
 

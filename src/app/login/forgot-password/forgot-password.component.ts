@@ -20,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
             email: new FormControl("", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])
         });
     }
-
+    getConfigValue(key: string): any{}
     public validateControl = (controlName: string) => {
         return this.forgotPasswordForm.controls[controlName].invalid && this.forgotPasswordForm.controls[controlName].touched
     }

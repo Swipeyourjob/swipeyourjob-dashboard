@@ -1,5 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+/* often used classes */
+/* BEGIN */
+.center {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 35rem;
+    padding: 2.5rem;
+}
+.theme {
+    background: rgb(59, 236, 141);
+    background: linear-gradient(
+        45deg,
+        rgba(59, 236, 141, 1) 0%,
+        rgba(80, 198, 218, 1) 100%
+    );
+}
+.theme-links a {
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+/* END */
+
 a {
   cursor: pointer;
 }
@@ -21,18 +45,7 @@ a {
   box-sizing: content-box;
 }
 
-.theme {
-  background: rgb(59, 236, 141);
-  background: linear-gradient(
-    45deg,
-    rgba(59, 236, 141, 1) 0%,
-    rgba(80, 198, 218, 1) 100%
-  );
-}
-.theme-links a {
-  color: #fff;
-  text-shadow: 1px 1px #000;
-}
+
 .syj_content {
   display: flex;
   flex-direction: column;
@@ -127,7 +140,11 @@ body {
 .input-full-width {
   width: 100%;
 }
-
+.title{
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
 .sub-title {
   margin-bottom: 2rem;
   text-align: center;
