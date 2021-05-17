@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthService, AlertService, TokenStorageService } from '../_services';
@@ -31,9 +31,8 @@ export class LoginComponent implements OnInit {
     }
 
     getConfigValue(key: string): any{ }
-    onSubmit(): void {
+    onSubmit(f :NgForm): void {
         const { email, password, rememberMe } = this.form;
-        console.log(this.form);
         // reset alerts on submit
         this.alertService.clear();
         // this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
