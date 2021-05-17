@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { EstablishmentService } from 'app/_services/establishment.service';
 
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+
 import { TokenStorageService} from '../_services';
 @Component({
   selector: 'app-company-profile',
@@ -16,6 +18,7 @@ export class CompanyProfileComponent implements OnInit {
     Firstname: null,
     Lastname:null,
     profileUrl: null,
+    CompanyUrl:null,
     facebooklink: null,
     instagramlink: null,
     linkedinlink: null,
@@ -47,9 +50,12 @@ export class CompanyProfileComponent implements OnInit {
       this.form.Lastname = (userinfo['lastname'] != null && userinfo['lastname'] != '') ? userinfo['lastname'] :null;
     }
   }
-  onSubmit(): void{
-      
-  }
+  onSubmit(f: NgForm): void{
+      console.log(f.value.facebooklink);
+      console.log(f.value.instagramlink);
+      console.log(f.value.linkedinlink);
+      //console.log(f.valid);
+    }
 
 
   companydescriptionChanged(event: KeyboardEvent): void {
