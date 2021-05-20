@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
-import { faCheck,faTimes  } from '@fortawesome/free-solid-svg-icons';
-import {TokenStorageService ,AuthService} from '../_services';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { TokenStorageService, AuthService } from '../_services';
 import { PasswordValidator } from 'app/_helpers/passwordvalidator';
 
 @Component({

@@ -1,13 +1,13 @@
 <div class="col-md-12">
     <div class="container">
 
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col-4"><h2>Registreren</h2></div>
-          <div class="col-4"></div>
+        <div class="">
+          <div class="text-center">
+              <h1 id="title" class="title">Registreren</h1>
+            </div>
         </div>
     </div>
-    <div class="card card-container register-form">
+    <div class="card card-container register-form center">
         <form
         *ngIf="!isLoggedIn"
         name="form"
@@ -15,21 +15,21 @@
         #f="ngForm"
         novalidate
       >
-      <div class="row">
-        <div class="col-md-4"><h3>Bedrijfsgegevens</h3></div>
-        <div class="col-md-8"></div>
+      <div>
+        <h3 class="text-center">Bedrijfsgegevens</h3>
       </div>
       <div class="form-group">
         <label for="companyname">Bedrijfsnaam:</label>
         <input
           type="text"
-          class="form-control col-md-6"
+          class="input-full-width"
           name="companyname"
           (keyup)="adddialog('companyNamedialog')"
           [(ngModel)]="form.companyname"
           required
           #companyname="ngModel"
         />
+        
       <div
       class="alert alert-danger col-md-6  "
       role="alert"
@@ -43,7 +43,7 @@
         <label for="zipcode">Postcode:</label>
         <input
           type="text"
-          class="form-control col-md-6"
+          class="input-full-width"
           name="zipcode"
           (keyup)="adddialog('zipcodeNameDialog')"
           [(ngModel)]="form.zipcode"
@@ -62,7 +62,7 @@
         <label for="kvk">Kvk-nummer:</label>
         <input
           type="text"
-          class="form-control col-md-6"
+          class="input-full-width"
           name="kvk"
           (keyup)="adddialog('kvkdDialog')"
           [(ngModel)]="form.kvk"
@@ -81,7 +81,7 @@
         <label for="email">E-mailadres:</label>
         <input
           type="email"
-          class="form-control col-md-6"
+          class="input-full-width"
           name="email"
           (keyup)="adddialog('emailNameDialog')"
           [(ngModel)]="form.email"
@@ -101,7 +101,7 @@
         <label for="password">Wachtwoord:</label>
         <input
           type="password"
-          class="form-control col-md-6"
+          class="input-full-width"
           name="password"
           [(ngModel)]="form.password"
           (keyup)=passwordchange($event)
@@ -143,7 +143,7 @@
         <label for="passwordrepeat">Herhaal wachtwoord:</label>
         <input
           type="password"
-          class="form-control col-md-6"
+          class="input-full-width"
           name="passwordrepeat"
           [(ngModel)]="form.passwordrepeat"
           (keyup)=passwordrepeatf($event)
@@ -163,7 +163,7 @@
         <label for="subscribe">Hou mij up-to-date via e-mails:</label><br>
         <input
           type="radio"
-         
+          class=""
           name="subscribe"
           value="yes"
           [(ngModel)]="form.subscribe"

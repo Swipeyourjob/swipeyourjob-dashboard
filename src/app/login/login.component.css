@@ -1,0 +1,35 @@
+form{
+    width: 100%;
+}
+input{
+    border-radius: .25rem;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    transition-duration: .15s;
+    transition-property: border,background-color,color,box-shadow;
+    transition-timing-function: ease-in;
+    overflow: visible;
+    background-color: transparent
+}
+label{
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+}
+input[type=checkbox]{
+    transition-duration: 0.15s;
+    transition-property: background-color,border,box-shadow;
+    transition-timing-function: ease-in;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    position: relative;
+    margin-right: 1%;
+}
+.login{
+    
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthService, AlertService, TokenStorageService } from '../_services';
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     roles: string[] = [];
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-        private alertService: AlertService) { }
+        private alertService: AlertService, private router: Router) { }
 
     ngOnInit(): void {
         if (this.tokenStorage.getToken()) {
@@ -30,9 +30,9 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    onSubmit(): void {
+    getConfigValue(key: string): any{ }
+    onSubmit(f :NgForm): void {
         const { email, password, rememberMe } = this.form;
-        console.log(this.form);
         // reset alerts on submit
         this.alertService.clear();
         // this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
@@ -56,6 +56,8 @@ export class LoginComponent implements OnInit {
     }
 
     reloadPage(): void {
+        this.router.navigate(['']);
         window.location.reload();
+
     }
 }
