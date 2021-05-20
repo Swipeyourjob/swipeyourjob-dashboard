@@ -19,9 +19,10 @@ export class LoginComponent implements OnInit {
     isLoggedIn = false;
     isLoginFailed = false;
     roles: string[] = [];
+    parent_component = this.actRoute.parent; 
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-        private alertService: AlertService, private router: Router) { }
+        private alertService: AlertService, private router: Router, private actRoute: ActivatedRoute) { }
 
     ngOnInit(): void {
         if (this.tokenStorage.getToken()) {
@@ -56,8 +57,6 @@ export class LoginComponent implements OnInit {
     }
 
     reloadPage(): void {
-        this.router.navigate(['']);
-        window.location.reload();
-
+        this.router.navigateByUrl('home');
     }
 }
