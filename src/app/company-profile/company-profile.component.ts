@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import { EstablishmentService } from 'app/_services/establishment.service';
 
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -11,7 +11,8 @@ import { TokenStorageService} from '../_services';
   styleUrls: ['./company-profile.component.css']
 })
 export class CompanyProfileComponent implements OnInit {
-  public Editor = ClassicEditor;
+  public Editor = InlineEditor;
+  
   form: any = {
     CompanyIntroduction: null,
     Companylogo: null,
@@ -49,6 +50,12 @@ export class CompanyProfileComponent implements OnInit {
       this.form.Firstname = (userinfo['firstname'] != null && userinfo['firstname'] != '') ? userinfo['firstname'] :null;
       this.form.Lastname = (userinfo['lastname'] != null && userinfo['lastname'] != '') ? userinfo['lastname'] :null;
     }
+    this.Editor.defaultConfig = {
+        toolbar: [ 'heading', '|', 'bold', 'italic', 'custombutton' ],
+    
+        // This value must be kept in sync with the language defined in webpack.config.js.
+        language: 'en'
+    };
   }
   onSubmit(f: NgForm): void{
       console.log(f.value.facebooklink);

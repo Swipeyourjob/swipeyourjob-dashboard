@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
         const { email, password, rememberMe } = this.form;
         // reset alerts on submit
         this.alertService.clear();
-        // this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
         this.authService.login(email, password).subscribe(
             data => {
                 this.tokenStorage.saveToken(data.token, rememberMe);
@@ -45,12 +44,15 @@ export class LoginComponent implements OnInit {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
-                this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+                this.alertService.success('Welkom', { keepAfterRouteChange: true });
                 this.reloadPage();
             },
             err => {
-                this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");
-                //this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
+                // this.alertService.error(err.error.status);
+                // console.log(err);
+
+                let errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
+                this.alertService.error(errorMessage);
                 this.isLoginFailed = true;
             }
         );
