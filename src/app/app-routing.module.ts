@@ -8,11 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component'
+import { VerificationComponent } from './verification/verification.component'
 
 import { AuthGuard } from './_helpers';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 const routes: Routes = [
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },
@@ -21,8 +22,8 @@ const routes: Routes = [
     { path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard] },
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
     { path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard] },
-    
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: 'verification', component: VerificationComponent, canActivate: [AuthGuard] },
+    { path: '**', component: HomeComponent }
   ];
 
 @NgModule({

@@ -20,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
             email: new FormControl("", [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])
         });
     }
-
+    getConfigValue(key: string): any{}
     public validateControl = (controlName: string) => {
         return this.forgotPasswordForm.controls[controlName].invalid && this.forgotPasswordForm.controls[controlName].touched
     }
@@ -33,7 +33,8 @@ export class ForgotPasswordComponent implements OnInit {
             email: forgotPass.email,
             clientURI: 'http://localhost:4200/login/resetpassword'
         }
-        this.authService.forgotPassword(ForgotPassword);
-        this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });
+        if (this.authService.forgotPassword(ForgotPassword)) {
+            this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });
+        }
     }
 }
