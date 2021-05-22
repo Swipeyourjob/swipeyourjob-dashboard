@@ -24,7 +24,7 @@ form {
 @media (max-width: 420px) {
     .card {
         padding: 25px;
-        height: 360px;
+        height: 380px;
         margin: 8rem auto 8rem auto;
     }
     .center {
