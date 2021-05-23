@@ -9,6 +9,8 @@ import { faCheck,faTimes  } from '@fortawesome/free-solid-svg-icons';
 import {TokenStorageService ,AuthService} from '../_services';
 import { PasswordValidator } from 'app/_helpers/passwordvalidator';
 
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -46,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
 
   isLoggedIn = false;
-  constructor(private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
+  constructor(private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private titleService: Title) {}
   passwordchange(event: KeyboardEvent): void {
     let password      = this.form.password;
     this.dialogChecks.passwordDialog = true;
@@ -63,6 +65,7 @@ export class RegisterComponent implements OnInit {
     this.dialogChecks[attributeName] = true;
   }
   ngOnInit(): void {
+    this.titleService.setTitle("SwipeYourJob - Registeren")
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }

@@ -3,6 +3,7 @@ import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import { EstablishmentService } from 'app/_services/establishment.service';
 
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { TokenStorageService} from '../_services';
 @Component({
@@ -30,12 +31,13 @@ export class CompanyProfileComponent implements OnInit {
   };
 
   wordcount = 0;
-  constructor(private tokenStorage: TokenStorageService,private establishment : EstablishmentService) { }
+  constructor(private tokenStorage: TokenStorageService,private establishment : EstablishmentService, private titleService: Title) { }
 
 
 
 
   ngOnInit(): void {
+    this.titleService.setTitle("SwipeYourJob - Bedrijfsprofiel aanmaken")
     this.establishment.getUserEstamblishments().subscribe(
       data => {
         console.log(data);

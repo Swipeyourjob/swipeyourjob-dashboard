@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 
 import { AuthService, AlertService, TokenStorageService } from '../_services';
 
+import { Title } from '@angular/platform-browser';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -22,9 +23,10 @@ export class LoginComponent implements OnInit {
     parent_component = this.actRoute.parent; 
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-        private alertService: AlertService, private router: Router, private actRoute: ActivatedRoute) { }
+        private alertService: AlertService, private router: Router, private actRoute: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit(): void {
+    this.titleService.setTitle("SwipeYourJob - Inloggen")
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
