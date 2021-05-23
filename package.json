@@ -24,6 +24,7 @@
     "@ckeditor/ckeditor5-word-count": "^27.1.0",
     "@fortawesome/angular-fontawesome": "^0.8.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "ckeditor4-angular": "^2.2.0",
     "ckeditor4-integrations-common": "^0.2.0",

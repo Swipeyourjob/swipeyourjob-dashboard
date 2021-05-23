@@ -6,88 +6,67 @@
                 <p class="sub-title">* Deze gegevens kunnen laten nog worden aangepast.</p>
             </div>
         </div>
-    <div class="card card-container companyprofile">
-        <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
-        <div class="form-control-group">
-          <label for="CompanyIntroduction">Bedrijfs omschrijving:</label>
-            <ckeditor [editor]="Editor"
-            tagName="textarea"
-            name="CompanyIntroduction"
-            [(ngModel)]="form.CompanyIntroduction"
-            (keydown)="companydescriptionChanged($event)"
-            change
-            required
-            #CompanyIntroduction="ngModel">
-              
-            </ckeditor>
-            <span>Karakters {{wordcount}} / 250</span>
-        </div>
-        <div class="form-control-group">
-        <label for="Companylogo">Bedrijfslogo</label>
-        <input 
-            type="file" 
-            name="Companylogo" 
-            class="input-full-width"
-            accept="image/png, image/jpeg"
-            [(ngModel)]="form.Companylogo"
-            #Companylogo="ngModel"
-            >
-        </div>
-          <div class="form-control-group">
-            <label for="Firstname">Voornaam:</label>
-            <input 
-              type="text" name="Firstname"
-              [(ngModel)]="form.Firstname"
-              #Firstname="ngModel">
-          </div>
-          <div class="form-control-group">
-            <label for="Lastname">Achternaam:</label>
-            <input 
-              type="text" name="Lastname"
-              [(ngModel)]="form.Lastname"
-              #Lastname="ngModel"
-              value = "form.Lastname">
-          </div>
-          <div class="form-control-group">
-            <label for="profileUrl">Profile</label>
-            <input type="file" class="input-full-width" name="profileUrl" accept="image/png, image/jpeg" [(ngModel)]="form.profileUrl"
-              #profileUrl="ngModel">
-          </div>
-          <div class="form-control-group">
-            <label for="CompanyUrl">Website van Bedrijf:</label>
-            <input type="text" name="CompanyUrl" [(ngModel)]="form.CompanyUrl" #CompanyUrl="ngModel">
-          </div>
-          <div class="form-control-group">
-            <label for="facebooklink">Facebook:</label>
-            <input type="text" class="input-full-width" name="facebooklink" [(ngModel)]="form.facebooklink" #facebooklink="ngModel">
-          
-            <label for="instagramlink">Instagram:</label>
-            <input type="text" class="input-full-width" name="instagramlink" [(ngModel)]="form.instagramlink" #instagramlink="ngModel">
-          
-            <label for="linkedinlink">Linkedin:</label>
-            <input type="text" class="input-full-width" name="linkedinlink" [(ngModel)]="form.linkedinlink" #linkedinlink="ngModel">
-          </div>
+        <div class="card card-container companyprofile">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+                <div class="form-control-group">
+                    <label for="CompanyIntroduction">Bedrijfs omschrijving:</label>
+                    <div class="form-control-group">
+                        <ckeditor [editor]="Editor" class="input-full-width" tagName="textarea" name="CompanyIntroduction" [(ngModel)]="form.CompanyIntroduction" (keydown)="companydescriptionChanged($event)" change required #CompanyIntroduction="ngModel">
+                        </ckeditor>
+                    </div>
+                    <span>Karakters {{wordcount}} / 250</span>
+                </div>
+                <div class="form-control-group">
+                    <label for="Companylogo">Bedrijfslogo</label>
+                    <input type="file" class="input-full-width" name="Companylogo" class="input-full-width" accept="image/png, image/jpeg" [(ngModel)]="form.Companylogo" #Companylogo="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="Firstname">Voornaam:</label>
+                    <input type="text" class="input-full-width" name="Firstname" [(ngModel)]="form.Firstname" #Firstname="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="Lastname">Achternaam:</label>
+                    <input type="text" class="input-full-width" name="Lastname" [(ngModel)]="form.Lastname" #Lastname="ngModel" value="form.Lastname">
+                </div>
+                <div class="form-control-group">
+                    <label for="profileUrl">Profile</label>
+                    <input type="file" class="input-full-width" name="profileUrl" accept="image/png, image/jpeg" [(ngModel)]="form.profileUrl" #profileUrl="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="CompanyUrl">Website van Bedrijf:</label>
+                    <input type="text" class="input-full-width" name="CompanyUrl" [(ngModel)]="form.CompanyUrl" #CompanyUrl="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="facebooklink"><fa-icon [icon]="icons.faFacebook"></fa-icon>Facebook:</label>
+                    <input type="text" class="input-full-width" name="facebooklink" [(ngModel)]="form.facebooklink" #facebooklink="ngModel">
 
-          <div class="form-control-group">
-            <label for="Place">Plaats:</label>
-            <input type="text" name="Place" [(ngModel)]="form.Place" #Place="ngModel">
-          </div>
-          <div class="form-control-group">
-            <label for="Streetname">Straat:</label>
-            <input type="text" name="Streetname" [(ngModel)]="form.Streetname" #Streetname="ngModel">
-          </div>
-          <div class="form-control-group">
-            <label for="housenumber">Huisnummer:</label>
-            <input type="text" name="housenumber" [(ngModel)]="form.housenumber" #housenumber="ngModel">
-          </div>
-          <div class="form-control-group">
-            <label for="zipcode">Postcode:</label>
-            <input type="text" name="zipcode" [(ngModel)]="form.zipcode" #zipcode="ngModel">
-          </div>
-          <div class="form-control-group">
-            <button type="submit" class="btn btn-primary btn-block">Opslaan</button>
+                    <label for="instagramlink"><fa-icon [icon]="icons.faInstagram"></fa-icon>Instagram:</label>
+                    <input type="text" class="input-full-width" name="instagramlink" [(ngModel)]="form.instagramlink" #instagramlink="ngModel">
+
+                    <label for="linkedinlink"><fa-icon [icon]="icons.faLinkedin"></fa-icon>Linkedin:</label>
+                    <input type="text" class="input-full-width" name="linkedinlink" [(ngModel)]="form.linkedinlink" #linkedinlink="ngModel">
+                </div>
+
+                <div class="form-control-group">
+                    <label for="Place">Plaats:</label>
+                    <input type="text" class="input-full-width" name="Place" [(ngModel)]="form.Place" #Place="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="Streetname">Straat:</label>
+                    <input type="text" class="input-full-width" name="Streetname" [(ngModel)]="form.Streetname" #Streetname="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="housenumber">Huisnummer:</label>
+                    <input type="text" class="input-full-width" name="housenumber" [(ngModel)]="form.housenumber" #housenumber="ngModel">
+                </div>
+                <div class="form-control-group">
+                    <label for="zipcode">Postcode:</label>
+                    <input type="text" class="input-full-width" name="zipcode" [(ngModel)]="form.zipcode" #zipcode="ngModel" pattern="/^\d{4} ?[a-z]{2}$/i">
+                </div>
+                <div class="form-control-group">
+                    <button type="submit" class="btn btn-primary btn-block">Opslaan</button>
+                </div>
+
+            </form>
         </div>
-         
-      </form>
     </div>
-</div>
