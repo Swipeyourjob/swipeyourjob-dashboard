@@ -1,5 +1,6 @@
 form {
     width: 100%;
+    /*overflow: auto; PERHAPS better here */
 }
 .card {
     width: 100%;
@@ -10,6 +11,8 @@ form {
     padding: 50px;
     margin: 10rem auto 10rem auto;
     border: none;
+    /* For longer (registration) forms */
+    /* overflow: auto; */
 }
 @media (max-width: 768px) {
     .card {
@@ -75,6 +78,7 @@ input[type=checkbox]{
     left: 0; 
     min-width: 100%;
     min-height: 100%;
+    overflow: auto;
 }
 .btn-grad {
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);
