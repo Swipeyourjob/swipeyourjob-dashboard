@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
+            window.location.href = '/';
         }
     }
 
@@ -46,13 +47,10 @@ export class LoginComponent implements OnInit {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
-                this.alertService.success('Welkom', { keepAfterRouteChange: true });
-                this.reloadPage();
+                this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+                window.location.href = '/';
             },
             err => {
-                // this.alertService.error(err.error.status);
-                // console.log(err);
-
                 let errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
                 this.alertService.error(errorMessage);
                 this.isLoginFailed = true;
@@ -60,7 +58,4 @@ export class LoginComponent implements OnInit {
         );
     }
 
-    reloadPage(): void {
-        this.router.navigateByUrl('home');
-    }
 }
