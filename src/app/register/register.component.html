@@ -1,29 +1,25 @@
-<div class="col-md-12">
-    <div class="container">
-
-        <div class="">
-          <div class="text-center">
-              <h1 id="title" class="title">Registreren</h1>
-            </div>
-        </div>
-    </div>
-    <div class="card card-container register-form center">
-        <form
+<div class="background">
+<div class="col-md-12 center">
+    <div class="container-fluid container">
+    <div class="row card card-container register-form">
+      <div id="card-title">
+        <img src="/assets/img/logo_light.svg" alt="image">
+        <h5>Bedrijf registreren</h5>
+      </div>
+      <form
         *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
         novalidate
       >
-      <div>
-        <h3 class="text-center">Bedrijfsgegevens</h3>
-      </div>
       <div class="form-group">
-        <label for="companyname">Bedrijfsnaam:</label>
         <input
           type="text"
           class="input-full-width"
           name="companyname"
+          placeholder="Bedrijfsnaam"
+          autofocus
           (keyup)="adddialog('companyNamedialog')"
           [(ngModel)]="form.companyname"
           required
@@ -40,11 +36,11 @@
     
   </div>
       <div class="form-group">
-        <label for="zipcode">Postcode:</label>
         <input
           type="text"
           class="input-full-width"
           name="zipcode"
+          placeholder="Postcode"
           (keyup)="adddialog('zipcodeNameDialog')"
           [(ngModel)]="form.zipcode"
           required
@@ -59,11 +55,11 @@
       </div>
       </div>
       <div class="form-group">
-        <label for="kvk">Kvk-nummer:</label>
         <input
           type="text"
           class="input-full-width"
           name="kvk"
+          placeholder="KvK-nummer"
           (keyup)="adddialog('kvkdDialog')"
           [(ngModel)]="form.kvk"
           required
@@ -78,11 +74,11 @@
       </div>
       </div>
       <div class="form-group">
-        <label for="email">E-mailadres:</label>
         <input
           type="email"
           class="input-full-width"
           name="email"
+          placeholder="E-mailadres"
           (keyup)="adddialog('emailNameDialog')"
           [(ngModel)]="form.email"
           required
@@ -98,11 +94,11 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Wachtwoord:</label>
         <input
           type="password"
           class="input-full-width"
           name="password"
+          placeholder="Wachtwoord"
           [(ngModel)]="form.password"
           (keyup)=passwordchange($event)
           required
@@ -140,11 +136,11 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="passwordrepeat">Herhaal wachtwoord:</label>
         <input
           type="password"
           class="input-full-width"
           name="passwordrepeat"
+          placeholder="Wachtwoord herhaald"
           [(ngModel)]="form.passwordrepeat"
           (keyup)=passwordrepeatf($event)
           required
@@ -158,9 +154,9 @@
           Wachtwoord komt niet overeen.
         </div>
       </div>
-     
+      <!--
       <div class="form-group">
-        <label for="subscribe">Hou mij up-to-date via e-mails:</label><br>
+        <label for="subscribe">Houd mij up-to-date via e-mails:</label><br>
         <input
           type="radio"
           class=""
@@ -179,6 +175,7 @@
           #subscribe="ngModel"
         /> Nee
       </div>
+      -->
       <div class="form-group">
         <input
         type="checkbox"
@@ -192,10 +189,17 @@
         <label for="terms">Ik heb de <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a> gelezen en ga hiermee akkoord.</label><br>
       </div>
       <div class="form-group">
+        <button type="submit" class="btn btn-grad btn-primary btn-block lift">Bedrijf registreren</button>
+      </div>
+      <!--
+      <div class="form-group">
         <button class="btn btn-primary btn-block col-md-5">
           Bevestig registratie
         </button>
       </div>
+      -->
     </form>
     </div>
+  </div>
+</div>
 </div>

@@ -11,8 +11,8 @@ form {
     padding: 50px;
     margin: 10rem auto 10rem auto;
     border: none;
+    text-align: center;
     /* For longer (registration) forms */
-    /* overflow: auto; */
 }
 @media (max-width: 768px) {
     .card {
@@ -68,12 +68,11 @@ input[type=checkbox]{
     width: 100%;
     height: 100vh;
     background: linear-gradient(to top, rgba(80, 198, 218, 0.90), rgba(59, 236, 141, 0.94)), url('assets/img/splash.jpg') center no-repeat;
-    text-align: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    position: fixed; 
+    position: absolute; 
     top: 0; 
     left: 0; 
     min-width: 100%;
@@ -93,4 +92,7 @@ input[type=checkbox]{
     background-position: right center;
     color: #fff;
     text-decoration: none;
+}
+.scrollable {
+    overflow-y: auto;
 }
