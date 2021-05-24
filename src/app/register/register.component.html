@@ -1,4 +1,5 @@
 <div class="background">
+<<<<<<< HEAD
     <div class="col-md-12 center">
         <div class="container-fluid container">
             <div class="row card card-container register-form">
@@ -98,6 +99,164 @@
                         </div>
                     </div>
                     <!--
+=======
+<div class="col-md-12 center">
+    <div class="container-fluid container fadeAnimation">
+    <div class="row card card-container register-form">
+      <div id="card-title">
+        <img src="/assets/img/logo_light.svg" alt="image">
+        <h5>Bedrijf registreren</h5>
+      </div>
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+      <div class="form-group">
+        <input
+          type="text"
+          class="input-full-width"
+          name="companyname"
+          placeholder="Bedrijfsnaam"
+          autofocus
+          (keyup)="adddialog('companyNamedialog')"
+          [(ngModel)]="form.companyname"
+          required
+          #companyname="ngModel"
+        />
+        
+      <div
+      class="alert alert-danger col-md-6  "
+      role="alert"
+      *ngIf="companyname.errors && dialogChecks.companyNamedialog"
+    >
+    Bedrijfsnaam niet compleet
+    </div>
+    
+  </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="input-full-width"
+          name="zipcode"
+          placeholder="Postcode"
+          (keyup)="adddialog('zipcodeNameDialog')"
+          [(ngModel)]="form.zipcode"
+          required
+          #zipcode="ngModel"
+        />
+        <div
+        class="alert alert-danger col-md-6  "
+        role="alert"
+        *ngIf="zipcode.errors && dialogChecks.zipcodeNameDialog"
+      >
+        Poscode niet compleet
+      </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="input-full-width"
+          name="kvk"
+          placeholder="KvK-nummer"
+          (keyup)="adddialog('kvkdDialog')"
+          [(ngModel)]="form.kvk"
+          required
+          #kvk="ngModel"
+        />
+        <div
+        class="alert alert-danger col-md-6  "
+        role="alert"
+        *ngIf="kvk.errors && dialogChecks.kvkdDialog"
+      >
+        kvk niet compleet
+      </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          class="input-full-width"
+          name="email"
+          placeholder="E-mailadres"
+          (keyup)="adddialog('emailNameDialog')"
+          [(ngModel)]="form.email"
+          required
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          #email="ngModel"
+        />
+        <div
+          class="alert alert-danger col-md-6  "
+          role="alert"
+          *ngIf="email.errors && dialogChecks.emailNameDialog"
+        >
+          E-mailadres is leeg of is niet valide.
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="input-full-width"
+          name="password"
+          placeholder="Wachtwoord"
+          [(ngModel)]="form.password"
+          (keyup)=passwordchange($event)
+          required
+          #password="ngModel"
+        />
+        <div
+          class="alert col-md-6"
+          *ngIf="dialogChecks.passwordDialog"
+        >
+          <!--Capital check-->
+        <table>
+          <tr>
+            <td>Hoofdletter: </td>
+            
+            <td *ngIf="passwordchecks.passwordCapitalCheck; else falseCapital"> <fa-icon [icon]="icons.faCheck"></fa-icon></td>
+            <ng-template #falseCapital >
+              <fa-icon [icon]="icons.faTimes"></fa-icon>
+            </ng-template>
+          </tr>
+          <tr>
+            <td>Nummer: </td>
+            <td *ngIf="passwordchecks.passwordNumberCheck; else falseNumber"> <fa-icon [icon]="icons.faCheck"></fa-icon></td>
+            <ng-template #falseNumber >
+              <fa-icon [icon]="icons.faTimes"></fa-icon>
+            </ng-template>
+          </tr>
+          <tr>
+            <td>Lengte: </td>
+            <td *ngIf="passwordchecks.passwordLengthCheck; else falseLength"> <fa-icon [icon]="icons.faCheck"></fa-icon></td>
+            <ng-template #falseLength >
+              <fa-icon [icon]="icons.faTimes"></fa-icon>
+            </ng-template>
+          </tr>
+        </table>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          class="input-full-width"
+          name="passwordrepeat"
+          placeholder="Wachtwoord herhaald"
+          [(ngModel)]="form.passwordrepeat"
+          (keyup)=passwordrepeatf($event)
+          required
+          #passwordrepeat="ngModel"
+        />
+        <div
+          class="alert alert-danger col-md-6"
+          role="alert"
+          *ngIf="dialogChecks.passwordRepeatDialog"
+        >
+          Wachtwoord komt niet overeen.
+        </div>
+      </div>
+      <!--
+>>>>>>> uat
       <div class="form-group">
         <label for="subscribe">Houd mij up-to-date via e-mails:</label><br>
         <input
@@ -119,6 +278,7 @@
         /> Nee
       </div>
       -->
+<<<<<<< HEAD
                     <div class="form-group">
                         <input type="checkbox" name="terms" id="terms" value="no" [(ngModel)]="form.terms" required #terms="ngModel" />
                         <label for="terms">Ik heb de <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a> gelezen en ga hiermee akkoord.</label><br>
@@ -127,6 +287,13 @@
                         <button type="submit" class="btn btn-grad btn-primary btn-block lift">Bedrijf registreren</button>
                     </div>
                     <!--
+=======
+      <label for="terms">Door op onderstaande knop te drukken gaat u akkoord met de <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a>.</label><br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-grad btn-primary btn-block lift">Bedrijf registreren</button>
+      </div>
+      <!--
+>>>>>>> uat
       <div class="form-group">
         <button class="btn btn-primary btn-block col-md-5">
           Bevestig registratie
