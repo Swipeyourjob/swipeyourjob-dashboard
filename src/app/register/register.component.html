@@ -23,7 +23,7 @@
                                 <tr>
                                     <td>Poscode te kort: </td>
 
-                                    <td *ngIf="zipcodecheck.length; else falseLength">
+                                    <td *ngIf="zipcodecheck.lengthCheck; else falseLength">
                                         <fa-icon [icon]="icons.faCheck"></fa-icon>
                                     </td>
                                     <ng-template #falseLength>
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>Poscode invalid: </td>
 
-                                    <td *ngIf="zipcodecheck.invalid; else validZipcode">
+                                    <td *ngIf="zipcodecheck.invalidCheck; else validZipcode">
                                         <fa-icon [icon]="icons.faCheck"></fa-icon>
                                     </td>
                                     <ng-template #validZipcode>

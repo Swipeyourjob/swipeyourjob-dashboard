@@ -6,8 +6,8 @@ import { first } from 'rxjs/operators';
 
 
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { TokenStorageService, AuthService } from '../_services';
-import { PasswordValidator } from 'app/_helpers/passwordvalidator';
+import { TokenStorageService, AuthService } from '@app/services';
+import { PasswordValidator, ZipcodeValidator } from '@app/helpers';
 import { Title } from '@angular/platform-browser';
 import { Company } from '@app/models';
 
@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit {
         passwordLengthCheck: false
     };
     zipcodecheck: any = {
-        invalid: false,
-        length: false
+        invalidCheck: false,
+        lengthCheck: false
     };
     passwordvalidrepeat: boolean = false;
     dialogChecks: any = {
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
 
 
     isLoggedIn = false;
-    constructor(private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private titleService: Title) { }
+    constructor(private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private titleService: Title, private zipcodeValidator: ZipcodeValidator) { }
     passwordchange(event: KeyboardEvent): void {
         let password = this.form.password;
         
@@ -72,18 +72,12 @@ export class RegisterComponent implements OnInit {
     }
     zipcodechange():void {
         let zipcode = this.form.zipcode;
-        let regexp: RegExp = /^(\d{4})\s*([A-Z]{2})$/i
-        this.dialogChecks.zipcodeNameDialog = true
-        let pattern=new RegExp("");
-        let result = pattern.test(zipcode);
-        
-        if (result){
-            this.zipcodecheck.invalid = true;
-        }
-        if(zipcode.length >= 6){
-            this.zipcodecheck.length = true
-        }
 
+        this.dialogChecks.zipcodeNameDialog = true
+        this.zipcodecheck.invalidCheck = this.zipcodeValidator.checkRegex(zipcode);
+        this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
+        console.log(this.zipcodecheck.invalidCheck,
+            this.zipcodecheck.lengthCheck );
     }
     ngOnInit(): void {
         console.log(this.form);
