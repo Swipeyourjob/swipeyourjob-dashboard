@@ -11,9 +11,7 @@
                 <div class="form-control-group">
                     <label for="CompanyIntroduction">Bedrijfs omschrijving:</label>
                     <div class="form-control-group">
-                        <div id="editor">
-                            <p>Initial content.</p>
-                        </div>
+                        <ckeditor [editor]="Editor"></ckeditor>
                     </div>
                     <div id="word-count"></div>
                 </div>
@@ -22,16 +20,16 @@
                     <input type="file" class="input-full-width" name="Companylogo" class="input-full-width" accept="image/png, image/jpeg" [(ngModel)]="form.Companylogo" #Companylogo="ngModel">
                 </div>
                 <div class="form-control-group">
-                    <label for="Firstname">Voornaam:</label>
-                    <input type="text" class="input-full-width" name="Firstname" [(ngModel)]="form.Firstname" #Firstname="ngModel">
+                    <label for="ownerFirstName">Voornaam:</label>
+                    <input type="text" class="input-full-width" name="ownerFirstName" [(ngModel)]="form.ownerFirstName" #ownerFirstName="ngModel">
                 </div>
                 <div class="form-control-group">
-                    <label for="Lastname">Achternaam:</label>
-                    <input type="text" class="input-full-width" name="Lastname" [(ngModel)]="form.Lastname" #Lastname="ngModel" value="form.Lastname">
+                    <label for="ownerLastname">Achternaam:</label>
+                    <input type="text" class="input-full-width" name="ownerLastname" [(ngModel)]="form.ownerLastname" #ownerLastname="ngModel" value="form.ownerLastname">
                 </div>
                 <div class="form-control-group">
-                    <label for="profileUrl">Profile</label>
-                    <input type="file" class="input-full-width" name="profileUrl" accept="image/png, image/jpeg" [(ngModel)]="form.profileUrl" #profileUrl="ngModel">
+                    <label for="ownerPicture">Profile</label>
+                    <input type="file" class="input-full-width" name="ownerPicture" accept="image/png, image/jpeg">
                 </div>
                 <div class="form-control-group">
                     <label for="CompanyUrl">Website van Bedrijf:</label>

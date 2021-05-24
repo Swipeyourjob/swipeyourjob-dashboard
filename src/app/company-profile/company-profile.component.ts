@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
-import * as WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
-import { EstablishmentService } from 'app/_services/establishment.service';
-
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-import {
-  faInstagram,
-  faFacebook,
-  faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
-import { TokenStorageService } from '../_services';
+
+import { TokenStorageService,EstablishmentService } from '@app/services';
+import {Establishment} from '@app/models'
+import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
+import {faInstagram,faFacebook,faLinkedin} from '@fortawesome/free-brands-svg-icons';
+
+
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
   styleUrls: ['./company-profile.component.css'],
 })
 export class CompanyProfileComponent implements OnInit {
-    public Editor = InlineEditor;
 
     public form: any = {
         CompanyIntroduction: null,
@@ -40,23 +36,39 @@ export class CompanyProfileComponent implements OnInit {
         faLinkedin: faLinkedin,
     };
     public wordcount = 0;
-    
+    public Editor = InlineEditor;
+
     public constructor(
         private tokenStorage: TokenStorageService,
-        private establishment: EstablishmentService,
+        private establishmentService: EstablishmentService,
         private titleService: Title
     ) { }
 
     public ngOnInit(): void {
         this.titleService.setTitle('SwipeYourJob - Bedrijfsprofiel aanmaken');
-        this.establishment.getUserEstamblishments().subscribe(
-            (data) => {
-                console.log(data);
+        
+        this.establishmentService.getUserEstamblishments().subscribe(
+            (data: any) => {
+                let establishment = {... data};
+                let establishmentlen = Object.keys(establishment).length;
+                if(establishmentlen > 0){
+                    if(establishmentlen == 1){
+                        let estaid = (establishment[0].hasOwnProperty('id')) ? establishment[0].id:false;
+                        this.loadEstamblishment(estaid);
+                    }else{
+                        // let html = '';
+                        // establishment.forEach(element, val => {
+                        //     html += `<option value="${val.id}">${val.name}</option>`                            
+                        // });
+                    }
+                }else{
+                    console.log("nope isn't there ");
+                }
             },
-            (err) => {
+            (err: any) => {
                 console.log(err);
             }
-        );
+        )
         let userinfo = this.tokenStorage.getUserinfo();
         if (userinfo != null) {
             this.form.Firstname =
@@ -68,18 +80,31 @@ export class CompanyProfileComponent implements OnInit {
                     ? userinfo['lastname']
                     : null;
         }
-        this.Editor
-            .create( document.querySelector( '#editor' ), {
-                plugins: [ WordCount ],
-            } );
     }
     public onSubmit(f: NgForm): void {
-        console.log(f.value.facebooklink);
-        console.log(f.value.instagramlink);
-        console.log(f.value.linkedinlink);
-        //console.log(f.valid);
+        
+        console.log(f);
     }
 
+    public loadEstamblishment(id: number){
+        try{
+            if (id){
+                this.establishmentService.getEstamblishmentByID(id).subscribe(
+                    (data: any) => {
+                        console.log(data);
+                        this.form = data;
+                    },
+                    (err: any) => {
+                        console.log(err);
+                    }
+                );
+            }
+            
+        } catch(error){
+            return false;
+        }
+        return false;
+    }
     public companydescriptionChanged(event: KeyboardEvent): void {
         console.log(event);
         if (this.form.CompanyIntroduction != null) {
@@ -98,4 +123,6 @@ export class CompanyProfileComponent implements OnInit {
             this.wordcount = 1;
         }
     }
+
+    
 }

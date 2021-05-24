@@ -16,9 +16,31 @@
 
                     </div>
                     <div class="form-group">
-                        <input type="text" class="input-full-width" name="zipcode" placeholder="Postcode" (keyup)="adddialog('zipcodeNameDialog')" [(ngModel)]="form.zipcode" required #zipcode="ngModel" />
-                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="zipcode.errors && dialogChecks.zipcodeNameDialog">
-                            Poscode niet compleet
+                        <input type="text" class="input-full-width" name="zipcode" placeholder="Postcode" [(ngModel)]="form.zipcode" (keyup)="zipcodechange()" required #zipcode="ngModel" />
+                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="dialogChecks.zipcodeNameDialog">
+
+                            <table>
+                                <tr>
+                                    <td>Poscode te kort: </td>
+
+                                    <td *ngIf="zipcodecheck.length; else falseLength">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseLength>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                                <tr>
+                                    <td>Poscode invalid: </td>
+
+                                    <td *ngIf="zipcodecheck.invalid; else validZipcode">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #validZipcode>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <div class="form-group">

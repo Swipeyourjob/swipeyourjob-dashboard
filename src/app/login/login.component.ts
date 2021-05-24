@@ -51,8 +51,8 @@ export class LoginComponent implements OnInit {
                 window.location.href = '/';
             },
             err => {
-                let errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
-                this.alertService.error(errorMessage);
+                console.log(err);
+                this.alertService.error(err.error.status);
                 this.isLoginFailed = true;
             }
         );

@@ -37,6 +37,10 @@ export class RegisterComponent implements OnInit {
         passwordNumberCheck: false,
         passwordLengthCheck: false
     };
+    zipcodecheck: any = {
+        invalid: false,
+        length: false
+    };
     passwordvalidrepeat: boolean = false;
     dialogChecks: any = {
         companyNamedialog: false,
@@ -65,6 +69,21 @@ export class RegisterComponent implements OnInit {
     }
     adddialog(attributeName: string): void {
         this.dialogChecks[attributeName] = true;
+    }
+    zipcodechange():void {
+        let zipcode = this.form.zipcode;
+        let regexp: RegExp = /^(\d{4})\s*([A-Z]{2})$/i
+        this.dialogChecks.zipcodeNameDialog = true
+        let pattern=new RegExp("");
+        let result = pattern.test(zipcode);
+        
+        if (result){
+            this.zipcodecheck.invalid = true;
+        }
+        if(zipcode.length >= 6){
+            this.zipcodecheck.length = true
+        }
+
     }
     ngOnInit(): void {
         console.log(this.form);
