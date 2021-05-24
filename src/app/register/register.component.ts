@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
 
 
   isLoggedIn = false;
-  constructor(private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
+  constructor(private router: Router, private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
   passwordchange(event: KeyboardEvent): void {
     let password      = this.form.password;
     this.dialogChecks.passwordDialog = true;
@@ -92,5 +92,7 @@ export class RegisterComponent implements OnInit {
           }
         );
   }
-
+  back() {
+    this.router.navigate(['/login']);
+  }
 }
