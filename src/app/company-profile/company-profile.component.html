@@ -11,10 +11,11 @@
                 <div class="form-control-group">
                     <label for="CompanyIntroduction">Bedrijfs omschrijving:</label>
                     <div class="form-control-group">
-                        <ckeditor [editor]="Editor" class="input-full-width" tagName="textarea" name="CompanyIntroduction" [(ngModel)]="form.CompanyIntroduction" (keydown)="companydescriptionChanged($event)" change required #CompanyIntroduction="ngModel">
-                        </ckeditor>
+                        <div id="editor">
+                            <p>Initial content.</p>
+                        </div>
                     </div>
-                    <span>Karakters {{wordcount}} / 250</span>
+                    <div id="word-count"></div>
                 </div>
                 <div class="form-control-group">
                     <label for="Companylogo">Bedrijfslogo</label>

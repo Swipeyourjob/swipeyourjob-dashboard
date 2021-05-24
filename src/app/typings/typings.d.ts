@@ -1,5 +1,10 @@
 declare module '@ckeditor/ckeditor5-build-inline' {
-    const ClassicEditorBuild: any;
+    const InlineEditor: any;
 
-    export = ClassicEditorBuild;
+    export = InlineEditor;
+}
+declare module '@ckeditor/ckeditor5-word-count/src/wordcount' {
+    const WordCount: any;
+
+    export = WordCount;
 }

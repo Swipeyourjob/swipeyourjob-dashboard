@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
+import * as WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount';
 import { EstablishmentService } from 'app/_services/establishment.service';
 
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -58,7 +59,6 @@ export class CompanyProfileComponent implements OnInit {
         );
         let userinfo = this.tokenStorage.getUserinfo();
         if (userinfo != null) {
-            console.log(userinfo);
             this.form.Firstname =
                 userinfo['firstname'] != null && userinfo['firstname'] != ''
                     ? userinfo['firstname']
@@ -68,12 +68,10 @@ export class CompanyProfileComponent implements OnInit {
                     ? userinfo['lastname']
                     : null;
         }
-        this.Editor.defaultConfig = {
-            toolbar: ['heading', '|', 'bold', 'italic', 'custombutton'],
-
-            // This value must be kept in sync with the language defined in webpack.config.js.
-            language: 'en',
-        };
+        this.Editor
+            .create( document.querySelector( '#editor' ), {
+                plugins: [ WordCount ],
+            } );
     }
     public onSubmit(f: NgForm): void {
         console.log(f.value.facebooklink);
