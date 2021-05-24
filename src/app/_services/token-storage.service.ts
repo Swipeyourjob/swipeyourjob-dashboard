@@ -5,7 +5,7 @@ const USER_KEY = 'auth-user';
 const REMEMBER_ME = 'remember-me';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class TokenStorageService {
     constructor() { }
@@ -17,7 +17,7 @@ export class TokenStorageService {
     public saveToken(token: string, rememberMe: boolean): void {
         window.sessionStorage.removeItem(TOKEN_KEY);
         window.sessionStorage.setItem(TOKEN_KEY, token);
-        if(rememberMe){
+        if (rememberMe) {
             window.localStorage.setItem(REMEMBER_ME, token);
         }
     }
@@ -27,15 +27,14 @@ export class TokenStorageService {
     }
 
     public getRememberMe(): string | null {
-        return window.localStorage.getItem(REMEMBER_ME);; 
+        return window.localStorage.getItem(REMEMBER_ME);
     }
-    
+
     public useRememberMe(): void {
-        var rememberMetoken =  this.getRememberMe();
-        if (rememberMetoken){
+        var rememberMetoken = this.getRememberMe();
+        if (rememberMetoken) {
             this.saveToken(rememberMetoken, false);
         }
-            
     }
 
     public saveUser(user: any): void {
@@ -52,23 +51,41 @@ export class TokenStorageService {
 
         return {};
     }
-    public getUserinfo() : any | null {
+    public getUserinfo(): any | null {
         return this.parseJwt(this.getToken());
     }
-    private parseJwt(token: string | null) : object | null  {
-        try{
-            if(token != null){
+    private parseJwt(token: string | null): object | null {
+        try {
+            if (token != null) {
                 var base64Url = token.split('.')[1];
                 var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
+                var jsonPayload = decodeURIComponent(
+                    atob(base64)
+                        .split('')
+                        .map(function (c) {
+                            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                        })
+                        .join('')
+                );
                 return JSON.parse(jsonPayload);
-            }else{
+            } else {
                 return null;
             }
-        }catch( e){
+        } catch (e) {
             return null;
         }
-    };
+    }
+    //Closure for TokenStorage
+    public DoToken(t: any) {
+        var storedToken = this.parseJwt(t);;
+        var that = this;
+        return {
+            deleteToken( t: any) {
+                storedToken = null;
+            },
+            retrieveToken() {
+                return storedToken;
+            },
+        };
+    }
 }

@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
 import { environment } from '../../environments/environment';
-import { User, ForgotPassword } from '@app/models';
+import { User, ForgotPassword, Response, Company } from '@app/models';
 
 
 const httpOptions = {
@@ -25,29 +25,14 @@ export class AuthService {
 
     public login(email: string, password: string) {
         console.log("in llogin")
-        return this.http.post<any>(environment.apiUrl + '/login', {
+        return this.http.post<Response>(environment.apiUrl + '/login', {
             email,
             password
         }, httpOptions);
     }
 
-    public companyRegister(
-        companyname: string,
-        zipcode: string,
-        kvk: string,
-        email: string,
-        password: string,
-        subscribe: string,
-        terms: string) {
-        return this.http.post(environment.apiUrl + '/newCompany', {
-            companyname,
-            zipcode,
-            kvk,
-            email,
-            password,
-            subscribe,
-            terms
-        }, httpOptions);
+    public companyRegister(companyInfo:Company) {
+        return this.http.post(environment.apiUrl + '/newCompany', companyInfo, httpOptions);
     }
 
     public logout() {
