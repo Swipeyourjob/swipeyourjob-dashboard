@@ -12,7 +12,6 @@ form {
     margin: 10rem auto 10rem auto;
     border: none;
     text-align: center;
-    /* For longer (registration) forms */
 }
 @media (max-width: 768px) {
     .card {

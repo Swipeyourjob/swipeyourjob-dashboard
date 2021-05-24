@@ -150,6 +150,28 @@ body {
   color: #626272
 }
 
+/* Fading animations */
+.fadeAnimation {
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: .4s;
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  33% {opacity: 0.33;}
+  66% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  33% {opacity: 0.33;}
+  66% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
 /*
  * Sidebar
  */
