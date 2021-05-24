@@ -76,8 +76,6 @@ export class RegisterComponent implements OnInit {
         this.dialogChecks.zipcodeNameDialog = true
         this.zipcodecheck.invalidCheck = this.zipcodeValidator.checkRegex(zipcode);
         this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
-        console.log(this.zipcodecheck.invalidCheck,
-            this.zipcodecheck.lengthCheck );
     }
     ngOnInit(): void {
         console.log(this.form);
