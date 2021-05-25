@@ -20,6 +20,7 @@ export class VerificationComponent implements OnInit {
     passwordDialog: false
   };
   isLoggedIn = false;
+  passwordOk = true;
 
   constructor(private authService: AuthService, private passwordvalidator: PasswordValidator) {
   }
@@ -28,7 +29,7 @@ export class VerificationComponent implements OnInit {
     return;
   }
 
-  validatePassword(): void {
+  validatePassword(): boolean {
     console.log('validate password');
     const password = this.form.password;
     this.dialogChecks.passwordDialog = true;
@@ -36,13 +37,18 @@ export class VerificationComponent implements OnInit {
     this.passwordchecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
     this.passwordchecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
     console.log(this.passwordchecks);
+    this.passwordOk =
+      this.passwordchecks.passwordCapitalCheck &&
+      this.passwordchecks.passwordNumberCheck &&
+      this.passwordchecks.passwordLengthCheck;
+    console.log(this.passwordOk);
+    return this.passwordOk;
   }
-
   onSubmit(): void {
     const {
       password
     } = this.form;
-    if (this.passwordchecks.passwordCapitalCheck && this.passwordchecks.passwordNumberCheck && this.passwordchecks.passwordLengthCheck) {
+    if (this.passwordOk) {
       this.authService.companySetPassword(
         password
       ).subscribe(

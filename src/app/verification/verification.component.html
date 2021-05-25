@@ -10,6 +10,7 @@
     </div>
     <div class="col-12">
       <form
+        *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
@@ -25,8 +26,14 @@
             name="companyname"
             id="companyname"
             [(ngModel)]="form.password"
-            (keyup)="validatePassword()"
+            (change)="validatePassword()"
           >
+        </div>
+
+        <div class="password-alert" *ngIf="!passwordOk">
+          <p>
+            Het wachtwoord dat u heeft ingevuld voldoet niet aan de eisen. Zorg voor minimaal 1 hoofdletter, 1 cijfer en 7 tekens.
+          </p>
         </div>
 
         <div class="form-group">
