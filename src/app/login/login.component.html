@@ -1,7 +1,8 @@
 <div class="background">
 <div class="center">
+    <div class="scrollable">
     <div class="container-fluid">
-        <div class="card">
+        <div class="card fadeAnimation">
             <div id="card-title">
                 <img src="/assets/img/logo_light.svg" alt="image">
             </div>
@@ -55,7 +56,7 @@
                     >
                     <div *ngIf="password.errors.required">Voer uw wachtwoord in.</div>
                     <div *ngIf="password.errors.minlength">
-                        wachtwoord moet tenmiste 6 characters hebben.
+                        wachtwoord moet tenmiste 6 karakters hebben.
                     </div>
                     </div>
                 </div>
@@ -82,5 +83,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 </div>

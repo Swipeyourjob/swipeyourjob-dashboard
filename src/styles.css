@@ -36,6 +36,7 @@
 .lift:hover {
   box-shadow: 0px 2px 25px 1px rgba(0, 0, 0, 0.2) !important;
   transform: translate3d(0px, -1px, 0px);
+  -webkit-appearance: none;
 }
 
 a {
@@ -66,6 +67,7 @@ a:hover {
 
 input {
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none;
   text-indent: 0px;
   text-shadow: none;
 }
@@ -77,6 +79,7 @@ input:focus {
   outline-offset: 0;
   outline: none;
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.15) !important;
+  -webkit-appearance: none;
 }
 
 .center {
@@ -145,6 +148,28 @@ body {
   width: 100%;
   height: 100%;
   color: #626272
+}
+
+/* Fading animations */
+.fadeAnimation {
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: .4s;
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  33% {opacity: 0.33;}
+  66% {opacity: 0.75;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  33% {opacity: 0.33;}
+  66% {opacity: 0.75;}
+  100% {opacity: 1;}
 }
 
 /*
