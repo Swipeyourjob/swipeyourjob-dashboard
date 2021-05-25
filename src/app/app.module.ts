@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisteredComponent } from './register/registered/registered.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
@@ -27,6 +28,7 @@ import { authInterceptorProviders } from '@app/helpers';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    RegisteredComponent,
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
@@ -35,7 +37,7 @@ import { authInterceptorProviders } from '@app/helpers';
     AlertComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    CompanyProfileComponent
+    CompanyProfileComponent,
   ],
   imports: [
     BrowserModule,

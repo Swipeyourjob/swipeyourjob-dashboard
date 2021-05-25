@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisteredComponent } from './register/registered/registered.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component'
 import { VerificationComponent } from './verification/verification.component'
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'registered', component: RegisteredComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'user', component: BoardUserComponent, canActivate: [AuthGuard] },
     { path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard] },
