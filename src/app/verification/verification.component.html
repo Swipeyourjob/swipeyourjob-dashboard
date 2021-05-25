@@ -1,48 +1,40 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-12"><h2>Verificatie</h2></div>
+    <div class="col-12"><h2>Nieuw wachtwoord</h2></div>
   </div>
 </div>
 <div class="card card-container verify-form">
   <div class="card-row">
-    <div class="col-12"><h4>Er is ter verificatie van uw e-mailadres een e-mail gestuurd naar: test@testmail.com</h4>
+    <div class="col-12"><h4>Uw e-mailadres is geverifieerd!</h4>
     </div>
     <div class="col-12">
-      <form>
-<!--        *ngIf="!isLoggedIn"-->
-<!--        name="form"-->
-<!--        (ngSubmit)="f.form.valid && onSubmit()"-->
-<!--        #f="ngForm"-->
-<!--        novalidate-->
-<!--      >-->
+      <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
 
         <div class="form-group">
-          <label for="companyname">Vul hieronder de code in die u ontvangen heeft:</label>
+          <label for="companyname">Vul hieronder een gewenst wachtwoord in:</label>
           <input
-            type="text"
+            type="password"
             class="form-control col-md-6"
-            placeholder="123456789"
+            placeholder="********"
             name="companyname"
             id="companyname"
-            (change)="onChange()"
+            [(ngModel)]="form.password"
+            (keyup)="validatePassword()"
           >
-<!--            required-->
-            <!--#companyname="ngModel"-->
-<!--          />-->
-<!--          <div-->
-<!--            class="alert alert-danger col-md-6  "-->
-<!--            role="alert"-->
-<!--            *ngIf="companyname.errors && dialogChecks.companyNamedialog"-->
-<!--          >-->
-<!--            Bedrijfsnaam niet compleet-->
-<!--          </div>-->
         </div>
+
         <div class="form-group">
-          <button class="btn btn-primary btn-block col-md-5">
+          <button class="btn btn-primary btn-block col-md-5" (mouseover)="validatePassword()">
             Verifieer
           </button>
         </div>
+
       </form>
     </div>
   </div>

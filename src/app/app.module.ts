@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -22,11 +22,13 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { authInterceptorProviders } from '@app/helpers';
+import {VerificationComponent} from './verification/verification.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    VerificationComponent,
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
@@ -45,7 +47,7 @@ import { authInterceptorProviders } from '@app/helpers';
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     CKEditorModule
   ],
   providers: [authInterceptorProviders],
