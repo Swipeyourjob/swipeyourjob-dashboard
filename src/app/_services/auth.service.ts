@@ -50,6 +50,13 @@ export class AuthService {
         }, httpOptions);
     }
 
+    public companySetPassword(
+        password: string) {
+        return this.http.post(environment.apiUrl + '/setCompanyPassword', {
+            password
+        }, httpOptions);
+    }
+
     public logout() {
         return this.tokenService.signOut();
     }
