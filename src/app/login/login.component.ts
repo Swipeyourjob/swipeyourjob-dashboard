@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
+            window.location.href = '/';
         }
     }
 
@@ -45,7 +46,10 @@ export class LoginComponent implements OnInit {
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
                 this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
-                this.reloadPage();
+                //this.router.navigate(['/home']);
+                //this.reloadPage();
+                //Seems to be best method
+                window.location.href = '/';
             },
             err => {
                 this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");

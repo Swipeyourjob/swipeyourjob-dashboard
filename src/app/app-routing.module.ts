@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
     { path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard] },
     { path: 'verification', component: VerificationComponent, canActivate: [AuthGuard] },
-    { path: '**', component: HomeComponent }
+    { path: '**', redirectTo: '', canActivate: [AuthGuard] }
   ];
 
 @NgModule({
