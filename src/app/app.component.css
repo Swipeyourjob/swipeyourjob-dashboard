@@ -1,0 +1,28 @@
+.sidebarCollapse {
+    display: none;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+a {
+    font-family: "Avenir Semibold" !important;
+    color: #626272 !important;
+}
+
+.align-right {
+    float: right;
+}
+
+
+.header {
+    height: 50px;
+    background-color: #FFFFFF;
+    position: fixed;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+    -webkit-appearance: none;
+}
+
+.body-padding{
+    padding-top: 65px;
+}

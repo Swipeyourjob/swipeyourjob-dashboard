@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService, TokenStorageService } from './_services';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
     selector: 'app-root',
@@ -9,13 +10,15 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 })
 export class AppComponent {
     private roles: string[] = [];
+    menuEnabled = true;
     isLoggedIn = false;
     showAdminBoard = false;
     showModeratorBoard = false;
     username?: string;
 
-    constructor(
-        private router: Router, private tokenStorageService: TokenStorageService) { }
+    @ViewChild('sidebar', { static: true }) sidebar!: ElementRef;
+
+    constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
 
     ngOnInit(): void {
         this.tokenStorageService.useRememberMe();
@@ -30,11 +33,28 @@ export class AppComponent {
 
             this.username = user.username;
         }
+
+        /*
+        $('#sidebarCollapse').on('click', function () {
+            console.log('KLIK');
+            $('#sidebar').toggleClass('active');
+        });
+        */
+    }
+
+    toggleMenu(): void {
+        this.menuEnabled = !this.menuEnabled;
+
+        if(this.menuEnabled) {
+            this.sidebar.nativeElement.classList.remove("active");
+        }
+        else {
+            this.sidebar.nativeElement.classList.add("active");
+        }
     }
 
     logout(): void {
         this.tokenStorageService.signOut();
-        // window.location.reload();
         this.router.navigate(['/login']);
     }
 }
