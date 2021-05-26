@@ -31,7 +31,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/styling/font.css",
+              "src/styling/sidebar.css",
+              "src/styling/animations.css"
             ],
             "scripts": []
           },

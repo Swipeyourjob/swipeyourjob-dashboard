@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
         const { email, password, rememberMe } = this.form;
         // reset alerts on submit
         this.alertService.clear();
-        // this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
         this.authService.login(email, password).subscribe(
             data => {
                 this.tokenStorage.saveToken(data.token, rememberMe);
@@ -45,14 +44,14 @@ export class LoginComponent implements OnInit {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
-                this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
+                //this.alertService.success('Login succesvol', { keepAfterRouteChange: true });
                 //this.router.navigate(['/home']);
                 //this.reloadPage();
                 //Seems to be best method
                 window.location.href = '/';
             },
             err => {
-                this.alertService.error("Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend");
+                this.alertService.error("Deze combinatie van e-mailadres en wachtwoord is niet bij ons bekend");
                 //this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
                 this.isLoginFailed = true;
             }
