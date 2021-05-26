@@ -1,8 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService, TokenStorageService } from './_services';
-import { Router } from '@angular/router';
-import * as $ from 'jquery';
-
+import { Router, ActivatedRoute} from '@angular/router';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -18,9 +16,10 @@ export class AppComponent {
 
     @ViewChild('sidebar', { static: true }) sidebar!: ElementRef;
 
-    constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
+    constructor(private router: Router, private tokenStorageService: TokenStorageService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit(): void {
+        
         this.tokenStorageService.useRememberMe();
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -32,6 +31,9 @@ export class AppComponent {
             this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
             this.username = user.username;
+            this.sidebar.nativeElement.style.display = 'block';
+        }else{
+            this.sidebar.nativeElement.style.display = 'none';
         }
 
         /*
