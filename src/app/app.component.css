@@ -25,4 +25,12 @@ a {
 
 .body-padding{
     padding-top: 65px;
+
 }
+
+@media (min-width: 769px) {
+    .body-padding{
+        padding-left: 250px;    
+        padding-top: 80px;
+    }
+  }
