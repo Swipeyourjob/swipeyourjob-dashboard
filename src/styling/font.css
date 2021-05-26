@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Avenir';
+    font-weight: normal;
+    src: url('assets/font/avenir_regular.otf') format("opentype");
+}
+@font-face {
+    font-family: "Avenir Semibold";
+    font-weight: bold;
+    src: url('assets/font/avenir_semibold.otf') format("opentype");
+}
+@font-face {
+    font-family: "Avenir Bold";
+    font-weight: bolder;
+    src: url('assets/font/avenir_bold.otf') format("opentype");
+}

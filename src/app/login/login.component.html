@@ -1,12 +1,12 @@
 <div class="background">
-<div class="center">
+<div *ngIf="!isLoggedIn" class="center">
     <div class="scrollable">
     <div class="container-fluid">
         <div class="card fadeAnimation">
             <div id="card-title">
                 <img src="/assets/img/logo_light.svg" alt="image">
             </div>
-            <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate aria-labelledby="title"  >
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate aria-labelledby="title"  >
                 <div class="form-control-group">
                     <input
                     type="email"

@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
-import { faCheck,faTimes  } from '@fortawesome/free-solid-svg-icons';
-import {TokenStorageService ,AuthService} from '../_services';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { TokenStorageService, AuthService } from '../_services';
 import { PasswordValidator } from 'app/_helpers/passwordvalidator';
 
 @Component({
@@ -22,11 +22,11 @@ export class RegisterComponent implements OnInit {
     email: null,
     password: null,
     passwordrepeat: null,
-    subscribe: null,
-    terms: null
+    subscribe: "",
+    terms: ""
   };
   icons: any = {
-    faCheck:faCheck,
+    faCheck: faCheck,
     faTimes: faTimes
   }
   passwordchecks: any = {
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
 
 
   isLoggedIn = false;
-  constructor(private router: Router, private authService: AuthService,private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
+  constructor(private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator) {}
   passwordchange(event: KeyboardEvent): void {
     let password      = this.form.password;
     this.dialogChecks.passwordDialog = true;
@@ -54,12 +54,12 @@ export class RegisterComponent implements OnInit {
     this.passwordchecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
     this.passwordchecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
   }
-  passwordrepeatf(event: KeyboardEvent): void{
+  passwordrepeatf(event: KeyboardEvent): void {
     const {passwordrepeat,password} = this.form;
     let passval = this.passwordvalidator.passwordeqauls(password,passwordrepeat);
     this.dialogChecks.passwordRepeatDialog = !passval;
   }
-  adddialog(attributeName: string): void{
+  adddialog(attributeName: string): void {
     this.dialogChecks[attributeName] = true;
   }
   ngOnInit(): void {
@@ -68,29 +68,22 @@ export class RegisterComponent implements OnInit {
     }
   }
   onSubmit(): void {
-    const {   companyname,
-      zipcode,
-      kvk,
-      email,
-      password,
-      subscribe,
-      terms} = this.form;
+    const { companyname, zipcode, kvk, email, password } = this.form;
+    const subscribe = "";
+    const terms = "";
 
-      this.authService.companyRegister(
-        companyname,
-        zipcode,
-        kvk,
-        email,
-        password,
-        subscribe,
-        terms).subscribe(
-          data => {
-            console.log(data);
-          },
-          err => {
-              console.log(err);
+    this.authService.companyRegister(companyname, zipcode, kvk, email, password, subscribe, terms).subscribe(
+      data  => {
+        if(data.hasOwnProperty("token")){
+          if((data as any).token == 'Check mail') {
+            this.router.navigate(['/registered']);
           }
-        );
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
   back() {
     this.router.navigate(['/login']);

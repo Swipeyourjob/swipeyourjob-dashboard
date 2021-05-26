@@ -7,9 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisteredComponent } from './register/registered/registered.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component'
 import { VerificationComponent } from './verification/verification.component'
-
+import {VerificationcheckComponent} from './verificationcheck/verificationcheck.component'
 import { AuthGuard } from './_helpers';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 const routes: Routes = [
@@ -17,12 +18,14 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'registered', component: RegisteredComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'user', component: BoardUserComponent, canActivate: [AuthGuard] },
     { path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard] },
     { path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard] },
     { path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard] },
     { path: 'verification', component: VerificationComponent, canActivate: [AuthGuard] },
+    { path: 'verify', component: VerificationcheckComponent},
     { path: '**', redirectTo: '', canActivate: [AuthGuard] }
   ];
 

@@ -1,23 +1,52 @@
-<!-- <div class="syj_content row">
-   nav 
-  <nav class="sidebar theme" *ngIf="isLoggedIn">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-          <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-          <a class="nav-item nav-link" routerLink="/jobs" routerLinkActive="active">Jobs <i class="bi bi-archive"></i></a>
-          <a class="nav-item nav-link" (click)="logout()">Uitloggen</a>
-      </div>
-  </nav>
-
-  main app container 
-  <div class="app-container bg-light">
-      <alert></alert>
-      <router-outlet></router-outlet>
-  </div>
-</div> -->
-
 <div id="app">
+    <header class="header" id="header" *ngIf="isLoggedIn">
+        <div>
+            <a (click)="toggleMenu()"><img src="/assets/img/menu_icon.svg" alt="image"></a>
+        </div>
+    </header>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" #sidebar>
+            <div class="sidebar-header">
+                <img src="/assets/img/logo_light.svg" width="80%" alt="image">
+                <a (click)="toggleMenu()"><img src="/assets/img/menu_icon.svg" alt="image"></a>
+            </div>
+            
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a routerLink="home" (click)="toggleMenu()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Overzicht</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a routerLink="user" (click)="toggleMenu()">Gebruiker</a>
+                </li>
+                <li>
+                    <a routerLink="user" (click)="logout()" (click)="toggleMenu()">Uitloggen</a>
+                </li>
+            </ul>            
+        </nav>
+        <!-- Page Content -->
+        <div class="container body-padding" id="main-content">
+            <router-outlet></router-outlet>
+            <alert></alert>
+        </div>
+    </div>
+</div>
+
+
+
     
+    <!--
     <div class="syj-sidebar theme theme-links" *ngIf="isLoggedIn">
         <div class="main-container">
             <a href="#" class="navbar-brand">Dashboard</a>
@@ -66,4 +95,4 @@
         <router-outlet></router-outlet>
         <alert></alert>
     </div>
-</div>
+    -->

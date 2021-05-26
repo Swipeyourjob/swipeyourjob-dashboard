@@ -30,6 +30,13 @@ export class AuthService {
             password
         }, httpOptions);
     }
+    public verify(email: string, verficationcode: string) {
+        console.log("Verify code ")
+        return this.http.post<any>(environment.apiUrl + '/verifcationcodeLogin', {
+            email,
+            verficationcode
+        }, httpOptions);
+    }
 
     public companyRegister(
         companyname: string,
@@ -47,6 +54,13 @@ export class AuthService {
             password,
             subscribe,
             terms
+        }, httpOptions);
+    }
+
+    public companySetPassword(
+        password: string) {
+        return this.http.post(environment.apiUrl + '/setCompanyPassword', {
+            password
         }, httpOptions);
     }
 

@@ -31,6 +31,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/styling/font.css",
+              "src/styling/sidebar.css",
+              "src/styling/animations.css",
               "src/styles.css"
             ],
             "scripts": []
