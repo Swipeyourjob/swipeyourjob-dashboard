@@ -58,6 +58,8 @@ export class AppComponent {
 
     logout(): void {
         this.tokenStorageService.signOut();
+
+        this.sidebar.nativeElement.style.display = 'none';
         this.router.navigate(['/login']);
     }
 }
