@@ -1,3 +1,4 @@
+
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService, TokenStorageService } from './_services';
 import { Router, ActivatedRoute} from '@angular/router';
@@ -59,5 +60,4 @@ export class AppComponent {
         this.tokenStorageService.signOut();
         this.router.navigate(['/login']);
     }
-    
 }
