@@ -24,6 +24,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { authInterceptorProviders } from '@app/helpers';
 import {VerificationComponent} from './verification/verification.component';
+import {JobofferComponent} from './joboffer/joboffer.component';
 import { VerificationcheckComponent } from './verificationcheck/verificationcheck.component';
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { VerificationcheckComponent } from './verificationcheck/verificationchec
     ForgotPasswordComponent,
     ResetPasswordComponent,
     CompanyProfileComponent,
+    JobofferComponent,
     VerificationcheckComponent,
   ],
   imports: [
