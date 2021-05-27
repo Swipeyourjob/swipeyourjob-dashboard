@@ -30,9 +30,23 @@ export class AuthService {
             password
         }, httpOptions);
     }
+    public verify(email: string, verficationcode: string) {
+        console.log("Verify code ")
+        return this.http.post<any>(environment.apiUrl + '/verifcationcodeLogin', {
+            email,
+            verficationcode
+        }, httpOptions);
+    }
 
     public companyRegister(companyInfo:Company) {
         return this.http.post(environment.apiUrl + '/newCompany', companyInfo, httpOptions);
+    }
+
+    public companySetPassword(
+        password: string) {
+        return this.http.post(environment.apiUrl + '/setCompanyPassword', {
+            password
+        }, httpOptions);
     }
 
     public logout() {
