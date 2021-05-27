@@ -33,6 +33,7 @@ export class CompanyProfileComponent implements OnInit {
         housenumber: null,
         zipcode: null,
     };
+    public imgFile: any;
     public icons: any = {
         faInstagram: faInstagram,
         faFacebook: faFacebook,
@@ -110,7 +111,9 @@ export class CompanyProfileComponent implements OnInit {
         
         console.log(f);
     }
+    onImageChange() {
 
+      }
     public loadEstamblishment(id: number){
         try{
             if (id){
