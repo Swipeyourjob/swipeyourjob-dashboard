@@ -1,6 +1,3 @@
-// 20210527112910
-// https://raw.githubusercontent.com/DahirWarsame/swipeyourjob-dashboard/b79d5fd5c3123c06dfd16176b5e6af97f6ab89fb/angular.json
-
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "cli": {
