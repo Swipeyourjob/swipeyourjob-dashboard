@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {PasswordValidator} from 'app/_helpers/passwordvalidator';
 import {AuthService, TokenStorageService} from '@app/services';
@@ -22,10 +23,11 @@ export class VerificationComponent implements OnInit {
   isLoggedIn = false;
   passwordOk = true;
 
-  constructor(private authService: AuthService, private passwordvalidator: PasswordValidator) {
+  constructor(private titleService: Title,private authService: AuthService, private passwordvalidator: PasswordValidator) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("SwipeYourJob - Verificatie")
     return;
   }
 

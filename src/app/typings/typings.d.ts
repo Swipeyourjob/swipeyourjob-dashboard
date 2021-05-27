@@ -1,5 +1,5 @@
-declare module '@ckeditor/ckeditor5-build-classic' {
-    const ClassicEditorBuild: any;
+declare module '@ckeditor/ckeditor5-build-inline' {
+    const InlineEditor: any;
 
-    export = ClassicEditorBuild;
+    export = InlineEditor;
 }

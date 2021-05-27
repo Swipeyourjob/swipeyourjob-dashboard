@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 
 import { AuthService, AlertService, TokenStorageService } from '../_services';
 
+import { Title } from '@angular/platform-browser';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -22,9 +23,10 @@ export class LoginComponent implements OnInit {
     
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-        private alertService: AlertService, private router: Router) { }
+        private alertService: AlertService, private router: Router, private actRoute: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit(): void {
+    this.titleService.setTitle("SwipeYourJob - Inloggen")
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
@@ -45,23 +47,15 @@ export class LoginComponent implements OnInit {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
-                //this.alertService.success('Login succesvol', { keepAfterRouteChange: true });
-                //this.router.navigate(['/home']);
-                //this.reloadPage();
-                //Seems to be best method
+                this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
                 window.location.href = '/';
             },
             err => {
-                this.alertService.error("Deze combinatie van e-mailadres en wachtwoord is niet bij ons bekend");
-                //this.errorMessage = "Deze e-mailadres en wachtwoord combinatie is niet bij ons bekend";
+                console.log(err);
+                this.alertService.error(err.error.status);
                 this.isLoginFailed = true;
             }
         );
     }
 
-    reloadPage(): void {
-        this.router.navigate(['']);
-        window.location.reload();
-
-    }
 }

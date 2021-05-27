@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
@@ -54,7 +54,7 @@ import { VerificationcheckComponent } from './verificationcheck/verificationchec
     ReactiveFormsModule,
     CKEditorModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

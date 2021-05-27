@@ -1,5 +1,10 @@
-.companyprofile{
+.companyprofile {
     margin-top: 20px;
     padding: 5px;
     width: 100%;
+}
+
+:host ::ng-deep textarea {
+    min-height: 100px;
+    min-width: 100%;
 }
