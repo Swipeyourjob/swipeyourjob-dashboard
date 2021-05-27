@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     isLoggedIn = false;
     isLoginFailed = false;
     roles: string[] = [];
-    parent_component = this.actRoute.parent; 
+    
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
         private alertService: AlertService, private router: Router, private actRoute: ActivatedRoute, private titleService: Title) { }

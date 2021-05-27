@@ -15,15 +15,15 @@ export class TokenStorageService {
     }
 
     public saveToken(token: string, rememberMe: boolean): void {
-        window.sessionStorage.removeItem(TOKEN_KEY);
-        window.sessionStorage.setItem(TOKEN_KEY, token);
-        if (rememberMe) {
+        window.localStorage.removeItem(TOKEN_KEY);
+        window.localStorage.setItem(TOKEN_KEY, token);
+        if(rememberMe){
             window.localStorage.setItem(REMEMBER_ME, token);
         }
     }
 
     public getToken(): string | null {
-        return window.sessionStorage.getItem(TOKEN_KEY);
+        return window.localStorage.getItem(TOKEN_KEY);
     }
 
     public getRememberMe(): string | null {
@@ -39,12 +39,12 @@ export class TokenStorageService {
 
     public saveUser(user: any): void {
         //TODO: Decode JWT token and put user data in _models or Session Storage
-        window.sessionStorage.removeItem(USER_KEY);
-        window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+        window.localStorage.removeItem(USER_KEY);
+        window.localStorage.setItem(USER_KEY, JSON.stringify(user));
     }
 
     public getUser(): any {
-        const user = window.sessionStorage.getItem(USER_KEY);
+        const user = window.localStorage.getItem(USER_KEY);
         if (user) {
             return JSON.parse(user);
         }

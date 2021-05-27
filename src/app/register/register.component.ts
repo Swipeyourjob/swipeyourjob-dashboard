@@ -87,14 +87,20 @@ export class RegisterComponent implements OnInit {
     onSubmit(): void {
         this.authService.companyRegister(this.form).subscribe(
                 data => {
-                    console.log(data);
+                    if(data.hasOwnProperty("token")){
+                        if((data as any).token == 'Check mail') {
+                          this.router.navigate(['/registered']);
+                        }
+                      }
                 },
                 err => {
                     console.log(err);
                 }
             );
     }
+    
     back() {
         this.router.navigate(['/login']);
     }
+
 }
