@@ -23,7 +23,7 @@
                                 <tr>
                                     <td>Poscode te kort: </td>
 
-                                    <td *ngIf="zipcodecheck.lengthCheck; else falseLength">
+                                    <td *ngIf="zipcodeChecks.lengthCheck; else falseLength">
                                         <fa-icon [icon]="icons.faCheck"></fa-icon>
                                     </td>
                                     <ng-template #falseLength>
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>Poscode invalid: </td>
 
-                                    <td *ngIf="zipcodecheck.invalidCheck; else validZipcode">
+                                    <td *ngIf="zipcodeChecks.invalidCheck; else validZipcode">
                                         <fa-icon [icon]="icons.faCheck"></fa-icon>
                                     </td>
                                     <ng-template #validZipcode>
@@ -46,42 +46,11 @@
                     <div class="form-group">
                         <input type="text" class="input-full-width" name="kvk" placeholder="KvK-nummer" (keyup)="adddialog('kvkdDialog')" [(ngModel)]="form.kvk" required #kvk="ngModel" />
                         <div class="alert alert-danger col-md-6  " role="alert" *ngIf="kvk.errors && dialogChecks.kvkdDialog">
-                            kvk niet compleet
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="input-full-width" name="email" placeholder="E-mailadres" (keyup)="adddialog('emailNameDialog')" [(ngModel)]="form.email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" />
-                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="email.errors && dialogChecks.emailNameDialog">
-                            E-mailadres is leeg of is niet valide.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="input-full-width" name="password" placeholder="Wachtwoord" [(ngModel)]="form.password" (keyup)=passwordchange($event) required #password="ngModel" />
-                        <div class="alert col-md-6" *ngIf="dialogChecks.passwordDialog">
-                            <!--Capital check-->
                             <table>
                                 <tr>
-                                    <td>Hoofdletter: </td>
+                                    <td>KvK-nummer is te kort: </td>
 
-                                    <td *ngIf="passwordchecks.passwordCapitalCheck; else falseCapital">
-                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
-                                    </td>
-                                    <ng-template #falseCapital>
-                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
-                                    </ng-template>
-                                </tr>
-                                <tr>
-                                    <td>Nummer: </td>
-                                    <td *ngIf="passwordchecks.passwordNumberCheck; else falseNumber">
-                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
-                                    </td>
-                                    <ng-template #falseNumber>
-                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
-                                    </ng-template>
-                                </tr>
-                                <tr>
-                                    <td>Lengte: </td>
-                                    <td *ngIf="passwordchecks.passwordLengthCheck; else falseLength">
+                                    <td *ngIf="kvkChecks.lengthCheck; else falseLength">
                                         <fa-icon [icon]="icons.faCheck"></fa-icon>
                                     </td>
                                     <ng-template #falseLength>
@@ -92,10 +61,57 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <input type="email" class="input-full-width" name="email" placeholder="E-mailadres" (keyup)="adddialog('emailNameDialog')" [(ngModel)]="form.email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" />
+                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="email.errors && dialogChecks.emailNameDialog">
+                            E-mailadres is leeg of is niet valide.
+                        </div>
+                    </div>
+                    <div class="form-group" (capsLock)="capsOn=$event">
+                        <input type="password" class="input-full-width" name="password" placeholder="Wachtwoord" [(ngModel)]="form.password" (keyup)=passwordchange($event) required #password="ngModel" />
+
+                        <span *ngIf="capsOn" >Caps Locked</span>
+
+                        <div class="alert col-md-6" *ngIf="dialogChecks.passwordDialog">
+                            <!--Capital check-->
+                            <table>
+                                <tr>
+                                    <td>Hoofdletter: </td>
+
+                                    <td *ngIf="passwordChecks.passwordCapitalCheck; else falseCapital">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseCapital>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                                <tr>
+                                    <td>Nummer: </td>
+                                    <td *ngIf="passwordChecks.passwordNumberCheck; else falseNumber">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseNumber>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                                <tr>
+                                    <td>Lengte: </td>
+                                    <td *ngIf="passwordChecks.passwordLengthCheck; else falseLength">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseLength>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group" (capsLock)="capsOn=$event">
                         <input type="password" class="input-full-width" name="passwordrepeat" placeholder="Wachtwoord herhaald" [(ngModel)]="form.passwordrepeat" (keyup)=passwordrepeatf($event) required #passwordrepeat="ngModel" />
                         <div class="alert alert-danger col-md-6" role="alert" *ngIf="dialogChecks.passwordRepeatDialog">
                             Wachtwoord komt niet overeen.
                         </div>
+                        <span *ngIf="capsOn" >Caps Locked</span>
+                        
                     </div>
                     <label for="terms">Door op onderstaande knop te drukken gaat u akkoord met de <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a>.</label><br>
                     <div class="form-group">

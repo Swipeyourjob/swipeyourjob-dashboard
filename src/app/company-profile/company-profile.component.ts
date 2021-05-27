@@ -3,9 +3,12 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 import { TokenStorageService,EstablishmentService } from '@app/services';
+import {ZipcodeValidator} from '@app/helpers';
 import {Establishment} from '@app/models'
 import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {faInstagram,faFacebook,faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -34,14 +37,29 @@ export class CompanyProfileComponent implements OnInit {
         faInstagram: faInstagram,
         faFacebook: faFacebook,
         faLinkedin: faLinkedin,
+        faCheck: faCheck,
+        faTimes: faTimes
     };
     public wordcount = 0;
     public Editor = InlineEditor;
+    public zipcodecheck: any = {
+        invalidCheck: false,
+        lengthCheck: false
+    };
+    public dialogChecks: any = {
+        companyNamedialog: false,
+        zipcodeNameDialog: false,
+        emailNameDialog: false,
+        passwordDialog: false,
+        passwordRepeatDialog: false,
+        kvkdDialog: false
+    };
 
     public constructor(
         private tokenStorage: TokenStorageService,
         private establishmentService: EstablishmentService,
-        private titleService: Title
+        private titleService: Title,
+        private zipcodeValidator: ZipcodeValidator
     ) { }
 
     public ngOnInit(): void {
@@ -80,6 +98,13 @@ export class CompanyProfileComponent implements OnInit {
                     ? userinfo['lastname']
                     : null;
         }
+    }
+    public zipcodechange():void {
+        let zipcode = this.form.zipcode;
+
+        this.dialogChecks.zipcodeNameDialog = true
+        this.zipcodecheck.invalidCheck = this.zipcodeValidator.checkRegex(zipcode);
+        this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
     }
     public onSubmit(f: NgForm): void {
         

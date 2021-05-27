@@ -25,6 +25,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { authInterceptorProviders } from '@app/helpers';
 import {VerificationComponent} from './verification/verification.component';
 import { VerificationcheckComponent } from './verificationcheck/verificationcheck.component';
+import { TrackCapsDirective } from './trackcaps.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { VerificationcheckComponent } from './verificationcheck/verificationchec
     ResetPasswordComponent,
     CompanyProfileComponent,
     VerificationcheckComponent,
+    TrackCapsDirective,
   ],
   imports: [
     BrowserModule,

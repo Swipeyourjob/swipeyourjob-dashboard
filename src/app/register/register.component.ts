@@ -32,13 +32,16 @@ export class RegisterComponent implements OnInit {
         faCheck: faCheck,
         faTimes: faTimes
     }
-    passwordchecks: any = {
+    passwordChecks: any = {
         passwordCapitalCheck: false,
         passwordNumberCheck: false,
         passwordLengthCheck: false
     };
-    zipcodecheck: any = {
+    zipcodeChecks: any = {
         invalidCheck: false,
+        lengthCheck: false
+    };
+    kvkChecks: any = {
         lengthCheck: false
     };
     passwordvalidrepeat: boolean = false;
@@ -50,6 +53,7 @@ export class RegisterComponent implements OnInit {
         passwordRepeatDialog: false,
         kvkdDialog: false
     };
+    capsOn: any;
 
 
     isLoggedIn = false;
@@ -58,9 +62,9 @@ export class RegisterComponent implements OnInit {
         let password = this.form.password;
         
         this.dialogChecks.passwordDialog = true;
-        this.passwordchecks.passwordCapitalCheck = this.passwordvalidator.checkCapital(password);
-        this.passwordchecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
-        this.passwordchecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
+        this.passwordChecks.passwordCapitalCheck = this.passwordvalidator.checkCapital(password);
+        this.passwordChecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
+        this.passwordChecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
     }
     passwordrepeatf(event: KeyboardEvent): void {
         const { passwordrepeat, password } = this.form;
@@ -74,8 +78,14 @@ export class RegisterComponent implements OnInit {
         let zipcode = this.form.zipcode;
 
         this.dialogChecks.zipcodeNameDialog = true
-        this.zipcodecheck.invalidCheck = this.zipcodeValidator.checkRegex(zipcode);
-        this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
+        this.zipcodeChecks.invalidCheck = this.zipcodeValidator.checkRegex(zipcode);
+        this.zipcodeChecks.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
+    }
+    kvkchange():void {
+        let kvk = this.form.kvk;
+        let kvkBool = (kvk.length <= 8) ? false : true;
+        this.dialogChecks.kvkdDialog = true;
+        this.kvkChecks.lengthCheck = kvkBool;
     }
     ngOnInit(): void {
         console.log(this.form);

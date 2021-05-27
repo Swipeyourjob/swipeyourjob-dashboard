@@ -58,9 +58,33 @@
                     <label for="housenumber">Huisnummer:</label>
                     <input type="text" class="input-full-width" name="housenumber" [(ngModel)]="form.housenumber" #housenumber="ngModel">
                 </div>
-                <div class="form-control-group">
-                    <label for="zipcode">Postcode:</label>
-                    <input type="text" class="input-full-width" name="zipcode" [(ngModel)]="form.zipcode" #zipcode="ngModel" pattern="/^\d{4} ?[a-z]{2}$/i">
+                <div class="form-group">
+                    <input type="text" class="input-full-width" name="zipcode" placeholder="Postcode" [(ngModel)]="form.zipcode" (keyup)="zipcodechange()" required #zipcode="ngModel" />
+                    <div class="alert alert-danger col-md-6  " role="alert" *ngIf="dialogChecks.zipcodeNameDialog">
+
+                        <table>
+                            <tr>
+                                <td>Poscode te kort: </td>
+
+                                <td *ngIf="zipcodecheck.lengthCheck; else falseLength">
+                                    <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                </td>
+                                <ng-template #falseLength>
+                                    <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                </ng-template>
+                            </tr>
+                            <tr>
+                                <td>Poscode invalid: </td>
+
+                                <td *ngIf="zipcodecheck.invalidCheck; else validZipcode">
+                                    <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                </td>
+                                <ng-template #validZipcode>
+                                    <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                </ng-template>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
                 <div class="form-control-group">
                     <button type="submit" class="btn btn-primary btn-block">Opslaan</button>
