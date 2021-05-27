@@ -14,7 +14,7 @@ import {VerificationcheckComponent} from './verificationcheck/verificationcheck.
 import { AuthGuard } from './_helpers';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '',component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'register', component: RegisterComponent },

@@ -1,7 +1,10 @@
 <div id="app">
     <header class="header" id="header" *ngIf="isLoggedIn">
         <div>
-            <a (click)="toggleMenu()"><img src="/assets/img/menu_icon.svg" alt="image"></a>
+            <a class="sidebar-menu-icon" (click)="toggleMenu()"><img src="/assets/img/icon_menu_light.svg" *ngIf="isLoggedIn" alt="image"></a>
+        </div>
+        <div>
+            <a (click)="toggleMenu()"><img class="sidebar-profile-pic" src="/assets/img/icon_account.svg" alt="image"></a>
         </div>
     </header>
     <div class="wrapper">
@@ -9,29 +12,62 @@
         <nav id="sidebar" #sidebar>
             <div class="sidebar-header">
                 <img src="/assets/img/logo_light.svg" width="80%" alt="image">
-                <a (click)="toggleMenu()"><img src="/assets/img/menu_icon.svg" alt="image"></a>
+                <a class="sidebar-menu-icon" (click)="toggleMenu()"><img src="/assets/img/icon_menu_light.svg" alt="image"></a>
             </div>
             
             <ul class="list-unstyled components">
-                <li class="active">
-                    <a routerLink="home" (click)="toggleMenu()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Overzicht</a>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a routerLink="" (click)="toggleMenu()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-sidebar">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="/assets/img/icon_home.svg" class="sidebar-icon sidebar-text" alt="image">
+                            </td>
+                            <td>
+                                Overzicht    
+                            </td>
+                        </tr>
+                    </table>
+                    </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Home 1</a>
+                            <a href="#" class="a-sidebar">Home 1</a>
                         </li>
                         <li>
-                            <a href="#">Home 2</a>
+                            <a href="#" class="a-sidebar">Home 2</a>
                         </li>
                         <li>
-                            <a href="#">Home 3</a>
+                            <a href="#" class="a-sidebar">Home 3</a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a routerLink="user" (click)="toggleMenu()">Gebruiker</a>
+                <li routerLinkActive="active">
+                    <a routerLink="user" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Gebruiker    
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
                 </li>
-                <li>
-                    <a routerLink="user" (click)="logout()" (click)="toggleMenu()">Uitloggen</a>
+                <li routerLinkActive="active">
+                    <a (click)="logout()" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_logout.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Uitloggen    
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
                 </li>
             </ul>            
         </nav>

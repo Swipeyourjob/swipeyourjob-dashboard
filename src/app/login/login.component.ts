@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
-                this.alertService.success('registratie gelukt pik', { keepAfterRouteChange: true });
                 window.location.href = '/';
             },
             err => {

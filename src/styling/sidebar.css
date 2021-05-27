@@ -7,6 +7,20 @@
   -webkit-transform: translateY(-50%);
 }
 
+.a-sidebar {
+  font-family: "Avenir Semibold" !important;
+  font-size: 17px !important;
+  color: #FFFFFF !important;
+}
+
+.sidebar-text {
+  color: red;
+}
+
+.sidebar-profile-pic {
+  float: right;
+}
+
 #sidebar {
   /* don't forget to add all the previously mentioned styles here too */
   background: #FFFFFF;
@@ -16,12 +30,11 @@
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #FFFFFF;
+  background: #252F3F;
 }
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
@@ -32,15 +45,21 @@
   padding: 10px;
   font-size: 1.1em;
   display: block;
+  border-radius: 8px;
+  margin: 0px 8px 0px 8px;
 }
 #sidebar ul li a:hover {
   color: #FFFFFF;
-  background: #fff;
+  background: #FFFFFF18;
+  border-radius: 8px;
+  margin: 0px 8px 0px 8px;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
   color: #fff;
-  background: #FFFFFF;
+  background: #161E2E;
+  border-radius: 8px;
+  margin: 0px 8px 0px 8px;
 }
 
 .wrapper {
@@ -63,7 +82,7 @@
   left: 0;
   height: 100vh;
   z-index: 999;
-  background: #FFFFFF;
+  background: #252F3F;
   color: #fff;
   transition: all 0.3s;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
