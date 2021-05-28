@@ -29,17 +29,20 @@
                         </tr>
                     </table>
                     </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#" class="a-sidebar">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#" class="a-sidebar">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#" class="a-sidebar">Home 3</a>
-                        </li>
-                    </ul>
+                </li>
+                <li routerLinkActive="active">
+                    <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Bedrijfs profiel
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="user" (click)="toggleMenu()" class="a-sidebar">
