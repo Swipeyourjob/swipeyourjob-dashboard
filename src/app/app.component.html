@@ -31,14 +31,28 @@
                     </a>
                 </li>
                 <li routerLinkActive="active">
+                    <a routerLink="my-vacancies" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_contract.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Mijn Vacatures
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+                <li routerLinkActive="active">
                     <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
                         <table>
                             <tr>
                                 <td>
-                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
+                                    <img src="/assets/img/icon_add_business.svg" class="sidebar-icon sidebar-text" alt="image">
                                 </td>
                                 <td>
-                                    Bedrijfs profiel
+                                    Bedrijfsprofiel
                                 </td>
                             </tr>
                         </table>

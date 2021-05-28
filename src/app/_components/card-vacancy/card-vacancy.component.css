@@ -1,0 +1,34 @@
+.card-vacancy {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card-vacancy-text {
+    font-family: 'Avenir Semibold';
+    font-size: 20px;
+    text-align: center;
+}
+
+.container-vacancy {
+    width: 300px;
+    height: 260px;
+    border: 5px solid #FFFFFF;
+    border-radius: 10px;
+    vertical-align: text-bottom;
+}
+
+.jumbotron {
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    background: url('https://images.pexels.com/photos/302887/pexels-photo-302887.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center;
+    background-size: cover;
+    padding: 0px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 15px 5px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: none;
+}
+
+@media (max-width: 768px) {
+    .container-vacancy {
+    }
+}
