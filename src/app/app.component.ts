@@ -25,17 +25,13 @@ export class AppComponent {
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 
         if(this.isLoggedIn) {
-            const user = this.tokenStorageService.getUser();
-            this.roles = user.roles;
+            let userInfo = this.tokenStorageService.getUserInfo();
 
-            console.log(user.roles);
+            this.showAdminBoard = (userInfo.Role == 'ROLE_ADMIN');
+            this.showModeratorBoard = (userInfo.Role == 'ROLE_MODERATOR');
 
-            this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-            this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-            this.username = user.username;
             this.sidebar.nativeElement.style.display = 'block';
-        } 
+        }
         else {
             this.sidebar.nativeElement.style.display = 'none';
         }

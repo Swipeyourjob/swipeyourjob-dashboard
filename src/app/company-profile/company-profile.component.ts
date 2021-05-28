@@ -69,7 +69,7 @@ export class CompanyProfileComponent implements OnInit {
                 console.log(err);
             }
         )
-        let userinfo = this.tokenStorage.getUserinfo();
+        let userinfo = this.tokenStorage.getUserInfo();
         if (userinfo != null) {
             this.form.Firstname =
                 userinfo['firstname'] != null && userinfo['firstname'] != ''
