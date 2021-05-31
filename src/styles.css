@@ -44,17 +44,17 @@ a:hover {
   border: none !important;
 }
 
-input {
+input[type=text] {
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
   -webkit-appearance: none;
   text-indent: 0px;
   text-shadow: none;
 }
-input:focus-visible {
+input[type=text]:focus-visible {
   outline-offset: 0;
   outline: none;
 }
-input:focus {
+input[type=text]:focus {
   outline-offset: 0;
   outline: none;
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.15) !important;
@@ -103,7 +103,6 @@ input:focus {
   box-sizing: content-box;
 }
 
-
 .syj_content {
   display: flex;
   flex-direction: column;
@@ -115,9 +114,9 @@ input:focus {
 }
 
 body {
-  font-family: "Avenir";
+  font-family: "Avenir", Helvetica, sans-serif;
   padding: 0;
-  margin: 0px 0px 0px 0px;
+  margin: 0 0 0 0;
   /* //display: flex; */
   font-size: 1rem;
   font-weight: 400;

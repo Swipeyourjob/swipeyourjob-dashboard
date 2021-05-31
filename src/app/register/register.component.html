@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <input type="text" class="input-full-width" name="companyname" placeholder="Bedrijfsnaam" autofocus (keyup)="adddialog('companyNamedialog')" [(ngModel)]="form.companyname" required #companyname="ngModel" />
 
-                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="companyname.errors && dialogChecks.companyNamedialog">
+                        <div class="alert alert-danger col-md-6" role="alert" *ngIf="companyname.errors && dialogChecks.companyNamedialog">
                             Bedrijfsnaam niet compleet
                         </div>
 

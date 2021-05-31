@@ -1,4 +1,4 @@
-import { Title } from '@angular/platform-browser';
+import {Title} from '@angular/platform-browser';
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {PasswordValidator} from 'app/_helpers/passwordvalidator';
 import {AuthService, TokenStorageService} from '@app/services';
@@ -21,9 +21,17 @@ export class JobofferComponent implements OnInit {
     passwordDialog: false
   };
   isLoggedIn = false;
-  passwordOk = true;
+  wagesInputEnabled: any = {
+    wages16: false,
+    wages17: false,
+    wages18: false,
+    wages19: false,
+    wages20: false,
+    wages21: false
+  };
+  setPeriod = false;
 
-  constructor(private titleService: Title,private authService: AuthService, private passwordvalidator: PasswordValidator) {
+  constructor(private titleService: Title) {
   }
 
   ngOnInit(): void {
@@ -31,37 +39,46 @@ export class JobofferComponent implements OnInit {
     return;
   }
 
-  validatePassword(): boolean {
-    console.log('validate password');
-    const password = this.form.password;
-    this.dialogChecks.passwordDialog = true;
-    this.passwordchecks.passwordCapitalCheck = this.passwordvalidator.checkCapital(password);
-    this.passwordchecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
-    this.passwordchecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
-    console.log(this.passwordchecks);
-    this.passwordOk =
-      this.passwordchecks.passwordCapitalCheck &&
-      this.passwordchecks.passwordNumberCheck &&
-      this.passwordchecks.passwordLengthCheck;
-    console.log(this.passwordOk);
-    return this.passwordOk;
+  onCheck(values: any, age: string): void {
+    const value = values.currentTarget.checked;
+    switch (age) {
+      case 'wages16': {
+        this.wagesInputEnabled.wages16 = value;
+        break;
+      }
+      case 'wages17': {
+        this.wagesInputEnabled.wages16 = value;
+        break;
+      }
+      case 'wages18': {
+        this.wagesInputEnabled.wages16 = value;
+        break;
+      }
+      case 'wages19': {
+        this.wagesInputEnabled.wages16 = value;
+        break;
+      }
+      case 'wages20': {
+        this.wagesInputEnabled.wages16 = value;
+        break;
+      }
+      case 'wages21': {
+        this.wagesInputEnabled.wages16 = value;
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+    console.log(values.currentTarget.checked);
+    console.log(this.wagesInputEnabled);
+  }
+  onSetPeriod(value: any): void {
+    this.setPeriod = value;
+    console.log('switch date picker visibility');
+    console.log(value);
   }
   onSubmit(): void {
-    const {
-      password
-    } = this.form;
-    if (this.passwordOk) {
-      this.authService.companySetPassword(
-        password
-      ).subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    }
   }
 
 }
