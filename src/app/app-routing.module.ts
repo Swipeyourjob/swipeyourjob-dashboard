@@ -11,11 +11,13 @@ import {RegisteredComponent} from './register/registered/registered.component';
 import {ForgotPasswordComponent} from './login/forgot-password/forgot-password.component';
 import {VerificationComponent} from './verification/verification.component';
 import {VerificationcheckComponent} from './verificationcheck/verificationcheck.component';
+import {VacancyOverviewComponent} from './vacancies/vacancy-overview/vacancy-overview.component';
 import {AuthGuard} from './_helpers';
 import {CompanyProfileComponent} from './company-profile/company-profile.component';
 import {JobofferComponent} from './joboffer/joboffer.component';
 
 const routes: Routes = [
+
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
@@ -26,6 +28,7 @@ const routes: Routes = [
   {path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
   {path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard]},
+  {path: 'my-vacancies', component: VacancyOverviewComponent, canActivate: [AuthGuard]},
   {path: 'verification', component: VerificationComponent, canActivate: [AuthGuard]},
   {path: 'joboffer', component: JobofferComponent, canActivate: [AuthGuard]},
   {path: 'verify', component: VerificationcheckComponent},

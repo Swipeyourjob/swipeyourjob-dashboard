@@ -94,10 +94,11 @@ input[type=checkbox]{
     background-size: cover;
     position: absolute; 
     top: 0; 
-    left: 0; 
+    left: 0;
     min-width: 100%;
     min-height: 100%;
     overflow: auto;
+    z-index: 4;
 }
 .btn-grad {
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);
