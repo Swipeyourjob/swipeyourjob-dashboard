@@ -45,17 +45,27 @@ a:hover {
   border: none !important;
 }
 
-input[type=text] {
+input {
+  border-radius: 8px;
+  border: none;
+  font-family: 'Avenir Semibold';
+  padding: 1rem;
+  width: 100%;
+  transition-duration: .15s;
+  transition-property: border,background-color,color,box-shadow;
+  transition-timing-function: ease-in;
+  overflow: visible;
+  color: #626272;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
   -webkit-appearance: none;
   text-indent: 0px;
   text-shadow: none;
 }
-input[type=text]:focus-visible {
+input:focus-visible {
   outline-offset: 0;
   outline: none;
 }
-input[type=text]:focus {
+input:focus {
   outline-offset: 0;
   outline: none;
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.15) !important;
