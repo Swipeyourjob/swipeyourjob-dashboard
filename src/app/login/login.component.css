@@ -47,6 +47,10 @@ input {
     transition-timing-function: ease-in;
     overflow: visible;
     color: #626272;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+    -webkit-appearance: none;
+    text-indent: 0px;
+    text-shadow: none;
 }
 .label-with-link {
     margin-top: 1rem;
