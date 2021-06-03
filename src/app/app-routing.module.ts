@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'mod', component: BoardModeratorComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
   {path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard]},
-  {path: 'verification', component: VerificationComponent, canActivate: [AuthGuard]},
+  {path: 'verification', component: VerificationComponent},
   {path: 'joboffer', component: JobofferComponent, canActivate: [AuthGuard]},
   {path: 'verify', component: VerificationcheckComponent},
   {path: '**', redirectTo: '', canActivate: [AuthGuard]}
