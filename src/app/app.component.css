@@ -15,6 +15,7 @@ a[data-toggle="collapse"] {
 }
 
 .header {
+    z-index: 3;
     height: 50px;
     background-color: #252F3F;
     position: fixed;
@@ -33,7 +34,7 @@ a[data-toggle="collapse"] {
 
 @media (min-width: 769px) {
     .body-padding{
-        padding-left: 250px;    
+        padding-left: 260px;    
         padding-top: 80px;
     }
     .sidebar-menu-icon {

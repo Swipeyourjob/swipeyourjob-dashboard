@@ -36,18 +36,6 @@ form {
 #card-title {
     margin-bottom: 3rem;
 }
-input {
-    border-radius: 8px;
-    border: none;
-    font-family: 'Avenir Semibold';
-    padding: 1rem;
-    width: 100%;
-    transition-duration: .15s;
-    transition-property: border,background-color,color,box-shadow;
-    transition-timing-function: ease-in;
-    overflow: visible;
-    color: #626272;
-}
 .label-with-link {
     margin-top: 1rem;
     margin-left: 0.05rem;
@@ -77,6 +65,7 @@ input[type=checkbox]{
     min-width: 100%;
     min-height: 100%;
     overflow: auto;
+    z-index: 4;
 }
 .btn-grad {
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);

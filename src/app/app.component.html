@@ -31,14 +31,28 @@
                     </a>
                 </li>
                 <li routerLinkActive="active">
+                    <a routerLink="my-vacancies" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_contract.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Mijn Vacatures
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+                <li routerLinkActive="active">
                     <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
                         <table>
                             <tr>
                                 <td>
-                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
+                                    <img src="/assets/img/icon_add_business.svg" class="sidebar-icon sidebar-text" alt="image">
                                 </td>
                                 <td>
-                                    Bedrijfs profiel
+                                    Bedrijfsprofiel
                                 </td>
                             </tr>
                         </table>
@@ -75,63 +89,9 @@
             </ul>            
         </nav>
         <!-- Page Content -->
-        <div class="container body-padding" id="main-content">
+        <div class="container-fluid body-padding" id="main-content">
             <router-outlet></router-outlet>
             <alert></alert>
         </div>
     </div>
 </div>
-
-
-
-    
-    <!--
-    <div class="syj-sidebar theme theme-links" *ngIf="isLoggedIn">
-        <div class="main-container">
-            <a href="#" class="navbar-brand">Dashboard</a>
-            <ul class="navbar-nav mr-auto" routerLinkActive="active">
-                <li class="nav-item">
-                <a href="/home" class="nav-link" routerLink="home">Home </a>
-                </li>
-                <li class="nav-item" *ngIf="showAdminBoard">
-                <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-                </li>
-                <li class="nav-item" *ngIf="showModeratorBoard">
-                <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-                </li>
-                <li class="nav-item">
-                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user"
-                    >User</a
-                >
-                </li>
-            </ul>
-    
-            <ul class="navbar-nav mr-auto" *ngIf="!isLoggedIn">
-                <li class="nav-item">
-                <a
-                    href="/register"
-                    class="nav-link font-weight-bold"
-                    routerLink="register"
-                    >Sign Up</a
-                >
-                </li>
-                <li class="nav-item">
-                <a href="/login" class="nav-link font-weight-bold" routerLink="login"
-                    >Login</a
-                >
-                </li>
-            </ul>
-    
-            <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn">
-                <li class="nav-item">
-                <li class="nav-item">
-                <a href class="nav-link" (click)="logout()">LogOut</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="container" id="main-content">
-        <router-outlet></router-outlet>
-        <alert></alert>
-    </div>
-    -->

@@ -46,20 +46,23 @@
   font-size: 1.1em;
   display: block;
   border-radius: 8px;
-  margin: 0px 8px 0px 8px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 #sidebar ul li a:hover {
   color: #FFFFFF;
   background: #FFFFFF18;
   border-radius: 8px;
-  margin: 0px 8px 0px 8px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
   color: #fff;
   background: #161E2E;
   border-radius: 8px;
-  margin: 0px 8px 0px 8px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .wrapper {

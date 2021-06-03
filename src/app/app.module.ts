@@ -26,6 +26,10 @@ import { authInterceptorProviders } from '@app/helpers';
 import {VerificationComponent} from './verification/verification.component';
 import {JobofferComponent} from './joboffer/joboffer.component';
 import { VerificationcheckComponent } from './verificationcheck/verificationcheck.component';
+import { WidgetComponent } from './_components/widget/widget.component';
+import { CardVacancyComponent } from './_components/card-vacancy/card-vacancy.component';
+import { VacancyOverviewComponent } from './vacancies/vacancy-overview/vacancy-overview.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,9 @@ import { VerificationcheckComponent } from './verificationcheck/verificationchec
     CompanyProfileComponent,
     JobofferComponent,
     VerificationcheckComponent,
+    WidgetComponent,
+    CardVacancyComponent,
+    VacancyOverviewComponent,
   ],
   imports: [
     BrowserModule,

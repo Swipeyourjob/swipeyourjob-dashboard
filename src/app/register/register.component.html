@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <input type="text" class="input-full-width" name="companyname" placeholder="Bedrijfsnaam" autofocus (keyup)="adddialog('companyNamedialog')" [(ngModel)]="form.companyname" required #companyname="ngModel" />
 
-                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="companyname.errors && dialogChecks.companyNamedialog">
+                        <div class="alert alert-danger col-md-6" role="alert" *ngIf="companyname.errors && dialogChecks.companyNamedialog">
                             Bedrijfsnaam niet compleet
                         </div>
 
@@ -97,7 +97,7 @@
                             Wachtwoord komt niet overeen.
                         </div>
                     </div>
-                    <label for="terms">Door op onderstaande knop te drukken gaat u akkoord met de <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a>.</label><br>
+                    <label for="terms">Door op onderstaande knop te drukken ga je akkoord met onze <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a></label><br>
                     <div class="form-group">
                         <button type="submit" class="btn btn-grad btn-primary btn-block lift">Bedrijf registreren</button>
                     </div>

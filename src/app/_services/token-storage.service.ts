@@ -51,7 +51,7 @@ export class TokenStorageService {
 
         return {};
     }
-    public getUserinfo(): any | null {
+    public getUserInfo(): any | null {
         return this.parseJwt(this.getToken());
     }
     private parseJwt(token: string | null): object | null {

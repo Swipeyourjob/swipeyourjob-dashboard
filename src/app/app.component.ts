@@ -24,25 +24,17 @@ export class AppComponent {
         this.tokenStorageService.useRememberMe();
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-        if (this.isLoggedIn) {
-            const user = this.tokenStorageService.getUser();
-            this.roles = user.roles;
+        if(this.isLoggedIn) {
+            let userInfo = this.tokenStorageService.getUserInfo();
 
-            this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-            this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+            this.showAdminBoard = (userInfo.Role == 'ROLE_ADMIN');
+            this.showModeratorBoard = (userInfo.Role == 'ROLE_MODERATOR');
 
-            this.username = user.username;
             this.sidebar.nativeElement.style.display = 'block';
-        }else{
+        }
+        else {
             this.sidebar.nativeElement.style.display = 'none';
         }
-
-        /*
-        $('#sidebarCollapse').on('click', function () {
-            console.log('KLIK');
-            $('#sidebar').toggleClass('active');
-        });
-        */
     }
 
     toggleMenu(): void {
