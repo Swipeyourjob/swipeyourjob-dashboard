@@ -5,22 +5,26 @@
 a[data-toggle="collapse"] {
     position: relative;
 }
-a {
-    font-family: "Avenir Semibold" !important;
-    color: #626272 !important;
-}
 
 .align-right {
     float: right;
 }
 
+.rounded {
+    margin: 5px;
+}
 
 .header {
+    z-index: 3;
     height: 50px;
-    background-color: #FFFFFF;
+    background-color: #252F3F;
     position: fixed;
     box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
     -webkit-appearance: none;
+}
+
+.sidebar-icon {
+    margin-right: 10px;
 }
 
 .body-padding{
@@ -30,7 +34,10 @@ a {
 
 @media (min-width: 769px) {
     .body-padding{
-        padding-left: 250px;    
+        padding-left: 260px;    
         padding-top: 80px;
     }
-  }
+    .sidebar-menu-icon {
+        display: none;
+    }
+}

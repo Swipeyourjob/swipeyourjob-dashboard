@@ -1,7 +1,10 @@
 <div id="app">
     <header class="header" id="header" *ngIf="isLoggedIn">
         <div>
-            <a (click)="toggleMenu()"><img src="/assets/img/menu_icon.svg" alt="image"></a>
+            <a class="sidebar-menu-icon" (click)="toggleMenu()"><img src="/assets/img/icon_menu_light.svg" *ngIf="isLoggedIn" alt="image"></a>
+        </div>
+        <div>
+            <a (click)="toggleMenu()"><img class="sidebar-profile-pic" src="/assets/img/icon_account.svg" alt="image"></a>
         </div>
     </header>
     <div class="wrapper">
@@ -9,90 +12,86 @@
         <nav id="sidebar" #sidebar>
             <div class="sidebar-header">
                 <img src="/assets/img/logo_light.svg" width="80%" alt="image">
-                <a (click)="toggleMenu()"><img src="/assets/img/menu_icon.svg" alt="image"></a>
+                <a class="sidebar-menu-icon" (click)="toggleMenu()"><img src="/assets/img/icon_menu_light.svg" alt="image"></a>
             </div>
             
             <ul class="list-unstyled components">
-                <li class="active">
-                    <a routerLink="home" (click)="toggleMenu()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Overzicht</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                    <a routerLink="" (click)="toggleMenu()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-sidebar">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="/assets/img/icon_home.svg" class="sidebar-icon sidebar-text" alt="image">
+                            </td>
+                            <td>
+                                Overzicht    
+                            </td>
+                        </tr>
+                    </table>
+                    </a>
                 </li>
-                <li>
-                    <a routerLink="user" (click)="toggleMenu()">Gebruiker</a>
+                <li routerLinkActive="active">
+                    <a routerLink="my-vacancies" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_contract.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Mijn Vacatures
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
                 </li>
-                <li>
-                    <a routerLink="user" (click)="logout()" (click)="toggleMenu()">Uitloggen</a>
+                <li routerLinkActive="active">
+                    <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_add_business.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Bedrijfsprofiel
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+                <li routerLinkActive="active">
+                    <a routerLink="user" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Gebruiker    
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+                <li routerLinkActive="active">
+                    <a (click)="logout()" (click)="toggleMenu()" class="a-sidebar">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="/assets/img/icon_logout.svg" class="sidebar-icon sidebar-text" alt="image">
+                                </td>
+                                <td>
+                                    Uitloggen    
+                                </td>
+                            </tr>
+                        </table>
+                    </a>
                 </li>
             </ul>            
         </nav>
         <!-- Page Content -->
-        <div class="container body-padding" id="main-content">
+        <div class="container-fluid body-padding" id="main-content">
             <router-outlet></router-outlet>
             <alert></alert>
         </div>
     </div>
 </div>
-
-
-
-    
-    <!--
-    <div class="syj-sidebar theme theme-links" *ngIf="isLoggedIn">
-        <div class="main-container">
-            <a href="#" class="navbar-brand">Dashboard</a>
-            <ul class="navbar-nav mr-auto" routerLinkActive="active">
-                <li class="nav-item">
-                <a href="/home" class="nav-link" routerLink="home">Home </a>
-                </li>
-                <li class="nav-item" *ngIf="showAdminBoard">
-                <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-                </li>
-                <li class="nav-item" *ngIf="showModeratorBoard">
-                <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-                </li>
-                <li class="nav-item">
-                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user"
-                    >User</a
-                >
-                </li>
-            </ul>
-    
-            <ul class="navbar-nav mr-auto" *ngIf="!isLoggedIn">
-                <li class="nav-item">
-                <a
-                    href="/register"
-                    class="nav-link font-weight-bold"
-                    routerLink="register"
-                    >Sign Up</a
-                >
-                </li>
-                <li class="nav-item">
-                <a href="/login" class="nav-link font-weight-bold" routerLink="login"
-                    >Login</a
-                >
-                </li>
-            </ul>
-    
-            <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn">
-                <li class="nav-item">
-                <li class="nav-item">
-                <a href class="nav-link" (click)="logout()">LogOut</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="container" id="main-content">
-        <router-outlet></router-outlet>
-        <alert></alert>
-    </div>
-    -->

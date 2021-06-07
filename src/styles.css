@@ -15,6 +15,7 @@
 .lift:hover {
   box-shadow: 0px 2px 25px 1px rgba(0, 0, 0, 0.2) !important;
   transform: translate3d(0px, -1px, 0px);
+  -webkit-transform: translate3d(0px, -1px, 0px);
   -webkit-appearance: none;
 }
 
@@ -45,6 +46,16 @@ a:hover {
 }
 
 input {
+  border-radius: 8px;
+  border: none;
+  font-family: 'Avenir Semibold';
+  padding: 1rem;
+  width: 100%;
+  transition-duration: .15s;
+  transition-property: border,background-color,color,box-shadow;
+  transition-timing-function: ease-in;
+  overflow: visible;
+  color: #626272;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
   -webkit-appearance: none;
   text-indent: 0px;
@@ -60,7 +71,6 @@ input:focus {
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.15) !important;
   -webkit-appearance: none;
 }
-
 .center {
     justify-content: center;
     margin: auto;
@@ -103,7 +113,6 @@ input:focus {
   box-sizing: content-box;
 }
 
-
 .syj_content {
   display: flex;
   flex-direction: column;
@@ -115,9 +124,9 @@ input:focus {
 }
 
 body {
-  font-family: "Avenir";
+  font-family: "Avenir", Helvetica, sans-serif;
   padding: 0;
-  margin: 0px 0px 0px 0px;
+  margin: 0 0 0 0;
   /* //display: flex; */
   font-size: 1rem;
   font-weight: 400;

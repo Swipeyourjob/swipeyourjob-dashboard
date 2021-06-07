@@ -1,12 +1,13 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-12"><h2>Nieuw wachtwoord</h2></div>
+    <div class="col-12"><h2>Nieuwe vacature</h2></div>
   </div>
 </div>
 <div class="card card-container verify-form">
   <div class="card-row">
-    <div class="col-12"><h4>Uw e-mailadres is geverifieerd!</h4>
+    <div class="col-12">
+      <h4>Uw e-mailadres is geverifieerd!</h4>
     </div>
     <div class="col-12">
       <form
@@ -18,27 +19,242 @@
       >
 
         <div class="form-group">
-          <label for="companyname">Vul hieronder een gewenst wachtwoord in:</label>
+          <label for="function">Functie*</label>
           <input
-            type="password"
-            class="form-control col-md-6"
-            placeholder="********"
-            name="companyname"
-            id="companyname"
-            [(ngModel)]="form.password"
-            (change)="validatePassword()"
+            type="text"
+            class="form-control col-md-12"
+            placeholder="Tapper"
+            name="function"
+            id="function"
+            [(ngModel)]="form.function"
           >
         </div>
 
-        <div class="password-alert" *ngIf="!passwordOk">
-          <p>
-            Het wachtwoord dat u heeft ingevuld voldoet niet aan de eisen. Zorg voor minimaal 1 hoofdletter, 1 cijfer en 7 tekens.
-          </p>
+        <div class="form-group">
+          <label for="functiondescription">Functieomschrijving*</label>
+          <textarea
+            class="form-control col-md-12"
+            placeholder="Binnen deze functie ..."
+            name="functiondescription"
+            id="functiondescription"
+            [(ngModel)]="form.functiondescription"
+          ></textarea>
         </div>
 
         <div class="form-group">
-          <button class="btn btn-primary btn-block col-md-5" (mouseover)="validatePassword()">
-            Verifieer
+          <label for="functionimage">
+            Foto van de werkplek*
+          </label>
+          <p>Maak een leuke foto van de werkplek</p>
+          <input
+            type="file"
+            class="form-control col-md-12"
+            name="functionimage"
+            id="functionimage"
+            [(ngModel)]="form.functiondescription"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="functionimage">
+            Werkdagen
+          </label>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover table-hours">
+              <caption>Hier kunt u aangeven voor welke dag(delen) u personeel zoekt.</caption>
+              <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">
+                  <label>Ochtend</label><br>
+                  (06:00 - 12:00)
+                </th>
+                <th scope="col">
+                  <label>Middag</label><br>
+                  (12:00 - 18:00)
+                </th>
+                <th scope="col">
+                  <label>Avond</label><br>
+                  (18:00 - 00:00)
+                </th>
+                <th scope="col">
+                  <label>Nacht</label><br>
+                  (00:00 - 06:00)
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">Maandag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <th scope="row">Dinsdag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <th scope="row">Woensdag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <th scope="row">Donderdag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <th scope="row">Vrijdag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <th scope="row">Zaterdag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              <tr>
+                <th scope="row">Zondag</th>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+                <td><input type="checkbox"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tags" class="form-label">Tags</label>
+          <input class="form-control" list="tag-list" id="tags" placeholder="Zoek een tag...">
+          <datalist id="tag-list">
+            <option value="Horeca">
+            <option value="Supermarkt">
+            <option value="Verkoper">
+            <option value="Flexibel">
+            <option value="Gezellig team">
+          </datalist>
+        </div>
+
+        <div class="form-group">
+          <p class="form-check-label">
+            Is er een wettelijke minimum leeftijd voor deze vacature?
+          </p>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="minimum-age-yesno" id="minimum-age-yes" value="yes">
+            <label class="form-check-label" for="minimum-age-yes">Ja</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="minimum-age-yesno" id="minimum-age-no" value="no">
+            <label class="form-check-label" for="minimum-age-no">Nee</label>
+          </div>
+          <div class="row mb-3">
+            <label for="minimum-age" class="col-sm-6 col-form-label">Minimum leeftijd</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" id="minimum-age" min="10" max="100">
+            </div>
+          </div>
+        </div>
+
+<!--        Checkboxes uit de tabel, verder wordt dit nog gevalideerd -->
+
+        <div class="form-group">
+          <label for="functionimage">
+            Uurloon
+          </label>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover table-wages">
+              <thead>
+              <tr>
+                <th scope="col">
+                  <label>Leeftijd</label>
+                </th>
+                <th scope="col">
+                  <label>Uurloon</label>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">16 jaar</th>
+                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
+                <td><input type="checkbox" value="16-allowed" class="age-allowed" (change)="onCheck($event, 'wages16')">
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">17 jaar</th>
+                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
+                <td><input type="checkbox" value="17-allowed" class="age-allowed" (change)="onCheck($event, 'wages17')">
+              </tr>
+              <tr>
+                <th scope="row">18 jaar</th>
+                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
+                <td><input type="checkbox" value="18-allowed" class="age-allowed" (change)="onCheck($event, 'wages18')">
+              </tr>
+              <tr>
+                <th scope="row">19 jaar</th>
+                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
+                <td><input type="checkbox" value="19-allowed" class="age-allowed" (change)="onCheck($event, 'wages19')">
+              </tr>
+              <tr>
+                <th scope="row">20 jaar</th>
+                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
+                <td><input type="checkbox" value="20-allowed" class="age-allowed" (change)="onCheck($event, 'wages20')">
+              </tr>
+              <tr>
+                <th scope="row">21 jaar en ouder</th>
+                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
+                <td><input type="checkbox" value="21-allowed" class="age-allowed" (change)="onCheck($event, 'wages21')">
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+<!--        Als hier nee wordt gekozen, date pickers onzichtbaar maken -->
+
+        <div class="form-group">
+          <p class="form-check-label">
+            Is deze vacature voor een bepaalde tijd?
+          </p>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="set-period-yesno" (change)="onSetPeriod(true)" id="set-period-yes" value="yes">
+            <label class="form-check-label" for="set-period-yes">Ja</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="set-period-yesno" (change)="onSetPeriod(false)" id="set-period-no" value="no" checked>
+            <label class="form-check-label" for="set-period-no">Nee</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="date-start" class="form-label">Van</label>
+            <input type="date" class="form-control" name="date-start" id="date-start" [disabled]="!setPeriod">
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="date-end" class="form-label">Tot</label>
+            <input type="date" class="form-control" name="date-end" id="date-end" [disabled]="!setPeriod">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block col-md-5">
+            Vacature aanmaken
           </button>
         </div>
 

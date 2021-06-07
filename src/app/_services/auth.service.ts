@@ -50,6 +50,7 @@ export class AuthService {
     }
 
     public logout() {
+        
         return this.tokenService.signOut();
     }
 

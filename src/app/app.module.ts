@@ -14,7 +14,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { AlertComponent, UploadComponent } from './_components';
+import { AlertComponent, UploadComponent, WidgetComponent, CardVacancyComponent } from './_components';
+import { VacancyOverviewComponent } from './vacancies/vacancy-overview/vacancy-overview.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
@@ -27,6 +28,7 @@ import {VerificationComponent} from './verification/verification.component';
 import {JobofferComponent} from './joboffer/joboffer.component';
 import { VerificationcheckComponent } from './verificationcheck/verificationcheck.component';
 import { TrackCapsDirective } from './trackcaps.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,9 @@ import { TrackCapsDirective } from './trackcaps.directive';
     JobofferComponent,
     VerificationcheckComponent,
     TrackCapsDirective,
+    WidgetComponent,
+    CardVacancyComponent,
+    VacancyOverviewComponent,
   ],
   imports: [
     BrowserModule,
