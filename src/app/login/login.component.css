@@ -36,22 +36,6 @@ form {
 #card-title {
     margin-bottom: 3rem;
 }
-input {
-    border-radius: 8px;
-    border: none;
-    font-family: 'Avenir Semibold';
-    padding: 1rem;
-    width: 100%;
-    transition-duration: .15s;
-    transition-property: border,background-color,color,box-shadow;
-    transition-timing-function: ease-in;
-    overflow: visible;
-    color: #626272;
-    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
-    -webkit-appearance: none;
-    text-indent: 0px;
-    text-shadow: none;
-}
 .label-with-link {
     margin-top: 1rem;
     margin-left: 0.05rem;
