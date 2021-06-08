@@ -61,7 +61,7 @@
           </label>
           <div class="table-responsive">
             <table class="table table-sm table-hover table-hours">
-              <caption>Hier kunt u aangeven voor welke dag(delen) u personeel zoekt.</caption>
+              <caption>Hierboven kunt u aangeven voor welke dag(delen) u personeel zoekt.</caption>
               <thead>
               <tr>
                 <th scope="col"></th>
@@ -138,16 +138,25 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="tags" class="form-label">Tags</label>
-          <input class="form-control" list="tag-list" id="tags" placeholder="Zoek een tag...">
-          <datalist id="tag-list">
-            <option value="Horeca">
-            <option value="Supermarkt">
-            <option value="Verkoper">
-            <option value="Flexibel">
-            <option value="Gezellig team">
-          </datalist>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="tags" class="form-label">Tags</label>
+              <input class="form-control" name="tagInput" list="tag-list" id="tags" placeholder="Zoek een tag..."
+                     [(ngModel)]="form.tagInput" #tagInput="ngModel">
+              <datalist id="tag-list">
+                <option value="Horeca">
+                <option value="Supermarkt">
+                <option value="Verkoper">
+                <option value="Flexibel">
+                <option value="Gezellig team">
+              </datalist>
+              <button class="btn btn-primary" (click)="addTag()">Voeg tag toe</button>
+            </div>
+          </div>
+          <div class="col-sm-6" id="selected-tag-list">
+
+          </div>
         </div>
 
         <div class="form-group">
@@ -165,12 +174,12 @@
           <div class="row mb-3">
             <label for="minimum-age" class="col-sm-6 col-form-label">Minimum leeftijd</label>
             <div class="col-sm-6">
-              <input type="number" class="form-control" id="minimum-age" min="10" max="100">
+              <input type="number" class="form-control" id="minimum-age" min="16" max="100">
             </div>
           </div>
         </div>
 
-<!--        Checkboxes uit de tabel, verder wordt dit nog gevalideerd -->
+        <!--        Checkboxes uit de tabel, verder wordt dit nog gevalideerd -->
 
         <div class="form-group">
           <label for="functionimage">
@@ -191,52 +200,47 @@
               <tbody>
               <tr>
                 <th scope="row">16 jaar</th>
-                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
-                <td><input type="checkbox" value="16-allowed" class="age-allowed" (change)="onCheck($event, 'wages16')">
-                </td>
+                <td><input type="number" step="0.01" min="1"></td>
               </tr>
               <tr>
                 <th scope="row">17 jaar</th>
-                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
-                <td><input type="checkbox" value="17-allowed" class="age-allowed" (change)="onCheck($event, 'wages17')">
+                <td><input type="number" step="0.01" min="1"></td>
               </tr>
               <tr>
                 <th scope="row">18 jaar</th>
-                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
-                <td><input type="checkbox" value="18-allowed" class="age-allowed" (change)="onCheck($event, 'wages18')">
+                <td><input type="number" step="0.01" min="1"></td>
               </tr>
               <tr>
                 <th scope="row">19 jaar</th>
-                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
-                <td><input type="checkbox" value="19-allowed" class="age-allowed" (change)="onCheck($event, 'wages19')">
+                <td><input type="number" step="0.01" min="1"></td>
               </tr>
               <tr>
                 <th scope="row">20 jaar</th>
-                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
-                <td><input type="checkbox" value="20-allowed" class="age-allowed" (change)="onCheck($event, 'wages20')">
+                <td><input type="number" step="0.01" min="1"></td>
               </tr>
               <tr>
                 <th scope="row">21 jaar en ouder</th>
-                <td><input type="number" [disabled]="!wagesInputEnabled.wages16"></td>
-                <td><input type="checkbox" value="21-allowed" class="age-allowed" (change)="onCheck($event, 'wages21')">
+                <td><input type="number" step="0.01" min="1"></td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-<!--        Als hier nee wordt gekozen, date pickers onzichtbaar maken -->
+        <!--        Als hier nee wordt gekozen, date pickers onzichtbaar maken -->
 
         <div class="form-group">
           <p class="form-check-label">
             Is deze vacature voor een bepaalde tijd?
           </p>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="set-period-yesno" (change)="onSetPeriod(true)" id="set-period-yes" value="yes">
+            <input class="form-check-input" type="radio" name="set-period-yesno" (change)="onSetPeriod(true)"
+                   id="set-period-yes" value="yes">
             <label class="form-check-label" for="set-period-yes">Ja</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="set-period-yesno" (change)="onSetPeriod(false)" id="set-period-no" value="no" checked>
+            <input class="form-check-input" type="radio" name="set-period-yesno" (change)="onSetPeriod(false)"
+                   id="set-period-no" value="no" checked>
             <label class="form-check-label" for="set-period-no">Nee</label>
           </div>
         </div>

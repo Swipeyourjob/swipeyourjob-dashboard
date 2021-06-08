@@ -63,5 +63,4 @@ export class VerificationComponent implements OnInit {
       );
     }
   }
-
 }
