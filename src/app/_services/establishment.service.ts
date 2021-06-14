@@ -11,7 +11,7 @@ const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 const httpUploadOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' }),
+    headers: new HttpHeaders({ 'Content-Type': 'multipart/form-data' })
 };
 
 @Injectable({
@@ -33,7 +33,11 @@ export class EstablishmentService {
         return this.http.get(`${environment.apiUrl}/getEstablishmentProfile/${id}`, httpOptions);
     }
     public uploadCompanyImg(imageFile: any) {
-
-        return this.http.post(`${environment.apiUrl}/uploadimage`, {imageFile}, httpUploadOptions);
+        console.log("uploadCompanyImg: ",imageFile);
+        return this.http.post(`${environment.apiUrl}/uploadimage`, imageFile, 
+            {
+                headers: {'Content-Type':  'undefined' }
+            }
+        );
     }
 }
