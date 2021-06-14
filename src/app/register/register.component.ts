@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faExclamationTriangle, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { TokenStorageService, AuthService } from '@app/services';
 import { PasswordValidator, ZipcodeValidator } from '@app/helpers';
 import { Title } from '@angular/platform-browser';
@@ -27,10 +27,23 @@ export class RegisterComponent implements OnInit {
         subscribe: false,
         terms: false
     };
+
+    companyNameField: any = {
+        empty: false
+    }
+    zipcodeField: any = {
+        empty: false
+    }
+    kvkField: any = {
+        empty: false,
+        taken: false
+    }
     
     icons: any = {
         faCheck: faCheck,
-        faTimes: faTimes
+        faTimes: faTimes,
+        faExclamationTriangle: faExclamationTriangle,
+        faExclamation: faExclamation
     }
     passwordChecks: any = {
         passwordCapitalCheck: false,
@@ -54,7 +67,6 @@ export class RegisterComponent implements OnInit {
         kvkdDialog: false
     };
     capsOn: any;
-
 
     isLoggedIn = false;
     constructor(private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private titleService: Title, private zipcodeValidator: ZipcodeValidator) { }
@@ -96,21 +108,38 @@ export class RegisterComponent implements OnInit {
     }
     onSubmit(): void {
         this.authService.companyRegister(this.form).subscribe(
-                data => {
-                    if(data.hasOwnProperty("token")){
-                        if((data as any).token == 'Check mail') {
-                          this.router.navigate(['/registered']);
-                        }
-                      }
-                },
-                err => {
-                    console.log(err);
+            data => {
+                if(data.hasOwnProperty("token")){
+                    if((data as any).token == 'Check mail') {
+                        this.router.navigate(['/registered']);
+                    }
+                    }
+            },
+            err => {
+                if((err as any).error.text == 'Kvk is already taken') {
+                    this.kvkField.taken = true;
                 }
-            );
+            }
+        );
+    }
+
+    validateForms(): void {
+        let name = this.form.companyname;
+        if(name === "") this.companyNameField.empty = true;
+
+        let zip = this.form.zipcode;
+        if(zip ==="") this.zipcodeField.empty = true;
+
+        let kvk = this.form.kvk;
+        if(kvk === "" || kvk.length != 8) this.kvkField.empty = true;
+
+        if(this.companyNameField.empty || this.zipcodeField.empty || this.kvkField.empty) {
+            const el = document.getElementById('#scrollId');
+            el!.scrollIntoView();
+        }
     }
     
     back() {
         this.router.navigate(['/login']);
     }
-
 }
