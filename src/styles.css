@@ -73,12 +73,15 @@ input:focus {
 }
 
 /* The following will be deleted by Bart during the restyling of this web page */
-input[type=radio] {
+input[type=checkbox] {
+  border-radius: 0;
+}
+input[type=radio], input[type=checkbox] {
   border: 3px solid red;
   width: 20px;
   height: 20px;
 }
-input[type=radio]:checked {
+input[type=radio]:checked, input[type=checkbox]:checked {
   background-color: blue;
 }
 .center {
@@ -173,7 +176,7 @@ body {
 }
 
 .floating_alert {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
   z-index: 5000;
