@@ -1,0 +1,61 @@
+input {
+    border-radius: 8px;
+    border: none;
+    font-family: 'Avenir Semibold';
+    padding: 1rem;
+    width: 100%;
+    transition-duration: .15s;
+    transition-property: border,background-color,color,box-shadow;
+    transition-timing-function: ease-in;
+    overflow: visible;
+    color: #626272;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    appearance: auto;
+    text-indent: 0;
+    text-shadow: none;
+  }
+
+.vacancy-detail{
+    background-color: #b3c2da69;
+    padding: 0 0;
+    border: 1px solid green;
+}
+.vacancy-detail li{
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.vacancy-detail li :hover{
+    background: #FFFFFF18;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.match-details{
+    min-width: 100%;
+
+}
+.match-details img{
+    /* width: 100%; */
+}
+.match-details{
+    background: seashell;
+    border-radius: 8px;
+    border: 1px solid red;
+}
+.match-list{
+        
+        border: 1px solid black;
+    padding: 10px;
+    background-color: #b3c2da69;
+}
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+  }
+.match-img{
+    /* width: 100%; */
+}

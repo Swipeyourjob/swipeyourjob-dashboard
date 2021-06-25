@@ -29,6 +29,7 @@ import {JobofferComponent} from './joboffer/joboffer.component';
 import { VerificationcheckComponent } from './verificationcheck/verificationcheck.component';
 import { TrackCapsDirective } from './trackcaps.directive';
 import { VacancyDetailsComponent } from './vacancies/vacancy-details/vacancy-details.component';
+import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { VacancyDetailsComponent } from './vacancies/vacancy-details/vacancy-det
     CardVacancyComponent,
     VacancyOverviewComponent,
     VacancyDetailsComponent,
+    SubMenuComponent,
   ],
   imports: [
     BrowserModule,

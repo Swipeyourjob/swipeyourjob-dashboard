@@ -12,6 +12,7 @@ import {ForgotPasswordComponent} from './login/forgot-password/forgot-password.c
 import {VerificationComponent} from './verification/verification.component';
 import {VerificationcheckComponent} from './verificationcheck/verificationcheck.component';
 import {VacancyOverviewComponent} from './vacancies/vacancy-overview/vacancy-overview.component';
+import { VacancyDetailsComponent } from './vacancies/vacancy-details/vacancy-details.component';
 import {AuthGuard} from './_helpers';
 import {CompanyProfileComponent} from './company-profile/company-profile.component';
 import {JobofferComponent} from './joboffer/joboffer.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
   {path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard]},
   {path: 'my-vacancies', component: VacancyOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'vacancy-details', component: VacancyDetailsComponent},
   {path: 'verification', component: VerificationComponent},
   {path: 'joboffer', component: JobofferComponent, canActivate: [AuthGuard]},
   {path: 'verify', component: VerificationcheckComponent},

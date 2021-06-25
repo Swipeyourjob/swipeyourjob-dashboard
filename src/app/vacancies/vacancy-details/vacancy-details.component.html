@@ -1,7 +1,103 @@
 <div class="container">
     <div class="vacancy-margin">
-    <div class="row">
-        
+        <div class="row row-cols-2">
+            <div class="col-sm-3" id="vacancy-nav">
+                <ul class="list-unstyled components vacancy-detail">
+                    <li *ngFor="let vacancy of vacancies; index as i" (click)="viewVacancy(vacancy)" [attr.data-index]="i">
+                        <table>
+                            <tr>
+                                <td>
+                                    {{vacancy.name}}
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9">
+                <div class="match-list">
+                    <div class="card mb-3" *ngFor="let match of matches; index as i">
+                        <div class="row no-gutters">
+                            <div class="col-md-2">
+                                <img class="match-img" src="https://fakeimg.pl/130x240/" alt="{{match.profileImg}}">
+                            </div>
+                            <div class="col-md-10">
+                                <div class="card-body row">
+                                    <div class="col-md-5">
+                                        <h5 class="card-title">{{match.voornaam}} {{match.achternaam}} - {{match.age}} jaar</h5>
+                                        <p class="card-text">Werkervaring</p>
+
+                                        <p class="card-text"><small class="text-muted">Updated 10 mins ago</small></p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-text">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>Ma</td>
+                                                        <td>Di</td>
+                                                        <td>Wo</td>
+                                                        <td>Do</td>
+                                                        <td>Vr</td>
+                                                        <td>Za</td>
+                                                        <td>Zo</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Ochtend</td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Middag</td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Avond</td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nacht</td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>
