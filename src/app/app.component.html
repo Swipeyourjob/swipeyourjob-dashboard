@@ -5,7 +5,6 @@
         </div>
         <div>
             <a (click)="toggleMenu()"><img class="sidebar-profile-pic" src="/assets/img/icon_account.svg" alt="image"></a>
-            <a (click)="toggleMenu()"><img class="sidebar-profile-pic" src="/assets/img/icon_account.svg" alt="image"></a>
         </div>
     </header>
     <div class="wrapper">
@@ -44,27 +43,6 @@
                             </tr>
                         </table>
                     </a>
-                    <!-- Here is the sub list that need to belong below the navbar-->
-                    <ul>
-                        <li>Vacature aanmaken</li>
-                        <li>Solicitanten selectie</li>
-                        <li>Vacature statitistieken</li>
-                    </ul>
-                    <!-- Bart  -->
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="/assets/img/icon_add_business.svg" class="sidebar-icon sidebar-text" alt="image">
-                                </td>
-                                <td>
-                                    Chat
-                                </td>
-                            </tr>
-                        </table>
-                    </a>
                 </li>
                 <li routerLinkActive="active">
                     <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
@@ -88,33 +66,11 @@
                                     <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
                                 </td>
                                 <td>
-                                    Gebruikersbeheer
+                                    Gebruiker    
                                 </td>
                             </tr>
                         </table>
                     </a>
-                    <ul>
-                        <li>Mijn gebruikers</li>
-                        <li>Gebruikers toevoegen</li>
-                    </ul>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="user" (click)="toggleMenu()" class="a-sidebar">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
-                                </td>
-                                <td>
-                                    Vestigingsbeheer   
-                                </td>
-                            </tr>
-                        </table>
-                    </a>
-                    <ul>
-                        <li>Mijn vestiging</li>
-                        <li>Vestiging toevoegen</li>
-                    </ul>
                 </li>
                 <li routerLinkActive="active">
                     <a (click)="logout()" (click)="toggleMenu()" class="a-sidebar">

@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Job } from '../_models';
+import { Vacancies } from 'app/_models/vacancy';
 
 
 
@@ -31,7 +32,7 @@ export class JobService {
     }
 
     getAll() {
-        return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
+        return this.http.get<Vacancies[]>(`${environment.apiUrl}/getjobs`);
     }
 
     getById(id: string) {
