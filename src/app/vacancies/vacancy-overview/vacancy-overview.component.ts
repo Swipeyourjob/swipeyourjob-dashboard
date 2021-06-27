@@ -10,8 +10,22 @@ export class VacancyOverviewComponent implements OnInit {
 
   constructor(private jobService : JobService) { }
 
-  ngOnInit(): void {
-    console.log("test");
-  }
+  activeVacancies = [];
 
+  ngOnInit(): void {
+    this.jobService.getAll().subscribe(
+      (data: any) => {
+        let vacancies = {... data};
+        let vacanciesLength = Object.keys(vacancies.joblist).length;
+        if(vacanciesLength > 0){
+            this.activeVacancies = vacancies.joblist;
+        }else{
+            console.log("No active vacancies.");
+        }
+      },
+      (err: any) => {
+        console.log("Error while fetching active vacancies: " + err);
+      }
+    )
+  }
 }

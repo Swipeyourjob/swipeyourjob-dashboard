@@ -1,4 +1,4 @@
-export class Vacancies{
+export class VacancyList{
     constructor(public joblist: Array<Vacancy>) { }
 }
 export class Vacancy{
