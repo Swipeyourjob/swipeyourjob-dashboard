@@ -5,25 +5,26 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Job } from '../_models';
+import { VacancyList } from 'app/_models/vacancy';
 
 
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
-    private jobSubject: BehaviorSubject<Job>;
-    public job: Observable<Job>;
+   // private jobSubject: BehaviorSubject<Job>;
+   // public job: Observable<Job>;
 
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
-        this.jobSubject = new BehaviorSubject<Job>(JSON.parse(""));
-        this.job = this.jobSubject.asObservable();
+       // this.jobSubject = new BehaviorSubject<Job>(JSON.parse(""));
+       // this.job = this.jobSubject.asObservable();
     }
 
-    public get jobValue(): Job {
-        return this.jobSubject.value;
-    }
+  //  public get jobValue(): Job {
+      //  return this.jobSubject.value;
+//    }
 
     create(job: Job) {
         
@@ -31,7 +32,7 @@ export class JobService {
     }
 
     getAll() {
-        return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
+        return this.http.get<VacancyList[]>(`${environment.apiUrl}/getjobs`);
     }
 
     getById(id: string) {
