@@ -7,3 +7,4 @@ export * from './response';
 export * from './company';
 export * from './companyprofile';
 export * from './establishment';
+export * from './imagefile';
