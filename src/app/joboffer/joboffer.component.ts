@@ -1,5 +1,7 @@
 import {Title} from '@angular/platform-browser';
 import {Component, OnInit, OnChanges, ViewChild, ElementRef} from '@angular/core';
+import {AlertService, JobService} from '@app/services';
+
 import {PasswordValidator} from 'app/_helpers/passwordvalidator';
 import {AuthService, TokenStorageService} from '@app/services';
 import {any} from 'codelyzer/util/function';
@@ -12,32 +14,86 @@ import {concat} from 'rxjs';
 })
 export class JobofferComponent implements OnInit {
   form: any = {
-    tagInput: null,
-    password: null
+    jobName: null,
+    jobDescription: null,
+    jobImage: null,
+    // jobStreet: null,
+    // jobCity: null,
+    availability: [
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      },
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      },
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      },
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      },
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      },
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      },
+      {
+        morning: false,
+        afternoon: false,
+        evening: false,
+        night: false
+      }
+    ],
+    tags: [],
+    minimumAgeYesNo: null,
+    minimumAge: null,
+    wages: {
+      age16: null,
+      age17: null,
+      age18: null,
+      age19: null,
+      age20: null,
+      age21: null
+    },
+    setPeriodYesNo: null,
+    startdate: null,
+    enddate: null
   };
-  tags: any = [];
   tagField: any;
-  htmlForTags = '';
-  passwordchecks: any = {
-    passwordCapitalCheck: false,
-    passwordNumberCheck: false,
-    passwordLengthCheck: false
-  };
   dialogChecks: any = {
     passwordDialog: false
   };
   isLoggedIn = false;
   wagesInputEnabled: any = {
-    wages16: false,
-    wages17: false,
-    wages18: false,
-    wages19: false,
-    wages20: false,
-    wages21: false
+    wages16: null,
+    wages17: null,
+    wages18: null,
+    wages19: null,
+    wages20: null,
+    wages21: null
   };
   setPeriod = false;
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title, private alertService: AlertService, private jobService: JobService) {
   }
 
   ngOnInit(): void {
@@ -83,14 +139,12 @@ export class JobofferComponent implements OnInit {
   addTag(): void {
     // Runs when the button 'Voeg tag toe' is clicked
     const {tagInput} = this.form;
-    this.tags.push(tagInput);
-
-    this.updateTags();
-
-    const tagsInput: HTMLElement | null = document.getElementById('tags') as HTMLInputElement;
-    if (tagsInput as HTMLInputElement) {
-      const typescriptIsKut = tagsInput as HTMLInputElement;
-      typescriptIsKut.value = '';
+    if (tagInput != '' && tagInput != undefined) {
+      this.form.tags.push(tagInput);
+      this.updateTags();
+      this.form.tagInput = '';
+    } else {
+      this.alertService.error('Tag kon niet worden toegevoegd, er is niets ingevuld.');
     }
   }
 
@@ -100,7 +154,7 @@ export class JobofferComponent implements OnInit {
     const htmlTagList: any = document.getElementById('selected-tag-list');
     // tslint:disable-next-line:only-arrow-functions
     htmlTagList.innerHTML = '';
-    this.tags.forEach((value: any) => {
+    this.form.tags.forEach((value: any) => {
       this.addSingleTag(value);
     });
   }
@@ -125,14 +179,14 @@ export class JobofferComponent implements OnInit {
     button.setAttribute('data-tagvalue', value);
 
     button.addEventListener('click', (event) => {
-      const key = this.tags.find((element: any) => element == value);
-      const index = this.tags.indexOf(key, 0);
+      const key = this.form.tags.find((element: any) => element == value);
+      const index = this.form.tags.indexOf(key, 0);
       if (index > -1) {
-        this.tags.splice(index, 1);
+        this.form.tags.splice(index, 1);
       }
       console.log(value);
       this.updateTags();
-      console.log(this.tags);
+      console.log(this.form.tags);
     });
   }
 
@@ -142,6 +196,126 @@ export class JobofferComponent implements OnInit {
     console.log(value);
   }
 
+  // validateInput(element: HTMLInputElement): boolean {
+  //   console.log(element);
+  //   console.log(element.getAttribute('data-mandatory2'));
+  //   if (
+  //     element.getAttribute('data-mandatory') != null &&
+  //     element.getAttribute('data-error-mandatory') != null &&
+  //     element.getAttribute('data-mandatory') == 'true' &&
+  //     element.value == '') {
+  //     console.log(element.getAttribute('data-error-mandatory'));
+  //
+  //     this.alertService.error(String(element.getAttribute('data-error-mandatory')), {fade: true});
+  //
+  //     return false;
+  //   }
+  //   return true;
+  // }
+
   onSubmit(): void {
+    console.log('Submit form');
+    this.alertService.clear(); // clear all alerts
+
+    // // Check all inputs
+    // const mandatoryInputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('[data-mandatory]');
+    // console.log(mandatoryInputs);
+    // let checkList: Array<Boolean> = [];
+    // for (let i = 0; i < mandatoryInputs.length; i++) {
+    //   checkList.push(this.validateInput(mandatoryInputs[i]));
+    // }
+
+    // check all inputs
+    let formComplete: Boolean = true;
+    if (this.form.jobName == '' || this.form.jobName == null) {
+      this.alertService.error('Het is verplicht om de naam van de functie in te vullen.');
+      formComplete = false;
+    }
+    if (this.form.jobDescription == '' || this.form.jobDescription == null) {
+      this.alertService.error('Het is verplicht om een functieomschrijving in te vullen.');
+      formComplete = false;
+    }
+    let availabilityComplete = false;
+    for (let i = 0; i < this.form.availability.length; i++) {
+      const day: { [index: string]: any } = this.form.availability[i];
+      for (let key in day) {
+        if (day[key]) {
+          availabilityComplete = true;
+        }
+      }
+    }
+    if (!availabilityComplete) {
+      this.alertService.error('Het is verplicht om minstens één werktijd te specificeren.');
+      formComplete = false;
+    }
+    if (this.form.tags.length < 1) {
+      this.alertService.error('Het is verplicht om minstens één tag te selecteren.');
+      formComplete = false;
+    }
+    if (
+      this.form.minimumAgeYesNo == null ||
+      this.form.minimumAgeYesNo == ''
+    ) {
+      this.alertService.error('Er is niet aangegeven of er een minimum leeftijd voor deze vacature is.');
+      formComplete = false;
+    }
+    if (
+      (
+        this.form.minimumAge == null ||
+        this.form.minimumAge == ''
+      ) &&
+      this.form.minimumAgeYesNo == 'yes'
+    ) {
+      this.alertService.error('De minimum leeftijd van de vacature is niet ingevuld, terwijl er wel een minimum leeftijd is.');
+      formComplete = false;
+    }
+    if (Object.values(this.form.wages).indexOf(null) <= 0) {
+      this.alertService.error('Het is verplicht om minimaal één uurloon in te vullen.');
+      formComplete = false;
+    }
+    if (
+      this.form.setPeriodYesNo == null ||
+      this.form.setPeriodYesNo == ''
+    ) {
+      this.alertService.error('Er is niet aangegeven of deze vacature voor een bepaalde tijd is.');
+      formComplete = false;
+    }
+    if (
+      (
+        this.form.startdate == null ||
+        this.form.startdate == ''
+      ) &&
+      this.form.setPeriodYesNo == 'yes'
+    ) {
+      this.alertService.error('Er is geen startdatum van de vacature ingevuld.');
+      formComplete = false;
+    }
+    if (this.form.enddate != null && this.form.enddate != '' && this.form.startdate != null && this.form.startdate != '') {
+      const startDate = Date.parse(this.form.startdate);
+      const endDate = Date.parse(this.form.enddate);
+      console.log(startDate);
+      console.log(endDate);
+
+      if (startDate > endDate) {
+        this.alertService.error('De einddatum van de vacature ligt voor de startdatum.');
+        formComplete = false;
+      }
+    }
+
+    // if (this.form.availability.filter((daypart: boolean) => daypart).length > 0) {
+    //   console.log(this.form.availability);
+    //   this.alertService.error('Het is verplicht om minstens één werktijd te specificeren.');
+    //   formComplete = false;
+    // }
+
+    console.log(this.form);
+    console.log(formComplete);
+    if (formComplete) {
+      this.alertService.info('De vacature is aangemaakt.', {fade: true});
+      console.log(this.form);
+
+    } else {
+      this.alertService.error('Het formulier bevat fouten en is niet verzonden.', {fade: false});
+    }
   }
 }

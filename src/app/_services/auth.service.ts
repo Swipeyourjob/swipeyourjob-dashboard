@@ -38,9 +38,9 @@ export class AuthService {
         }, httpOptions);
     }
 
-    public companyRegister(companyInfo:Company) {
-        return this.http.post(environment.apiUrl + '/newCompany', companyInfo, httpOptions);
-    }
+  public companyRegister(companyInfo:Company) {
+    return this.http.post(environment.apiUrl + '/newCompany', companyInfo, httpOptions);
+  }
 
     public companySetPassword(
         password: string) {
@@ -50,7 +50,7 @@ export class AuthService {
     }
 
     public logout() {
-        
+
         return this.tokenService.signOut();
     }
 
