@@ -196,8 +196,13 @@ body {
   -webkit-appearance: none;
 }
 
-.floating_alert {
+alert {
   position: fixed;
+  right: 10px;
+  top: 10px;
+}
+.floating_alert {
+  position: relative;
   top: 20px;
   right: 20px;
   z-index: 5000;

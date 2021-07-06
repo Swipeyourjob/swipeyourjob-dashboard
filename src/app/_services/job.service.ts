@@ -8,33 +8,33 @@ import { Job, VacancyUpdate } from '@app/models';
 import { VacancyList } from 'app/_models/vacancy';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
-   // private jobSubject: BehaviorSubject<Job>;
-   // public job: Observable<Job>;
+    // private jobSubject: BehaviorSubject<Job>;
+    // public job: Observable<Job>;
 
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
-       // this.jobSubject = new BehaviorSubject<Job>(JSON.parse(""));
-       // this.job = this.jobSubject.asObservable();
+        // this.jobSubject = new BehaviorSubject<Job>(JSON.parse(""));
+        // this.job = this.jobSubject.asObservable();
     }
 
-  //  public get jobValue(): Job {
-      //  return this.jobSubject.value;
-//    }
+    //  public get jobValue(): Job {
+    //  return this.jobSubject.value;
+    //    }
 
-    create(job: Job) {
-        
-        return this.http.post(`${environment.apiUrl}/job/create`, job).pipe();
+    public createJob(job: Job) {
+        console.log("CreateJob: ", job);
+        return this.http.post(environment.apiUrl + '/newjob', job, httpOptions);
     }
 
     getAll() {
-        return this.http.get<VacancyList[]>(`${environment.apiUrl}/getjobs`);
+        return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
     }
 
     getById(id: string) {
