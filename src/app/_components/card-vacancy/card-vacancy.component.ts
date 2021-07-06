@@ -20,4 +20,9 @@ export class CardVacancyComponent implements OnInit {
   {
     return `linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url(${this.vacancy.images[0]}) no-repeat center center`;
   }
+
+  getFilter()
+  {
+    return this.vacancy.daysValid <= 0 ? 'grayscale(100%)' : '';
+  }
 }
