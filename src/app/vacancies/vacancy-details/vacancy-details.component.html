@@ -1,15 +1,27 @@
 <div class="container">
     <div class="vacancy-margin">
-        <div class="row row-cols-2">
+        <div class="row">
             <div class="col-sm-3" id="vacancy-nav">
-                <ul class="list-unstyled components vacancy-detail">
-                    <li *ngFor="let vacancy of vacancies; index as i" (click)="viewVacancy(vacancy)" [attr.data-index]="i">
+                <ul class="list-unstyled components vacancy-detail list-group">
+                    <li  class="d-flex justify-content-between align-items-center" 
+                        id="{{i}}" 
+                        *ngFor="let vacancy of vacancies.joblist; index as i" 
+                        (click)="viewVacancy(vacancy,i)" >
                         <table>
                             <tr>
                                 <td>
-                                    {{vacancy.name}}
+                                    <p [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</p>
                                 </td>
                             </tr>
+                            <div 
+                                class="display-grid" 
+                                [attr.data-index]="i" 
+                                *ngIf="vacancy.jobid == jobidFromRoute"  
+                            >
+                                <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLenght()}}</span></a>
+                                <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLenght()}}</span> </a>
+                                <a href="#">(Vacature statistieken)</a>
+                            </div>
                         </table>
                     </li>
                 </ul>
@@ -23,11 +35,12 @@
                             </div>
                             <div class="col-md-10">
                                 <div class="card-body row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-7">
                                         <h5 class="card-title">{{match.voornaam}} {{match.achternaam}} - {{match.age}} jaar</h5>
                                         <p class="card-text">Werkervaring</p>
 
                                         <p class="card-text"><small class="text-muted">Updated 10 mins ago</small></p>
+                                        
                                     </div>
                                     <div class="col-md-5">
                                         <div class="card-text">
@@ -90,7 +103,12 @@
                                             </table>
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="row ml-2">
+                                    <div class="col">
+                                        <a href="#" class="btn btn-success btn-circle"> <fa-icon [icon]="icons.faCheck"></fa-icon> </a>
+                                        <a href="#" class="btn btn-danger btn-circle"> <fa-icon [icon]="icons.faTimes"></fa-icon> </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

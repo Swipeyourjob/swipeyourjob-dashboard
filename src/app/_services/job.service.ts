@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Job } from '../_models';
+import { Job, VacancyUpdate } from '@app/models';
 import { VacancyList } from 'app/_models/vacancy';
 
-
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+};
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
@@ -37,5 +39,8 @@ export class JobService {
 
     getById(id: string) {
         return this.http.get<Job>(`${environment.apiUrl}/getjobs?companyid=${id}`);
+    }
+    public updateJobStatus(status:VacancyUpdate){
+        return this.http.post(`${environment.apiUrl}/updateUserJobStatus`, status, httpOptions);
     }
 }

@@ -1,8 +1,8 @@
-import { TrackcapsDirective } from './trackcaps.directive';
+import { TrackCapsDirective } from './trackcaps.directive';
 
-describe('TrackcapsDirective', () => {
+describe('TrackCapsDirective', () => {
   it('should create an instance', () => {
-    const directive = new TrackcapsDirective();
+    const directive = new TrackCapsDirective();
     expect(directive).toBeTruthy();
   });
 });

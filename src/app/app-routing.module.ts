@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
   {path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard]},
   {path: 'my-vacancies', component: VacancyOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'vacancy-details', component: VacancyDetailsComponent},
+  {path: 'vacancy-details/:vacancyId', component: VacancyDetailsComponent},
   {path: 'verification', component: VerificationComponent},
   {path: 'joboffer', component: JobofferComponent, canActivate: [AuthGuard]},
   {path: 'verify', component: VerificationcheckComponent},

@@ -1,4 +1,8 @@
 import { Component, OnInit,  } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Job, Vacancy, IVacancy, IVacancyList } from '@app/models';
+import { JobService } from '@app/services';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-vacancy-details',
@@ -6,13 +10,9 @@ import { Component, OnInit,  } from '@angular/core';
     styleUrls: ['./vacancy-details.component.css']
 })
 export class VacancyDetailsComponent implements OnInit {
-    vacancies = [
-        {name: "Kassamedewerker"}, 
-        {name:"Brood afdeling"}, 
-        {name:"Vulploegmedewerker"}, 
-        {name:"Magazijn"}, 
-        {name:"Kantoor"}
-    ];
+    vacancies : IVacancyList = {
+        joblist: [{jobName: "Kassamedewerker", jobid:0, daysValid:50, images:["gakjslsjkfds"] }]
+    };
     avaibility = [
     {
         morning: false,
@@ -65,20 +65,48 @@ export class VacancyDetailsComponent implements OnInit {
         {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
         {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility}
     ]
+    job: Vacancy| undefined;
+    visiable= false;
+    public icons: any = {
+        faCheck: faCheck,
+        faTimes: faTimes
+    };
+    routeParams = this.route.snapshot.paramMap;
+    jobidFromRoute = Number(this.routeParams.get('vacancyId'));
 
-    constructor() { 
+    constructor( private jobService: JobService, private route: ActivatedRoute,) { 
 
      }
 
     ngOnInit(): void {
-
+        this.jobService.getAll().subscribe(
+            (data: any) => {
+              let vacancies = {... data};
+              let vacanciesLength = Object.keys(vacancies.joblist).length;
+              if(vacanciesLength > 0){
+                  this.vacancies.joblist = vacancies.joblist;
+                  console.log(this.vacancies);
+              }else{
+                  console.log("No active vacancies.");
+              }
+            },
+            (err: any) => {
+              console.log("Error while fetching active vacancies: " + err);
+            }
+          )
     }
 
-    viewVacancy(e:any): void {
-        console.log(e);
+    viewVacancy(vacancy:any, index:number): void {
+        console.log( this.visiable);
+        console.log( this.jobidFromRoute);
+        this.visiable= !this.visiable;
     }
 
     updateLikeStatus(): void{
-
+        
+    }
+    getLenght(): Number{
+        
+        return this.vacancies.joblist.length
     }
 }

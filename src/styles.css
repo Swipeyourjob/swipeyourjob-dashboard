@@ -18,7 +18,7 @@
   -webkit-transform: translate3d(0px, -1px, 0);
   -webkit-appearance: none;
 }
-
+/* LINKS */
 a {
   cursor: pointer;
 }
@@ -30,6 +30,7 @@ a:hover {
   font-weight: bold;
   border: none !important;
   height: 45px;
+  
 }
 .btn:focus {
   outline: none !important;
@@ -44,7 +45,26 @@ a:hover {
   font-weight: bold;
   border: none !important;
 }
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 35px;
+    line-height: 1.33;
+}
 
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.42857;
+}
+
+/* INPUT */
 input {
   border-radius: 8px;
   border: none;
@@ -84,6 +104,7 @@ input[type=radio], input[type=checkbox] {
 input[type=radio]:checked, input[type=checkbox]:checked {
   background-color: blue;
 }
+/*  */
 .center {
     justify-content: center;
     margin: auto;

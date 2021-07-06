@@ -8,3 +8,6 @@ export * from './company';
 export * from './companyprofile';
 export * from './establishment';
 export * from './imagefile';
+export * from './vacancy';
+
+// TODO:: clean up models from class -> interfaces
