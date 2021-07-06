@@ -1,12 +1,7 @@
 <div class="container">
     <div class="vacancy-margin">
     <div class="row">
-        <card-vacancy class="col-12 col-sm-6 col-lg-4"></card-vacancy>
-        <card-vacancy class="col-12 col-sm-6 col-lg-4"></card-vacancy>
-        <card-vacancy class="col-12 col-sm-6 col-lg-4"></card-vacancy>
-        <card-vacancy class="col-12 col-sm-6 col-lg-4"></card-vacancy>
-        <card-vacancy class="col-12 col-sm-6 col-lg-4"></card-vacancy>
-        <card-vacancy class="col-12 col-sm-6 col-lg-4"></card-vacancy>
+        <card-vacancy *ngFor="let vacancy of activeVacancies" [vacancy]="vacancy" class="col-12 col-sm-6 col-lg-4"></card-vacancy>
     </div>
 </div>
 </div>

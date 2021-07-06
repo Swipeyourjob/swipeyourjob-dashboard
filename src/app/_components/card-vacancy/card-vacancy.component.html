@@ -1,8 +1,8 @@
 <div class="card-vacancy">
     <div class="fadeAnimation">
-        <div class="jumbotron">
+        <div class="jumbotron" [ngStyle]="{'background': getUrl()}">
             <div class="container-vacancy">
-                <div class="card-vacancy-text">Medewerker Vulploeg Medewerker</div>
+                <div class="card-vacancy-text">{{vacancy.jobName}}</div>
             </div>
         </div>
     </div>
