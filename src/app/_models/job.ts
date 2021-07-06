@@ -1,4 +1,3 @@
-type availability = [morning: boolean, afternoon: boolean, evening: boolean, night: boolean];
 export interface Job {
     estamblishmentid?: number | null,
     jobName: string | null,
