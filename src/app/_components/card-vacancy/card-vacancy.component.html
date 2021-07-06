@@ -1,8 +1,17 @@
 <div class="card-vacancy">
     <div class="fadeAnimation">
-        <div class="jumbotron" [ngStyle]="{'background': getUrl()}">
+        <div class="jumbotron" [ngStyle]="{'background': getUrl(), 'filter': getFilter()}">
             <div class="container-vacancy">
-                <div class="card-vacancy-text">{{vacancy.jobName}}</div>
+                <div class="card-vacancy-text">
+                    {{vacancy.jobName}}
+                </div>
+                <div class="card-vacancy-time">
+                    <img src="/assets/img/icon_time.svg" width="20%" alt="image">
+                    {{vacancy.daysValid}} dagen
+                </div>
+                <div class="card-vacancy-options">
+                    <img src="/assets/img/icon_menu_dots.svg" width="100%" alt="image">
+                </div>
             </div>
         </div>
     </div>
