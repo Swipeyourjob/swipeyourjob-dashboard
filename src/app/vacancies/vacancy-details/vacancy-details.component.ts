@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Job, Vacancy, IVacancy, IVacancyList } from '@app/models';
 import { JobService } from '@app/services';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+// import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
     selector: 'app-vacancy-details',
@@ -74,9 +75,13 @@ export class VacancyDetailsComponent implements OnInit {
     routeParams = this.route.snapshot.paramMap;
     jobidFromRoute = Number(this.routeParams.get('vacancyId'));
 
-    constructor( private jobService: JobService, private route: ActivatedRoute,) { 
-        
-     }
+    constructor( 
+        private jobService: JobService, 
+        private route: ActivatedRoute, 
+        // private dialog: MatDialog
+        ) { 
+
+    }
 
     ngOnInit(): void {
         this.jobService.getAll().subscribe(
