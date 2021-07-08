@@ -1,3 +1,5 @@
+
+
 ::placeholder {
   color: #C0C0CF;
   opacity: 1;
@@ -157,8 +159,10 @@ input[type=radio]:checked, input[type=checkbox]:checked {
   flex: 1;
 }
 
+html, body { height: 100%; }
+
 body {
-  font-family: "Avenir", Helvetica, sans-serif;
+  font-family: "Avenir", Helvetica, sans-serif !important;
   padding: 0;
   margin: 0 0 0 0;
   /* //display: flex; */
@@ -254,3 +258,5 @@ ul.nav li a, ul.nav li a:visited {
     min-width: 0;
     /* margin-right: 0; */
 }
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';

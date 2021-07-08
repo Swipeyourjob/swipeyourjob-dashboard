@@ -31,6 +31,17 @@ import { TrackCapsDirective } from './trackcaps.directive';
 import { VacancyDetailsComponent } from './vacancies/vacancy-details/vacancy-details.component';
 import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatBadgeModule} from '@angular/material/badge';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +67,7 @@ import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
     VacancyOverviewComponent,
     VacancyDetailsComponent,
     SubMenuComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +78,16 @@ import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
     HttpClientModule,
     FontAwesomeModule,
     CKEditorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    MatBadgeModule,
   ],
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent]

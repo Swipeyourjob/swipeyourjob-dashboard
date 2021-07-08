@@ -3,24 +3,22 @@
         <div class="row">
             <div class="col-sm-3" id="vacancy-nav">
                 <ul class="list-unstyled components vacancy-detail list-group">
-                    <li  class="d-flex justify-content-between align-items-center" 
-                        id="{{i}}" 
-                        *ngFor="let vacancy of vacancies.joblist; index as i" 
-                        (click)="viewVacancy(vacancy,i)" >
+                    <li class="d-flex justify-content-between align-items-center" id="{{i}}"
+                        *ngFor="let vacancy of vacancies.joblist; index as i" (click)="viewVacancy(vacancy,i)"
+                        >
                         <table>
                             <tr>
                                 <td>
-                                    <p [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</p>
+                                    <p [routerLink]="['/vacancy-details', vacancy.jobid]" 
+                                    [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute, 'clean-links': true }">{{vacancy.jobName}}</p>
                                 </td>
                             </tr>
-                            <div 
-                                class="display-grid" 
-                                [attr.data-index]="i" 
-                                *ngIf="vacancy.jobid == jobidFromRoute"  
-                            >
-                                <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLenght()}}</span></a>
-                                <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLenght()}}</span> </a>
+                            <div class="display-grid" [attr.data-index]="i" *ngIf="vacancy.jobid === jobidFromRoute">
+                
+                                <a href="#"><span [matBadge]="getLenght()" matBadgeOverlap="false"> Sollicitanten </span></a>
+                                <a href="#"><span [matBadge]="getLenght()" matBadgeOverlap="false"> Afgewezen Sollicitanten </span></a>
                                 <a href="#">(Vacature statistieken)</a>
+                                
                             </div>
                         </table>
                     </li>

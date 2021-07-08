@@ -75,25 +75,27 @@ export class VacancyDetailsComponent implements OnInit {
     jobidFromRoute = Number(this.routeParams.get('vacancyId'));
 
     constructor( private jobService: JobService, private route: ActivatedRoute,) { 
-
+        
      }
 
     ngOnInit(): void {
         this.jobService.getAll().subscribe(
             (data: any) => {
-              let vacancies = {... data};
-              let vacanciesLength = Object.keys(vacancies.joblist).length;
-              if(vacanciesLength > 0){
-                  this.vacancies.joblist = vacancies.joblist;
-                  console.log(this.vacancies);
-              }else{
-                  console.log("No active vacancies.");
-              }
+                let vacancies = { ...data };
+                let vacanciesLength = Object.keys(vacancies.joblist).length;
+                if (vacanciesLength > 0) {
+                    this.vacancies.joblist = vacancies.joblist;
+                    console.log(this.vacancies);
+                } else {
+                    console.log('No active vacancies.');
+                }
             },
             (err: any) => {
-              console.log("Error while fetching active vacancies: " + err);
+                console.log('Error while fetching active vacancies: ' + err);
             }
-          )
+        );
+        this.route.paramMap.subscribe(params => this.jobidFromRoute = Number(params.get('vacancyId')));
+        console.log(this.jobidFromRoute);
     }
 
     viewVacancy(vacancy:any, index:number): void {
@@ -105,8 +107,8 @@ export class VacancyDetailsComponent implements OnInit {
     updateLikeStatus(): void{
         
     }
-    getLenght(): Number{
+    getLenght(): string{
         
-        return this.vacancies.joblist.length
+        return ""+this.vacancies.joblist.length
     }
 }

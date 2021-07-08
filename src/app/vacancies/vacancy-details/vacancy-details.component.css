@@ -58,3 +58,6 @@ input {
 .display-grid {
   display: grid;
 }
+.clean-links{
+    margin-bottom: 0 !important;
+}
