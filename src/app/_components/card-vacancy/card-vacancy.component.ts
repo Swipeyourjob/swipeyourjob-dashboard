@@ -13,7 +13,8 @@ export class CardVacancyComponent implements OnInit {
   @Input() vacancy!: Vacancy;
 
   ngOnInit(): void {
-    console.log(this.vacancy);
+    if(this.vacancy.daysValid < 0)
+      this.vacancy.daysValid = 0;
   }
 
   getUrl()
