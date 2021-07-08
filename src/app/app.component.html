@@ -1,97 +1,40 @@
-<div id="app">
-    <header class="header" id="header" *ngIf="isLoggedIn">
+<div class="toppie">
+    <mat-toolbar *ngIf="isLoggedIn">
+
         <div>
             <a class="sidebar-menu-icon" (click)="toggleMenu()"><img src="/assets/img/icon_menu_light.svg" *ngIf="isLoggedIn" alt="image"></a>
         </div>
-        <div>
-            <a (click)="toggleMenu()"><img class="sidebar-profile-pic" src="/assets/img/icon_account.svg" alt="image"></a>
-        </div>
-    </header>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar" #sidebar>
-            <div class="sidebar-header">
-                <img src="/assets/img/logo_light.svg" width="80%" alt="image">
-                <a class="sidebar-menu-icon" (click)="toggleMenu()"><img src="/assets/img/icon_menu_light.svg" alt="image"></a>
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar>
+    <mat-sidenav-container>
+        <mat-sidenav #snav mode="side" opened class="mat-elevation-z8" >
+            <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+
+            <h4 class="name">John Smith</h4>
+            <p class="designation">Al meer dan 27 jaar mens!</p>
+
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink=""> <mat-icon>home</mat-icon> <span>Dashboard</span></a>
+                <a mat-list-item routerLink="companyprofile"> <mat-icon>class</mat-icon> <span>Bedrijfsprofiel</span></a>
+                <a mat-list-item routerLink="my-vacancies"> <mat-icon>class</mat-icon> <span>Mijn Vacatures</span></a>
+                <a mat-list-item routerLink="user"> <mat-icon>class</mat-icon> <span>Gebruiker</span></a>
+                <a mat-list-item routerLink="admin"> <mat-icon>class</mat-icon> <span>admin</span></a>
+                <a mat-list-item (click)="logout()"> <mat-icon>class</mat-icon> <span>Uitloggen</span></a>
+            </mat-nav-list>
+              
+            <mat-divider></mat-divider>
+    
+            <button routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" mat-button class="menu-button">
+                <mat-icon>help</mat-icon>
+                <span>Help</span>
+            </button>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="content mat-elevation-z8">
+                <router-outlet></router-outlet>
+                <alert></alert>
             </div>
-            
-            <ul class="list-unstyled components">
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-                    <a routerLink="" (click)="toggleMenu()" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle a-sidebar">
-                    <table>
-                        <tr>
-                            <td>
-                                <img src="/assets/img/icon_home.svg" class="sidebar-icon sidebar-text" alt="image">
-                            </td>
-                            <td>
-                                Overzicht    
-                            </td>
-                        </tr>
-                    </table>
-                    </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="my-vacancies" (click)="toggleMenu()" class="a-sidebar">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="/assets/img/icon_contract.svg" class="sidebar-icon sidebar-text" alt="image">
-                                </td>
-                                <td>
-                                    Mijn Vacatures
-                                </td>
-                            </tr>
-                        </table>
-                    </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="companyprofile" (click)="toggleMenu()" class="a-sidebar">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="/assets/img/icon_add_business.svg" class="sidebar-icon sidebar-text" alt="image">
-                                </td>
-                                <td>
-                                    Bedrijfsprofiel
-                                </td>
-                            </tr>
-                        </table>
-                    </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a routerLink="user" (click)="toggleMenu()" class="a-sidebar">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="/assets/img/icon_profile.svg" class="sidebar-icon sidebar-text" alt="image">
-                                </td>
-                                <td>
-                                    Gebruiker    
-                                </td>
-                            </tr>
-                        </table>
-                    </a>
-                </li>
-                <li routerLinkActive="active">
-                    <a (click)="logout()" (click)="toggleMenu()" class="a-sidebar">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="/assets/img/icon_logout.svg" class="sidebar-icon sidebar-text" alt="image">
-                                </td>
-                                <td>
-                                    Uitloggen    
-                                </td>
-                            </tr>
-                        </table>
-                    </a>
-                </li>
-            </ul>            
-        </nav>
-        <!-- Page Content -->
-        <div class="container-fluid body-padding" id="main-content">
-            <router-outlet></router-outlet>
-            <alert></alert>
-        </div>
-    </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

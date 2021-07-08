@@ -41,7 +41,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatBadgeModule} from '@angular/material/badge';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,6 +91,12 @@ import { MatBadgeModule} from '@angular/material/badge';
     MatButtonModule,
     LayoutModule,
     MatBadgeModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
   ],
   providers: [authInterceptorProviders, Title],
   bootstrap: [AppComponent]

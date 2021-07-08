@@ -180,18 +180,14 @@ body {
   background-color: #F6F7FB;
 }
 
-.header{
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  background-color: var(--white-color);
-  z-index: var(--z-fixed);
-  transition: .5s;
+.toppie{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .jumbotron {
@@ -259,4 +255,4 @@ ul.nav li a, ul.nav li a:visited {
     /* margin-right: 0; */
 }
 
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+/* @import '~@angular/material/prebuilt-themes/indigo-pink.css'; */

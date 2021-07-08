@@ -33,7 +33,7 @@ export class EstablishmentService {
         return this.http.get(`${environment.apiUrl}/getEstablishmentProfile/${id}`, httpOptions);
     }
     public uploadCompanyImg(imageFile: any): Observable<HttpEvent<any>> {
-        console.log(imageFile);
-        return this.http.post<HttpEvent<any>>(`${environment.apiUrl}/uploadimage`, imageFile, httpUploadOptions);
+        let  companyImg = {'imageFile': imageFile}
+        return this.http.post<HttpEvent<any>>(`${environment.apiUrl}/uploadimage`, companyImg, httpUploadOptions);
     }
 }

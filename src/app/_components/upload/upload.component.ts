@@ -17,7 +17,8 @@ export class UploadComponent implements OnInit, OnDestroy {
     uploadForm = new FormGroup({
         name: new FormControl('', [Validators.required]),
         file: new FormControl('', [Validators.required]),
-        imageFile: new FormControl('', [Validators.required])
+        imageFile: new FormControl('', [Validators.required]),
+        imgBody: new FormControl('', [Validators.required])
     });
 
     constructor(private httpClient: HttpClient,private router: Router, private establishmentService: EstablishmentService, private alertService: AlertService) { }
@@ -29,7 +30,10 @@ export class UploadComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         
     }
-   
+    uploadImage(e: any){
+        
+        const [file] = e.target.files;
+    }
      
    get uf(){
      return this.uploadForm.controls;
@@ -39,14 +43,17 @@ export class UploadComponent implements OnInit, OnDestroy {
         const reader = new FileReader();
         if(e.target.files && e.target.files.length) {
             const [file] = e.target.files;
-
+            console.log(e.target);
+            console.log(file);
+            console.log(file.name);
             this.imgFile.append("imageFile", file, file.name);
+            console.log(this.uploadForm.get('file'));
             reader.readAsDataURL(file);
     
             reader.onload = () => {
                 this.imgPreview = reader.result as string;
                 this.uploadForm.patchValue({
-                    imageFile: reader.result
+                    imageFile: file,
                 });
             }
         }
@@ -56,12 +63,14 @@ export class UploadComponent implements OnInit, OnDestroy {
         if(this.imgFile.has("imageFile")){
             console.log(this.uploadForm.get('imageFile'));
             console.log(this.imgFile);
-
+            console.log(this.uploadForm.value.imageFile);
+            console.log(this.imgFile);
             
-            this.establishmentService.uploadCompanyImg(this.imgFile).subscribe(
-                complete => {
-                    console.log("succ: ",complete);
-                    this.responseData = complete;
+            
+            this.establishmentService.uploadCompanyImg(this.uploadForm.value.imageFile).subscribe(
+                data => {
+                    console.log("succ: ",data);
+                    this.responseData = data;
                     this.alertService.success('WERKT', { keepAfterRouteChange: true });
                 },
                 err => {
