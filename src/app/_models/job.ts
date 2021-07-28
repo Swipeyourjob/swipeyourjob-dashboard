@@ -5,7 +5,7 @@ export interface Job {
     jobImage: string | null,
     startdate: string | null,
     enddate: string | null,
-    availability: Array<Availability>,
+    avaibility: Array<Availability>,
     tags: string[],
     salary: Array<Salary>
 }

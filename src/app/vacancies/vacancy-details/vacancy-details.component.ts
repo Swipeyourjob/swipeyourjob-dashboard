@@ -59,11 +59,11 @@ export class VacancyDetailsComponent implements OnInit {
     ];
     matches = [
         {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility}
+        {profileImg: "test", voornaam:"James", achternaam:"Jones",age:23, availabilty:this.avaibility},
+        {profileImg: "test", voornaam:"Frank", achternaam:"Bovenberg",age:21, availabilty:this.avaibility},
+        {profileImg: "test", voornaam:"Maddie", achternaam:"Regenachtig",age:17, availabilty:this.avaibility},
+        {profileImg: "test", voornaam:"Dang", achternaam:"Lin-Wang",age:19, availabilty:this.avaibility},
+        {profileImg: "test", voornaam:"Dixie", achternaam:"Normous",age:18, availabilty:this.avaibility}
     ]
     job: Vacancy| undefined;
     visiable= false;
@@ -75,8 +75,7 @@ export class VacancyDetailsComponent implements OnInit {
     jobidFromRoute = Number(this.routeParams.get('vacancyId'));
 
     constructor( private jobService: JobService, private route: ActivatedRoute,) { 
-
-     }
+    }
 
     ngOnInit(): void {
         this.jobService.getAll().subscribe(
@@ -93,7 +92,16 @@ export class VacancyDetailsComponent implements OnInit {
             (err: any) => {
               console.log("Error while fetching active vacancies: " + err);
             }
-          )
+        );
+        this.jobService.getLikes().subscribe(
+            (data) => {
+                let likes = {...data};
+                console.log(likes);
+            },
+            (err) => {
+                console.log("Error while fetching vacancies likes: " + err);
+            }
+        );
     }
 
     viewVacancy(vacancy:any, index:number): void {
@@ -103,7 +111,15 @@ export class VacancyDetailsComponent implements OnInit {
     }
 
     updateLikeStatus(): void{
-        
+        this.jobService.getLikes().subscribe(
+            (data) => {
+                let likes = {...data};
+                console.log(likes);
+            },
+            (err) => {
+                console.log("Error while fetching vacancies likes: " + err);
+            }
+        );
     }
     getLenght(): Number{
         

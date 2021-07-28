@@ -1,7 +1,7 @@
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { AlertService, JobService, EstablishmentService } from '@app/services';
-import { Job } from '@app/models';
+import { Job, Establishments } from '@app/models';
 
 @Component({
     selector: 'app-verification',
@@ -88,6 +88,7 @@ export class JobofferComponent implements OnInit {
         wages21: null
     };
     setPeriod = false;
+    estamblishmentList!: Establishments;
 
     constructor(private titleService: Title, private alertService: AlertService, private jobService: JobService, private establishmentService: EstablishmentService) {
 
@@ -97,10 +98,11 @@ export class JobofferComponent implements OnInit {
         this.titleService.setTitle('SwipeYourJob - Vacature');
         this.establishmentService.getUserEstamblishments().subscribe(
             data => {
-                console.log("data: ", data);
+                this.estamblishmentList = data;
+                // console.log("estamblishmentId: ", this.estamblishmentList[0].id);
             },
             err => {
-
+                console.log(err);
             }
         )
         return;
@@ -256,13 +258,13 @@ export class JobofferComponent implements OnInit {
         let salary =  this.converWagestoarray(this.form.wages)
         console.log("salary: ", salary)
         let jobbie : Job = {
-            estamblishmentid: 0,
+            estamblishmentid: this.estamblishmentList[0].id,
             jobName: formulier.jobName,
             jobDescription: formulier.jobDescription,
             jobImage: formulier.jobImage,
             startdate: formulier.startDate,
             enddate: formulier.endDate,
-            availability: formulier.availability,
+            avaibility: formulier.availability,
             tags: formulier.tags,
             salary: salary
         }

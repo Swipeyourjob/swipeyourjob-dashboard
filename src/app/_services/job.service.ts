@@ -36,7 +36,9 @@ export class JobService {
     getAll() {
         return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
     }
-
+    getLikes(){
+        return this.http.get<any>(`${environment.apiUrl}/getlikes`)
+    }
     getById(id: string) {
         return this.http.get<Job>(`${environment.apiUrl}/getjobs?companyid=${id}`);
     }

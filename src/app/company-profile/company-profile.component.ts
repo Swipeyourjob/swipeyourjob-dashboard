@@ -4,7 +4,6 @@ import { Title } from '@angular/platform-browser';
 
 import { TokenStorageService,EstablishmentService } from '@app/services';
 import {ZipcodeValidator} from '@app/helpers';
-import {Establishment} from '@app/models'
 import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {faInstagram,faFacebook,faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons';
