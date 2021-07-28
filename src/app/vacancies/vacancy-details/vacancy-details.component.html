@@ -9,7 +9,7 @@
                         (click)="viewVacancy(vacancy,i)" >
                         <table>
                             <tr>
-                                <td>
+                                <td [routerLink]="['/vacancy-details', vacancy.jobid]">
                                     <p [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</p>
                                 </td>
                             </tr>
@@ -18,8 +18,8 @@
                                 [attr.data-index]="i" 
                                 *ngIf="vacancy.jobid == jobidFromRoute"  
                             >
-                                <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLenght()}}</span></a>
-                                <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLenght()}}</span> </a>
+                                <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
+                                <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span> </a>
                                 <a href="#">(Vacature statistieken)</a>
                             </div>
                         </table>

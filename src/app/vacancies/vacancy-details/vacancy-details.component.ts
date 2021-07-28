@@ -121,7 +121,7 @@ export class VacancyDetailsComponent implements OnInit {
             }
         );
     }
-    getLenght(): Number{
+    getLength(): Number{
         
         return this.vacancies.joblist.length
     }
