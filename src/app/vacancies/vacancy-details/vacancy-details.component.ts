@@ -72,7 +72,7 @@ export class VacancyDetailsComponent implements OnInit {
         faTimes: faTimes
     };
     routeParams = this.route.snapshot.paramMap;
-    jobidFromRoute = Number(this.routeParams.get('vacancyId'));
+    jobidFromRoute = 0;
 
     constructor( private jobService: JobService, private route: ActivatedRoute,) { 
     }
@@ -102,6 +102,9 @@ export class VacancyDetailsComponent implements OnInit {
                 console.log("Error while fetching vacancies likes: " + err);
             }
         );
+        this.route.paramMap.subscribe(params => {
+            this.jobidFromRoute = Number(this.route.snapshot.paramMap.get("vacancyId"));
+          });
     }
 
     viewVacancy(vacancy:any, index:number): void {
