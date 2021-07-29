@@ -227,17 +227,19 @@ export class JobofferComponent implements OnInit {
         
         // check all inputs
         this.validateInput();
-        
-        //send job to server
         var jobbie = this.convertFormtoJob(this.form)
-        this.jobService.createJob(jobbie).subscribe(
+       console.log(jobbie);
+        //send job to server
+        
+       this.jobService.createJob(jobbie).subscribe(
             data => {
                 console.log(data);
             },
             err => {
-                
+                console.log(err);
             }
         );
+        
     }
     converWagestoarray(wages:Object){
         let salary = new Array();
@@ -256,19 +258,18 @@ export class JobofferComponent implements OnInit {
     }
     convertFormtoJob(formulier:any){
         let salary =  this.converWagestoarray(this.form.wages)
-        console.log("salary: ", salary)
+        
         let jobbie : Job = {
             estamblishmentid: this.estamblishmentList[0].id,
             jobName: formulier.jobName,
             jobDescription: formulier.jobDescription,
             jobImage: formulier.jobImage,
-            startdate: formulier.startDate,
-            enddate: formulier.endDate,
+            startdate: formulier.startdate,
+            enddate: formulier.enddate,
             avaibility: formulier.availability,
             tags: formulier.tags,
             salary: salary
         }
-        console.log("new job: ", jobbie);
         return jobbie;
     }
 
