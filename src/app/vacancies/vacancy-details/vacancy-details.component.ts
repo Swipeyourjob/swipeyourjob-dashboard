@@ -1,6 +1,6 @@
 import { Component, OnInit,  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Job, Vacancy, IVacancy, IVacancyList } from '@app/models';
+import { Vacancy, IVacancyList } from '@app/models';
 import { JobService } from '@app/services';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -71,7 +71,6 @@ export class VacancyDetailsComponent implements OnInit {
         faCheck: faCheck,
         faTimes: faTimes
     };
-    routeParams = this.route.snapshot.paramMap;
     jobidFromRoute = 0;
 
     constructor( private jobService: JobService, private route: ActivatedRoute,) { 
@@ -104,7 +103,7 @@ export class VacancyDetailsComponent implements OnInit {
         );
         this.route.paramMap.subscribe(params => {
             this.jobidFromRoute = Number(this.route.snapshot.paramMap.get("vacancyId"));
-          });
+        });
     }
 
     viewVacancy(vacancy:any, index:number): void {
