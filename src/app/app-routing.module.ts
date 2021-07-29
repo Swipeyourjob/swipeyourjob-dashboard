@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'my-vacancies', component: VacancyOverviewComponent, canActivate: [AuthGuard]},
   {path: 'vacancy-details/:vacancyId', component: VacancyDetailsComponent},
   {path: 'verification', component: VerificationComponent},
-  {path: 'joboffer', component: JobofferComponent, canActivate: [AuthGuard]},
+  {path: 'new-vacancy', component: JobofferComponent, canActivate: [AuthGuard]},
   {path: 'verify', component: VerificationcheckComponent},
   {path: '**', redirectTo: '', canActivate: [AuthGuard]}
 ];
