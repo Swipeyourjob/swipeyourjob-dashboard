@@ -15,23 +15,24 @@ input {
   text-shadow: none;
 }
 
+
+.jobheader{
+  cursor: pointer;
+  color:blue;
+  margin:5px;
+}
 .vacancy-detail {
-  background-color: #b3c2da69;
   padding: 0 0;
-  border: 1px solid green;
+  border-radius: 5px;
 }
-.vacancy-detail li {
-  padding: 10px;
-  font-size: 1.1em;
-  display: block;
-  border-radius: 8px;
-  margin-right: 10px;
-  margin-left: 10px;
+.active{
+  background-color:white;
 }
-.vacancy-detail li :hover {
-  background: rgba(80, 197, 218, 0.3);
-  border-radius: 1px;
+.item{
+  border-bottom: solid 1px black;
+  border-radius: 20px;
 }
+
 .vacancy-menu {
   display: none;
   background-color: #262626;
@@ -49,7 +50,7 @@ input {
   flex: 1 1 auto;
 }
 :host a {
-  color: white !important;
+  color:black !important;
   margin-top: 0.5em;
   margin-right: 0.5em;
   margin-bottom: 0.5em;

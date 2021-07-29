@@ -1,119 +1,165 @@
 <div class="container">
     <div class="vacancy-margin">
-        <div class="row">
-            <div class="col-sm-3" id="vacancy-nav">
-                <ul class="list-unstyled components vacancy-detail list-group">
-                    <li  class="d-flex justify-content-between align-items-center" 
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-3 vacancy-detail"  id="vacancy-nav">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h4>Mijn Vacatures</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row item"  [ngClass]="{'active' : vacancy.jobid == jobidFromRoute}" id="{{i}}" 
+                    *ngFor="let vacancy of vacancies.joblist; index as i" 
+                    (click)="viewVacancy(vacancy,i)">
+                        <div class="col-12">
+                            <div class="row jobheader">
+                                <div class="col-12 " [routerLink]="['/vacancy-details', vacancy.jobid]">
+                                    <span class="jobtitle" [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</span>
+                                </div>
+                            </div>
+                            <div class="row"
+                            [attr.data-index]="i" 
+                            *ngIf="vacancy.jobid == jobidFromRoute" >
+                                <div class="col-2"></div>
+                                <div class="col-10"> 
+                                    <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-10">  
+                                    <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span> </a>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-10"> 
+                                    <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-10"> 
+                                    <a href="#">(Vacature statistieken)</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <!--<ul class="d-flex justify-content-between align-items-center" 
                         id="{{i}}" 
                         *ngFor="let vacancy of vacancies.joblist; index as i" 
                         (click)="viewVacancy(vacancy,i)" >
-                        <table>
-                            <tr>
-                                <td [routerLink]="['/vacancy-details', vacancy.jobid]">
-                                    <p [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</p>
-                                </td>
-                            </tr>
-                            <div 
-                                class="display-grid" 
-                                [attr.data-index]="i" 
-                                *ngIf="vacancy.jobid == jobidFromRoute"  
-                            >
+                        <ul>    
+                            <li [routerLink]="['/vacancy-details', vacancy.jobid]">
+                                <p [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</p>
+                            </li>
+                            <ul  class="display-grid" 
+                            [attr.data-index]="i" 
+                            *ngIf="vacancy.jobid == jobidFromRoute" >  
                                 <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
                                 <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span> </a>
                                 <a href="#">(Vacature statistieken)</a>
-                            </div>
-                        </table>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-9">
-                <div class="match-list">
-                    <div class="card mb-3" *ngFor="let match of matches; index as i">
-                        <div class="row no-gutters">
-                            <div class="col-md-2">
-                                <img class="match-img" src="https://fakeimg.pl/130x240/" alt="{{match.profileImg}}">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="card-body row">
-                                    <div class="col-md-7">
-                                        <h5 class="card-title">{{match.voornaam}} {{match.achternaam}} - {{match.age}} jaar</h5>
-                                        <p class="card-text">Werkervaring</p>
+                            </ul>
+                            
 
-                                        <p class="card-text"><small class="text-muted">Updated 10 mins ago</small></p>
-                                        
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="card-text">
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>Ma</td>
-                                                        <td>Di</td>
-                                                        <td>Wo</td>
-                                                        <td>Do</td>
-                                                        <td>Vr</td>
-                                                        <td>Za</td>
-                                                        <td>Zo</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Ochtend</td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Middag</td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Avond</td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Nacht</td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                        <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
-                                                    </tr>
-                                                </tbody>
+                        </ul>
+                    </ul>   -->
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h4>Prospect solicatanten</h4>
+                            <hr>    
+                        </div>
+                    </div>
+                    <div class="match-list">
+                        <div class="card mb-3" *ngFor="let match of matches; index as i">
+                            <div class="row">
+                                
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-md-2">
+                                    <img class="match-img" src="{{match.profileImg}}" alt="{{match.profileImg}}">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body row">
+                                        <div class="col-md-7">
+                                            <h5 class="card-title">{{match.voornaam}} {{match.achternaam}} - {{match.age}} jaar</h5>
+                                            <p class="card-text">Werkervaring</p>
+                                            <p class="card-text"><small class="text-muted">Updated 10 mins ago</small></p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="card-text">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>Ma</td>
+                                                            <td>Di</td>
+                                                            <td>Wo</td>
+                                                            <td>Do</td>
+                                                            <td>Vr</td>
+                                                            <td>Za</td>
+                                                            <td>Zo</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Ochtend</td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Middag</td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Avond</td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Nacht</td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="false" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                            <td><input type="checkbox" [checked]="true" disabled (change)="($event)"></td>
+                                                        </tr>
+                                                    </tbody>
 
-                                            </table>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row ml-2">
-                                    <div class="col">
-                                        <a href="#" class="btn btn-success btn-circle"> <fa-icon [icon]="icons.faCheck"></fa-icon> </a>
-                                        <a href="#" class="btn btn-danger btn-circle"> <fa-icon [icon]="icons.faTimes"></fa-icon> </a>
+                                    <div class="row ml-2">
+                                        <div class="col">
+                                            <a href="#" class="btn btn-success btn-circle"> <fa-icon [icon]="icons.faCheck"></fa-icon> </a>
+                                            <a href="#" class="btn btn-danger btn-circle"> <fa-icon [icon]="icons.faTimes"></fa-icon> </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>

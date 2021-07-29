@@ -58,12 +58,7 @@ export class VacancyDetailsComponent implements OnInit {
     }
     ];
     matches = [
-        {profileImg: "test", voornaam:"Dahir", achternaam:"Warsame",age:26, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"James", achternaam:"Jones",age:23, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Frank", achternaam:"Bovenberg",age:21, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Maddie", achternaam:"Regenachtig",age:17, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dang", achternaam:"Lin-Wang",age:19, availabilty:this.avaibility},
-        {profileImg: "test", voornaam:"Dixie", achternaam:"Normous",age:18, availabilty:this.avaibility}
+        {profileImg: "test", voornaam:"placeholder", achternaam:"placeholder",age:26, availabilty:this.avaibility}
     ]
     job: Vacancy| undefined;
     visiable= false;
@@ -72,46 +67,55 @@ export class VacancyDetailsComponent implements OnInit {
         faTimes: faTimes
     };
     jobidFromRoute = 0;
+    likedlist: any = [];
 
     constructor( private jobService: JobService, private route: ActivatedRoute,) { 
     }
 
     ngOnInit(): void {
-        this.jobService.getAll().subscribe(
-            (data: any) => {
-              let vacancies = {... data};
-              let vacanciesLength = Object.keys(vacancies.joblist).length;
-              if(vacanciesLength > 0){
-                  this.vacancies.joblist = vacancies.joblist;
-                  console.log(this.vacancies);
-              }else{
-                  console.log("No active vacancies.");
-              }
-            },
-            (err: any) => {
-              console.log("Error while fetching active vacancies: " + err);
-            }
-        );
-        this.jobService.getLikes().subscribe(
-            (data) => {
-                let likes = {...data};
-                console.log(likes);
-            },
-            (err) => {
-                console.log("Error while fetching vacancies likes: " + err);
-            }
-        );
         this.route.paramMap.subscribe(params => {
             this.jobidFromRoute = Number(this.route.snapshot.paramMap.get("vacancyId"));
+            this.loadMatchesByJobId(this.jobidFromRoute);
         });
+        this.jobService.getAll().subscribe(
+            (data: any) => {
+            let vacancies = {... data};
+            let vacanciesLength = Object.keys(vacancies.joblist).length;
+            if(vacanciesLength > 0){
+                this.vacancies.joblist = vacancies.joblist;
+                
+            }else{
+                console.log("No active vacancies.");
+            }
+            },
+            (err: any) => {
+            console.log("Error while fetching active vacancies: " + err);
+            }
+        );
+        
     }
 
+    loadMatchesByJobId(id: number) : void{
+        this.jobService.getLikesById(id).subscribe(
+            (data) => {
+                this.matches = [];
+                for(let i = 0; i < data.length; i++){
+                    let person = data[i];
+                    let newperson =  {profileImg: person['profileurl'], voornaam:person['firstname'], achternaam:person['lastname'],age:person['age'], availabilty:this.avaibility};
+                    this.matches.push(newperson);
+                }
+            }
+            ,(err) => {});
+        
+    }
+    
     viewVacancy(vacancy:any, index:number): void {
         console.log( this.visiable);
         console.log( this.jobidFromRoute);
+        let jobid = this.jobidFromRoute;
         this.visiable= !this.visiable;
     }
-
+    
     updateLikeStatus(): void{
         this.jobService.getLikes().subscribe(
             (data) => {
