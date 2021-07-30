@@ -1,6 +1,6 @@
 import { Component, OnInit,  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Vacancy, IVacancyList } from '@app/models';
+import { Vacancy, IVacancyList, VacancyUpdate } from '@app/models';
 import { JobService } from '@app/services';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -58,7 +58,7 @@ export class VacancyDetailsComponent implements OnInit {
     }
     ];
     matches = [
-        {profileImg: "test", voornaam:"placeholder", achternaam:"placeholder",age:26, availabilty:this.avaibility}
+        {profileImg: "test", jobid: 0,voornaam:"placeholder", achternaam:"placeholder",age:26, availabilty:this.avaibility, userid:'placeholder'}
     ]
     job: Vacancy| undefined;
     visiable= false;
@@ -101,7 +101,15 @@ export class VacancyDetailsComponent implements OnInit {
                 this.matches = [];
                 for(let i = 0; i < data.length; i++){
                     let person = data[i];
-                    let newperson =  {profileImg: person['profileurl'], voornaam:person['firstname'], achternaam:person['lastname'],age:person['age'], availabilty:this.avaibility};
+                    let newperson =  {
+                        profileImg: person['profileurl'], 
+                        voornaam:person['firstname'], 
+                        achternaam:person['lastname'],
+                        age:person['age'], 
+                        availabilty:this.avaibility,
+                        userid:person['userid'],
+                        jobid: person["jobid"]
+                    };
                     this.matches.push(newperson);
                 }
             }
@@ -127,6 +135,24 @@ export class VacancyDetailsComponent implements OnInit {
             }
         );
     }
+    updateStatus(userid : string,status:boolean, matchnumber:number) : void{
+        console.log(userid);    
+        console.log(status);
+        console.log(matchnumber);
+        let updateObject:  VacancyUpdate = new VacancyUpdate();
+        updateObject.userid = userid;
+        updateObject.jobid = matchnumber;
+        updateObject.status = (status)?'accepted':'rejected';
+        this.jobService.updateJobStatus(updateObject).subscribe(
+            (data) => {
+                console.log(data);
+            },
+            (err) => {
+
+            }
+        );
+    }
+
     getLength(): Number{
         
         return this.vacancies.joblist.length

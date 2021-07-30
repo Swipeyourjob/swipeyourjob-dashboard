@@ -151,14 +151,16 @@
                                     </div>
                                     <div class="row ml-2">
                                         <div class="col">
-                                            <button type="button" class="btn btn-success btn-circle"> <fa-icon [icon]="icons.faCheck"></fa-icon> </button>
-                                            <button type="button" class="btn btn-danger btn-circle"> <fa-icon [icon]="icons.faTimes"></fa-icon> </button>
+                                            <button type="button" class="btn btn-success btn-circle" (click)="updateStatus(match.userid,true,match.jobid)">
+                                                <fa-icon [icon]="icons.faCheck"></fa-icon> 
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-circle" (click)="updateStatus(match.userid,false,match.jobid)"> 
+                                                <fa-icon [icon]="icons.faTimes"></fa-icon> </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

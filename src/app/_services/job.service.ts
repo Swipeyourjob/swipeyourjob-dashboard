@@ -32,6 +32,7 @@ export class JobService {
         console.log("CreateJob: ", job);
         return this.http.post(environment.apiUrl + '/newjob', job, httpOptions);
     }
+    
 
     getAll() {
         return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
@@ -46,6 +47,6 @@ export class JobService {
         return this.http.get<Job>(`${environment.apiUrl}/getjobs?companyid=${id}`);
     }
     public updateJobStatus(status:VacancyUpdate){
-        return this.http.post(`${environment.apiUrl}/updateUserJobStatus`, status, httpOptions);
+        return this.http.post(`${environment.apiUrl}/updateJobStatus`, status, httpOptions);
     }
 }
