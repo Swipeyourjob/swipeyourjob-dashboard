@@ -24,4 +24,4 @@ jobs:
 
     - name: npm install
       run: |
-        npm install && nnpm run build -- --prod
+        npm install && npm run build -- --prod
