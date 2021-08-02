@@ -1,0 +1,15 @@
+.vacancy-margin {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.h2-active {
+    font-family: 'Avenir Semibold';
+    text-align: center;
+}
+
+.h2-inactive {
+    margin-top: 30px;
+    font-family: 'Avenir Semibold';
+    text-align: center;
+}

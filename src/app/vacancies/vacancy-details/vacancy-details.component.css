@@ -1,0 +1,61 @@
+input {
+  border-radius: 8px;
+  border: none;
+  font-family: "Avenir Semibold";
+  padding: 1rem;
+  width: 100%;
+  transition-duration: 0.15s;
+  transition-property: border, background-color, color, box-shadow;
+  transition-timing-function: ease-in;
+  overflow: visible;
+  color: #626272;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+  appearance: auto;
+  text-indent: 0;
+  text-shadow: none;
+}
+
+
+.jobheader{
+  cursor: pointer;
+  color:blue;
+  margin:5px;
+}
+.vacancy-detail {
+  padding: 0 0;
+  border-radius: 5px;
+}
+.active{
+  background-color:white;
+}
+.item{
+  border-bottom: solid 1px black;
+  border-radius: 20px;
+}
+
+.vacancy-menu {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+.match-list {
+  overflow-y: scroll;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: #b3c2da69;
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+:host a {
+  color:black !important;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+}
+.display-grid {
+  display: grid;
+}

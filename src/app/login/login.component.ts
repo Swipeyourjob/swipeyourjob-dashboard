@@ -1,58 +1,60 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AuthService, AlertService, TokenStorageService } from '../_services';
 
+import { Title } from '@angular/platform-browser';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
-  })
+})
 export class LoginComponent implements OnInit {
     form: any = {
-        username: null,
-        password: null
+        email: null,
+        password: null,
+        rememberMe: false
     };
     isLoggedIn = false;
     isLoginFailed = false;
-    errorMessage = '';
     roles: string[] = [];
+    
 
-    constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+    constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
+        private alertService: AlertService, private router: Router, private actRoute: ActivatedRoute, private titleService: Title) { }
 
     ngOnInit(): void {
+    this.titleService.setTitle("SwipeYourJob - Inloggen")
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
             this.roles = this.tokenStorage.getUser().roles;
+            window.location.href = '/';
         }
     }
 
-    onSubmit(): void {
-        const { username, password } = this.form;
-
-        this.authService.login(username, password).subscribe(
+    getConfigValue(key: string): any{ }
+    onSubmit(f :NgForm): void {
+        const { email, password, rememberMe } = this.form;
+        // reset alerts on submit
+        this.alertService.clear();
+        this.authService.login(email, password).subscribe(
             data => {
-                console.log(username, " + ",password + "= POST DATA");
-                console.log(data + "Response DATA");
-
-                this.tokenStorage.saveToken(data.token);
+                this.tokenStorage.saveToken(data.token, rememberMe);
                 this.tokenStorage.saveUser(data);
 
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
                 this.roles = this.tokenStorage.getUser().roles;
-                this.reloadPage();
+                window.location.href = '/';
             },
             err => {
-                this.errorMessage = err.error.message;
+                console.log(err);
+                this.alertService.error(err.error.status);
                 this.isLoginFailed = true;
             }
         );
     }
 
-    reloadPage(): void {
-        window.location.reload();
-    }
 }

@@ -1,0 +1,21 @@
+.card-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.card-container .form-group label {
+  font-weight: bold;
+  font-family:"Avenir Semibold", Helvetica, sans-serif;
+}
+.card-container .form-group table {
+  color: inherit;
+}
+.card-container .form-group table.table-hours th .period-time {
+  font-weight: normal;
+  font-family:"Avenir", Helvetica, sans-serif;
+}
+
+.card-container .form-group table.table-wages td:last-child, .card-container .form-group table.table-wages th:last-child {
+  text-align: center;
+}
+
+

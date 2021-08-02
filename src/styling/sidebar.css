@@ -1,0 +1,110 @@
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.a-sidebar {
+  font-family: "Avenir Semibold" !important;
+  font-size: 17px !important;
+  color: #FFFFFF !important;
+}
+
+.sidebar-text {
+  color: red;
+}
+
+.sidebar-profile-pic {
+  float: right;
+}
+
+#sidebar {
+  /* don't forget to add all the previously mentioned styles here too */
+  background: #FFFFFF;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #252F3F;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+}
+
+#sidebar ul p {
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#sidebar ul li a:hover {
+  color: #FFFFFF;
+  background: #FFFFFF18;
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+  color: #fff;
+  background: #161E2E;
+  border-radius: 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+#sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: #252F3F;
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none;
+}
+
+.sidebarCollapse {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+      margin-left: -256px;
+      
+  }
+  #sidebar.active {
+      margin-left: 0;
+  }
+  .sidebarCollapse {
+      display: block;
+  }
+}

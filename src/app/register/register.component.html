@@ -1,49 +1,100 @@
-<div class="col-md-12">
-    <div class="card card-container">
-        <form
-        *ngIf="!isLoggedIn"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-      >
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          class="form-control col-md-6"
-          name="email"
-          [(ngModel)]="form.email"
-          required
-          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-          #email="ngModel"
-        />
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="email.errors"
-        >
-          email is required!
+<div class="background">
+    <div class="col-md-12 center">
+        <div class="container-fluid container fadeAnimation">
+            <div class="row card card-container register-form">
+                <div id="card-title">
+                    <img src="/assets/img/logo_dark.svg" alt="image">
+                    <h5>Bedrijf registreren</h5>
+                </div>
+                <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="registry-error-message" *ngIf="companyNameField.empty">
+                        <fa-icon [icon]="icons.faExclamationTriangle"></fa-icon>
+                        Bedrijfsnaam ongeldig.
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="input-full-width" name="companyname" placeholder="Bedrijfsnaam" autofocus (keyup)="companyNameField.empty=false" [(ngModel)]="form.companyname" required #companyname="ngModel" />
+                    </div>
+
+                    <div class="form-group">
+                        <div class="registry-error-message" *ngIf="zipcodeField.empty">
+                            <fa-icon [icon]="icons.faExclamationTriangle"></fa-icon>
+                            Postcode ongeldig.
+                        </div>
+                        <input type="text" class="input-full-width" name="zipcode" placeholder="Postcode" [(ngModel)]="form.zipcode" (keyup)="zipcodeField.empty=false" required #zipcode="ngModel" />
+                    </div>
+                    <div class="form-group">
+                        <div class="registry-error-message" *ngIf="kvkField.empty">
+                            <fa-icon [icon]="icons.faExclamationTriangle"></fa-icon>
+                            KvK-nummer ongeldig.
+                        </div>
+                        <div class="registry-error-message" *ngIf="kvkField.taken">
+                            <fa-icon [icon]="icons.faExclamationTriangle"></fa-icon>
+                            KvK-nummer al geregistreerd.
+                        </div>
+                        <div class="registry-error-message" *ngIf="kvkField.taken">
+                            <a class='contact-margin' href="#">Is dit een fout?</a>
+                        </div>
+                        <input type="text" class="input-full-width" name="kvk" maxlength=8  placeholder="KvK-nummer" (keypress)="($event.charCode >= 48 && $event.charCode < 58)" (keyup)="kvkField.taken=false; kvkField.empty=false" [(ngModel)]="form.kvk" required #kvk="ngModel" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="input-full-width" name="email" placeholder="E-mailadres" [(ngModel)]="form.email" #email="ngModel" />
+                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="email.errors && dialogChecks.emailNameDialog">
+                            E-mailadres is leeg of is niet valide.
+                        </div>
+                    </div>
+                    <div class="form-group" (capsLock)="capsOn=$event">
+                        <input type="password" class="input-full-width" name="password" placeholder="Wachtwoord" [(ngModel)]="form.password" (keyup)=passwordchange($event) required #password="ngModel" />
+
+                        <span *ngIf="capsOn" >Caps Locked</span>
+
+                        <div class="alert col-md-6" *ngIf="dialogChecks.passwordDialog">
+                            <!--Capital check-->
+                            <table>
+                                <tr>
+                                    <td>Hoofdletter: </td>
+
+                                    <td *ngIf="passwordChecks.passwordCapitalCheck; else falseCapital">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseCapital>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                                <tr>
+                                    <td>Nummer: </td>
+                                    <td *ngIf="passwordChecks.passwordNumberCheck; else falseNumber">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseNumber>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                                <tr>
+                                    <td>Lengte: </td>
+                                    <td *ngIf="passwordChecks.passwordLengthCheck; else falseLength">
+                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
+                                    </td>
+                                    <ng-template #falseLength>
+                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
+                                    </ng-template>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group" (capsLock)="capsOn=$event">
+                        <input type="password" class="input-full-width" name="passwordrepeat" placeholder="Wachtwoord herhaald" [(ngModel)]="form.passwordrepeat" (keyup)=passwordrepeatf($event) required #passwordrepeat="ngModel" />
+                        <div class="alert alert-danger col-md-6" role="alert" *ngIf="dialogChecks.passwordRepeatDialog">
+                            Wachtwoord komt niet overeen.
+                        </div>
+                        <span *ngIf="capsOn" >Caps Locked</span>
+                        
+                    </div>
+                    <label for="terms">Door op onderstaande knop te drukken ga je akkoord met onze <a href="#">Algemene Voorwaarden</a> en <a href="#">Privacyverklaring</a></label><br>
+                    <div class="form-group">
+                        <button type="submit" (click)="validateForms()" class="btn btn-grad btn-primary btn-block lift">Bedrijf registreren</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control col-md-6"
-          name="password"
-          [(ngModel)]="form.password"
-          required
-          #password="ngModel"
-        />
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="password.errors && f.submitted"
-        >
-          email is required!
-        </div>
-      </div>
-    </form>
     </div>
 </div>
