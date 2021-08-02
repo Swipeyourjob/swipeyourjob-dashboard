@@ -24,4 +24,4 @@ jobs:
 
     - name: npm install
       run: |
-        npm install && ng build --prod
+        npm install && nnpm run build -- --prod
