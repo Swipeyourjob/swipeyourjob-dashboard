@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Vacancy } from '@app/models';
 import { JobService } from 'app/_services/job.service';
 
 @Component({
@@ -10,7 +11,9 @@ export class VacancyOverviewComponent implements OnInit {
 
   constructor(private jobService : JobService) { }
 
-  activeVacancies = [];
+  initialized = false;
+  inactiveVacancies : Vacancy[] = [];
+  activeVacancies : Vacancy[] = [];
 
   ngOnInit(): void {
     this.jobService.getAll().subscribe(
@@ -18,10 +21,19 @@ export class VacancyOverviewComponent implements OnInit {
         let vacancies = {... data};
         let vacanciesLength = Object.keys(vacancies.joblist).length;
         if(vacanciesLength > 0){
-            this.activeVacancies = vacancies.joblist;
+          for (let i = 0; i < vacanciesLength; i++) {
+            let vacancy = vacancies.joblist[i];
+            if(vacancy.daysValid > 0){
+              this.activeVacancies.push(vacancy);
+            }
+            else {
+              this.inactiveVacancies.push(vacancy);
+            }
+          }
         }else{
             console.log("No active vacancies.");
         }
+        this.initialized = true;
       },
       (err: any) => {
         console.log("Error while fetching active vacancies: " + err);
