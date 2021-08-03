@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-control-group">
                         <label for="Companylogo">Bedrijfslogo</label>
-                        <input type="file" class="input-full-width" name="Companylogo" accept="image/png, image/jpeg" [(ngModel)]="form.Companylogo" #Companylogo="ngModel" (change)="onImageChange()">
+                        <input type="file" class="input-full-width" name="Companylogo" accept="image/png, image/jpeg"  (change)="onImageChange($event)">
                         <div class="preview" *ngIf="imgFile">
                             <img [src]="imgFile" style="width:400px; height:250px">
                         </div>

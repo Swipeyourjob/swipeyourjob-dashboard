@@ -7,7 +7,7 @@ import {ZipcodeValidator} from '@app/helpers';
 import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {faInstagram,faFacebook,faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons';
-
+import { ImageserviceService } from 'app/_services/imageservice.service';
 
 
 @Component({
@@ -46,6 +46,7 @@ export class CompanyProfileComponent implements OnInit {
         invalidCheck: false,
         lengthCheck: false
     };
+
     public dialogChecks: any = {
         companyNamedialog: false,
         zipcodeNameDialog: false,
@@ -55,11 +56,13 @@ export class CompanyProfileComponent implements OnInit {
         kvkdDialog: false
     };
 
+
     public constructor(
         private tokenStorage: TokenStorageService,
         private establishmentService: EstablishmentService,
         private titleService: Title,
-        private zipcodeValidator: ZipcodeValidator
+        private zipcodeValidator: ZipcodeValidator,
+        private imageService: ImageserviceService
     ) { }
 
     public ngOnInit(): void {
@@ -110,8 +113,20 @@ export class CompanyProfileComponent implements OnInit {
         
         console.log(f);
     }
-    onImageChange() {
-
+    onImageChange(fileInput : any) {
+        
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            const file: File = fileInput.target.files[0];
+            const reader = new FileReader();    
+            this.imageService.uploadCompanyImg(file).subscribe(
+                (data: any) => {
+                    this.imgFile = data.url;
+                },
+                (err: any) => {
+                    //console.log(err);
+                }
+                );
+        }
       }
     public loadEstamblishment(id: number){
         try{
@@ -133,7 +148,6 @@ export class CompanyProfileComponent implements OnInit {
         return false;
     }
     public companydescriptionChanged(event: KeyboardEvent): void {
-        console.log(event);
         if (this.form.CompanyIntroduction != null) {
             // regex to remove all the html tag
             var regex = /(<([^>]+)>)/gi;

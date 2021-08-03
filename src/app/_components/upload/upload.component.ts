@@ -56,7 +56,7 @@ export class UploadComponent implements OnInit, OnDestroy {
         if(this.imgFile.has("imageFile")){
             console.log(this.uploadForm.get('imageFile'));
             console.log(this.imgFile);
-
+            /*
             
             this.establishmentService.uploadCompanyImg(this.imgFile).subscribe(
                 complete => {
@@ -69,6 +69,9 @@ export class UploadComponent implements OnInit, OnDestroy {
                     this.alertService.error("WERKT NIE")
                 }
             );
+            */
+
+            
         }
         
         
