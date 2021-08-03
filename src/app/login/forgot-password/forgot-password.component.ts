@@ -39,4 +39,8 @@ export class ForgotPasswordComponent implements OnInit {
             this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });
         }
     }
+
+    public resetPassword() {
+        console.log("This is where password gets reset.");
+    }
 }
