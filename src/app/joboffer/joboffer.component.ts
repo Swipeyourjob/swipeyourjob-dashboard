@@ -2,6 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
 import { AlertService, JobService, EstablishmentService } from '@app/services';
 import { Job, Establishments } from '@app/models';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-verification',
@@ -90,7 +91,7 @@ export class JobofferComponent implements OnInit {
     setPeriod = false;
     estamblishmentList!: Establishments;
 
-    constructor(private titleService: Title, private alertService: AlertService, private jobService: JobService, private establishmentService: EstablishmentService) {
+    constructor(private router: Router,private titleService: Title, private alertService: AlertService, private jobService: JobService, private establishmentService: EstablishmentService) {
 
     }
 
@@ -228,12 +229,17 @@ export class JobofferComponent implements OnInit {
         // check all inputs
         this.validateInput();
         var jobbie = this.convertFormtoJob(this.form)
-       console.log(jobbie);
+       
         //send job to server
         
        this.jobService.createJob(jobbie).subscribe(
             data => {
-                console.log(data);
+                if(data.hasOwnProperty("ok")){
+                    if((data as any).ok) {
+                        this.router.navigate(['/my-vacancies']);
+                    }
+                }
+                
             },
             err => {
                 console.log(err);
