@@ -8,6 +8,7 @@ import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {faInstagram,faFacebook,faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import { ImageserviceService } from 'app/_services/imageservice.service';
+import { CompanyProfile } from '@app/models';
 
 
 @Component({
@@ -17,22 +18,24 @@ import { ImageserviceService } from 'app/_services/imageservice.service';
 })
 export class CompanyProfileComponent implements OnInit {
 
-    public form: any = {
-        CompanyIntroduction: null,
-        Companylogo: null,
-        Firstname: null,
-        Lastname: null,
-        profileUrl: null,
-        CompanyUrl: null,
-        facebooklink: null,
-        instagramlink: null,
-        linkedinlink: null,
-        Place: null,
-        Streetname: null,
-        housenumber: null,
-        zipcode: null,
+    form: CompanyProfile = {
+        estamblishmentid:0,
+        CompanyIntroduction: "  ",
+        Companylogo: "",
+        Firstname: "",
+        Lastname: "",
+        profileUrl: "",
+        CompanyUrl: "",
+        facebooklink: "",
+        instagramlink: "",
+        linkedinlink: "",
+        Place: "",
+        Streetname: "",
+        housenumber: "",
+        zipcode: ""
     };
-    public imgFile: any;
+    public companyLogo: any;
+    public profilePicture: any;
     public icons: any = {
         faInstagram: faInstagram,
         faFacebook: faFacebook,
@@ -67,7 +70,7 @@ export class CompanyProfileComponent implements OnInit {
 
     public ngOnInit(): void {
         this.titleService.setTitle('SwipeYourJob - Bedrijfsprofiel aanmaken');
-        
+    
         this.establishmentService.getUserEstamblishments().subscribe(
             (data: any) => {
                 let establishment = {... data};
@@ -90,17 +93,7 @@ export class CompanyProfileComponent implements OnInit {
                 console.log(err);
             }
         )
-        let userinfo = this.tokenStorage.getUserInfo();
-        if (userinfo != null) {
-            this.form.Firstname =
-                userinfo['firstname'] != null && userinfo['firstname'] != ''
-                    ? userinfo['firstname']
-                    : null;
-            this.form.Lastname =
-                userinfo['lastname'] != null && userinfo['lastname'] != ''
-                    ? userinfo['lastname']
-                    : null;
-        }
+        
     }
     public zipcodechange():void {
         let zipcode = this.form.zipcode;
@@ -110,17 +103,23 @@ export class CompanyProfileComponent implements OnInit {
         this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
     }
     public onSubmit(f: NgForm): void {
+        this.form.Companylogo = this.companyLogo;
+        this.form.profileUrl  = this.profilePicture;
         
-        console.log(f);
     }
-    onImageChange(fileInput : any) {
+    onImageChange(fileInput : any,uploadtype : string ) {
         
         if (fileInput.target.files && fileInput.target.files[0]) {
             const file: File = fileInput.target.files[0];
             const reader = new FileReader();    
             this.imageService.uploadCompanyImg(file).subscribe(
                 (data: any) => {
-                    this.imgFile = data.url;
+                    if(uploadtype == 'companylogo'){
+                        this.companyLogo = data.url;
+                    }else{
+                        this.profilePicture = data.url;
+                    }
+                   
                 },
                 (err: any) => {
                     //console.log(err);
@@ -134,7 +133,7 @@ export class CompanyProfileComponent implements OnInit {
                 this.establishmentService.getEstamblishmentByID(id).subscribe(
                     (data: any) => {
                         console.log(data);
-                        this.form = data;
+                        this.form.estamblishmentid = data;
                     },
                     (err: any) => {
                         console.log(err);
@@ -148,7 +147,7 @@ export class CompanyProfileComponent implements OnInit {
         return false;
     }
     public companydescriptionChanged(event: KeyboardEvent): void {
-        if (this.form.CompanyIntroduction != null) {
+       /* if (this.form.CompanyIntroduction != null) {
             // regex to remove all the html tag
             var regex = /(<([^>]+)>)/gi;
             const wordcounter = this.form.CompanyIntroduction.replace(
@@ -162,7 +161,7 @@ export class CompanyProfileComponent implements OnInit {
             }
         } else {
             this.wordcount = 1;
-        }
+        }*/
     }
 
     
