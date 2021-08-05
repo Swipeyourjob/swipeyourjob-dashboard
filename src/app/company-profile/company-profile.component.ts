@@ -10,6 +10,7 @@ import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons
 import { ImageserviceService } from 'app/_services/imageservice.service';
 import { CompanyProfile } from '@app/models';
 
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-company-profile',
@@ -66,7 +67,8 @@ export class CompanyProfileComponent implements OnInit {
         private establishmentService: EstablishmentService,
         private titleService: Title,
         private zipcodeValidator: ZipcodeValidator,
-        private imageService: ImageserviceService
+        private imageService: ImageserviceService,
+        private router: Router
     ) { }
 
     public ngOnInit(): void {
@@ -79,8 +81,6 @@ export class CompanyProfileComponent implements OnInit {
                 if(establishmentlen > 0){
                     if(establishmentlen == 1){
                         let estaid = (establishment[0].hasOwnProperty('id')) ? establishment[0].id:false;
-
-                        console.log(estaid);
                         this.form.establishmentid = estaid;
                         //this.loadEstamblishment(estaid);
                     }else{
@@ -112,6 +112,9 @@ export class CompanyProfileComponent implements OnInit {
         this.establishmentService.updateCompanyProfile(this.form).subscribe(
             (data) => {
                 console.log(data);
+                if(data){
+                    this.router.navigate(['/']);
+                }
             }
         );
         
