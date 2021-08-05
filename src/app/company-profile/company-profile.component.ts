@@ -18,19 +18,20 @@ import { CompanyProfile } from '@app/models';
 })
 export class CompanyProfileComponent implements OnInit {
 
+ 
     form: CompanyProfile = {
-        estamblishmentid:0,
-        CompanyIntroduction: "  ",
-        Companylogo: "",
-        Firstname: "",
-        Lastname: "",
-        profileUrl: "",
-        CompanyUrl: "",
-        facebooklink: "",
-        instagramlink: "",
-        linkedinlink: "",
-        Place: "",
-        Streetname: "",
+        establishmentid: 0,
+        introduction: "",
+        logo: "",
+        ownerFirstName: "",
+        ownerLastname: "",
+        ownerPicture: "",
+        weburl: "",
+        facebookUrl: "",
+        instagramUrl: "",
+        linkedinUrl:"",
+        place: "",
+        streetname: "",
         housenumber: "",
         zipcode: ""
     };
@@ -78,7 +79,10 @@ export class CompanyProfileComponent implements OnInit {
                 if(establishmentlen > 0){
                     if(establishmentlen == 1){
                         let estaid = (establishment[0].hasOwnProperty('id')) ? establishment[0].id:false;
-                        this.loadEstamblishment(estaid);
+
+                        console.log(estaid);
+                        this.form.establishmentid = estaid;
+                        //this.loadEstamblishment(estaid);
                     }else{
                         // let html = '';
                         // establishment.forEach(element, val => {
@@ -103,8 +107,13 @@ export class CompanyProfileComponent implements OnInit {
         this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
     }
     public onSubmit(f: NgForm): void {
-        this.form.Companylogo = this.companyLogo;
-        this.form.profileUrl  = this.profilePicture;
+        this.form.logo = this.companyLogo;
+        this.form.ownerPicture  = this.profilePicture;
+        this.establishmentService.updateCompanyProfile(this.form).subscribe(
+            (data) => {
+                console.log(data);
+            }
+        );
         
     }
     onImageChange(fileInput : any,uploadtype : string ) {
@@ -133,7 +142,7 @@ export class CompanyProfileComponent implements OnInit {
                 this.establishmentService.getEstamblishmentByID(id).subscribe(
                     (data: any) => {
                         console.log(data);
-                        this.form.estamblishmentid = data;
+                        
                     },
                     (err: any) => {
                         console.log(err);

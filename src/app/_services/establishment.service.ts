@@ -4,7 +4,7 @@ import { typeSourceSpan } from '@angular/compiler';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { TokenStorageService } from './token-storage.service';
-import { Establishments, imageFile } from '@app/models';
+import { CompanyProfile, Establishments, imageFile } from '@app/models';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 const httpOptions = {
@@ -26,6 +26,10 @@ export class EstablishmentService {
     ) {
 
     }
+    public updateCompanyProfile(data: CompanyProfile){
+        return this.http.post(`${environment.apiUrl}/updateCompanyProfile`, data, httpOptions);
+    }
+
     public getUserEstamblishments() {
         return this.http.get<Establishments>(`${environment.apiUrl}/getEstablishmentProfile`, httpOptions);
     }
