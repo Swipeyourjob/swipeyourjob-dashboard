@@ -82,7 +82,8 @@ export class CompanyProfileComponent implements OnInit {
                     if(establishmentlen == 1){
                         let estaid = (establishment[0].hasOwnProperty('id')) ? establishment[0].id:false;
                         this.form.establishmentid = estaid;
-                        //this.loadEstamblishment(estaid);
+                        console.log(estaid);
+                        this.loadEstamblishment(estaid);
                     }else{
                         // let html = '';
                         // establishment.forEach(element, val => {
@@ -140,23 +141,15 @@ export class CompanyProfileComponent implements OnInit {
         }
       }
     public loadEstamblishment(id: number){
-        try{
-            if (id){
-                this.establishmentService.getEstamblishmentByID(id).subscribe(
-                    (data: any) => {
-                        console.log(data);
-                        
-                    },
-                    (err: any) => {
-                        console.log(err);
-                    }
-                );
+        this.establishmentService.getEstamblishmentByID(id).subscribe(
+            (data) =>
+            {
+                this.form = data as CompanyProfile;
+                this.companyLogo = this.form.logo;
+                console.log(this.form);
+                this.profilePicture = this.form.ownerPicture;
             }
-            
-        } catch(error){
-            return false;
-        }
-        return false;
+        );
     }
     public companydescriptionChanged(event: KeyboardEvent): void {
        /* if (this.form.CompanyIntroduction != null) {
