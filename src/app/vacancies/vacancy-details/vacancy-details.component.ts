@@ -11,7 +11,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class VacancyDetailsComponent implements OnInit {
     vacancies : IVacancyList = {
-        joblist: [{jobName: "Kassamedewerker", jobid:0, daysValid:50, images:["gakjslsjkfds"] }]
+        joblist: [{jobName: "Kassamedewerker", jobid:0, daysValid:50, images:["gakjslsjkfds"] ,amountofreactions:0, amountofrejections:0}]
     };
     avaibility = [
     {
@@ -136,9 +136,6 @@ export class VacancyDetailsComponent implements OnInit {
         );
     }
     updateStatus(userid : string,status:boolean, matchnumber:number) : void{
-        console.log(userid);    
-        console.log(status);
-        console.log(matchnumber);
         let updateObject:  VacancyUpdate = new VacancyUpdate();
         updateObject.userid = userid;
         updateObject.jobid = matchnumber;

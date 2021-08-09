@@ -5,6 +5,8 @@ export class Vacancy{
     jobid!: number;
     jobName!: string;
     daysValid!: number;
+    amountofreactions !: number;
+    amountofrejections !:number;
     images!: Array<string>;
 }
 export class VacancyUpdate{

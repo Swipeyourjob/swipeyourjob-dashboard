@@ -23,19 +23,15 @@
                             *ngIf="vacancy.jobid == jobidFromRoute" >
                                 <div class="col-2"></div>
                                 <div class="col-10"> 
-                                    <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
+                                    <a href="/vacancy-details/{{vacancy.jobid}}">Sollicitanten <span class="badge badge-secondary badge-pill">{{vacancy.amountofreactions}}</span></a>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-10">  
-                                    <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span> </a>
+                                    <a>Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{vacancy.amountofrejections}}</span> </a>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-10"> 
-                                    <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
-                                </div>
-                                <div class="col-2"></div>
-                                <div class="col-10"> 
-                                    <a href="#">(Vacature statistieken)</a>
+                                    <a>(Vacature statistieken)</a>
                                 </div>
                             </div>
 

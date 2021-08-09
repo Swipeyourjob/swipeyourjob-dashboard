@@ -3,6 +3,7 @@ import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/co
 import { AlertService, JobService, EstablishmentService } from '@app/services';
 import { Job, Establishments } from '@app/models';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ImageserviceService } from 'app/_services/imageservice.service';
 
 @Component({
     selector: 'app-verification',
@@ -90,8 +91,16 @@ export class JobofferComponent implements OnInit {
     };
     setPeriod = false;
     estamblishmentList!: Establishments;
-
-    constructor(private router: Router,private titleService: Title, private alertService: AlertService, private jobService: JobService, private establishmentService: EstablishmentService) {
+    workplace = "";
+    constructor(
+        private router: Router,
+        private titleService: Title, 
+        private alertService: AlertService, 
+        private jobService: JobService, 
+        private establishmentService: EstablishmentService,
+        private imageService: ImageserviceService,
+        
+        ) {
 
     }
 
@@ -155,7 +164,22 @@ export class JobofferComponent implements OnInit {
             this.alertService.error('Tag kon niet worden toegevoegd, er is niets ingevuld.');
         }
     }
-
+    onImageChange(fileInput : any ) {
+        
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            const file: File = fileInput.target.files[0];
+            const reader = new FileReader();    
+            this.imageService.uploadCompanyImg(file).subscribe(
+                (data: any) => {
+                   console.log(data);
+                   this.workplace = data.url;
+                },
+                (err: any) => {
+                    //console.log(err);
+                }
+                );
+        }
+      }
     updateTags(): void {
         // Updates the visible list of all the tags so it matches the array with all the tags
         const tagsHtml: any[] = [];
@@ -228,6 +252,8 @@ export class JobofferComponent implements OnInit {
         
         // check all inputs
         this.validateInput();
+
+        this.form.jobImage = this.workplace;
         var jobbie = this.convertFormtoJob(this.form)
        
         //send job to server
