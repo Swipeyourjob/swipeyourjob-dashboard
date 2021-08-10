@@ -40,8 +40,8 @@ export class JobService {
     getLikes(){
         return this.http.get<any>(`${environment.apiUrl}/getlikes?status=liked`)
     }
-    getLikesById(id: number){
-        return this.http.get<any>(`${environment.apiUrl}/getlikes/${id}?status=liked`)
+    getLikesById(id: number,filter: string){
+        return this.http.get<any>(`${environment.apiUrl}/getlikes/${id}?status=${filter}`)
     }
     getById(id: string) {
         return this.http.get<Job>(`${environment.apiUrl}/getjobs?companyid=${id}`);

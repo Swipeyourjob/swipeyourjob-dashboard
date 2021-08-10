@@ -2,6 +2,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService, TokenStorageService } from './_services';
 import { Router, ActivatedRoute} from '@angular/router';
+import { ChatService } from './_services/chat.service';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -17,10 +18,16 @@ export class AppComponent {
 
     @ViewChild('sidebar', { static: true }) sidebar!: ElementRef;
 
-    constructor(private router: Router, private tokenStorageService: TokenStorageService, private activatedRoute: ActivatedRoute) { }
+    constructor(
+        public chatService: ChatService,
+        private router: Router, 
+        private tokenStorageService: TokenStorageService, 
+        private activatedRoute: ActivatedRoute
+    ) { }
 
     ngOnInit(): void {
-        
+        this.chatService.getrooms();
+        console.log(this.chatService.rooms.roomlist);
         this.tokenStorageService.useRememberMe();
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 

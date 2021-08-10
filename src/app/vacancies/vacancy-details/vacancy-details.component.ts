@@ -1,8 +1,8 @@
 import { Component, OnInit,  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Vacancy, IVacancyList, VacancyUpdate } from '@app/models';
+import { Vacancy, IVacancyList, VacancyUpdate, UpdateSolication } from '@app/models';
 import { JobService } from '@app/services';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-vacancy-details',
@@ -58,14 +58,17 @@ export class VacancyDetailsComponent implements OnInit {
     }
     ];
     matches = [
-        {profileImg: "test", jobid: 0,voornaam:"placeholder", achternaam:"placeholder",age:26, availabilty:this.avaibility, userid:'placeholder'}
+        {profileImg: "test", jobid: 0,voornaam:"placeholder", achternaam:"placeholder",age:26, availabilty:this.avaibility, userid:'placeholder', status:""}
     ]
+    updateresponse: UpdateSolication | undefined;
     job: Vacancy| undefined;
     visiable= false;
     public icons: any = {
         faCheck: faCheck,
-        faTimes: faTimes
+        faTimes: faTimes,
+        faCommentDots: faCommentDots
     };
+
     jobidFromRoute = 0;
     likedlist: any = [];
 
@@ -96,7 +99,7 @@ export class VacancyDetailsComponent implements OnInit {
     }
 
     loadMatchesByJobId(id: number) : void{
-        this.jobService.getLikesById(id).subscribe(
+        this.jobService.getLikesById(id,'liked,accepted').subscribe(
             (data) => {
                 this.matches = [];
                 for(let i = 0; i < data.length; i++){
@@ -108,7 +111,8 @@ export class VacancyDetailsComponent implements OnInit {
                         age:person['age'], 
                         availabilty:this.avaibility,
                         userid:person['userid'],
-                        jobid: person["jobid"]
+                        jobid: person["jobid"],
+                        status: person["status"]
                     };
                     this.matches.push(newperson);
                 }
@@ -124,25 +128,29 @@ export class VacancyDetailsComponent implements OnInit {
         this.visiable= !this.visiable;
     }
     
-    updateLikeStatus(): void{
-        this.jobService.getLikes().subscribe(
-            (data) => {
-                let likes = {...data};
-                console.log(likes);
-            },
-            (err) => {
-                console.log("Error while fetching vacancies likes: " + err);
-            }
-        );
-    }
-    updateStatus(userid : string,status:boolean, matchnumber:number) : void{
+
+    updateStatus(useridstring : string,status:boolean, matchnumber:number) : void{
         let updateObject:  VacancyUpdate = new VacancyUpdate();
-        updateObject.userid = userid;
+        updateObject.userid = useridstring;
         updateObject.jobid = matchnumber;
         updateObject.status = (status)?'accepted':'rejected';
+        console.log(updateObject);
+        
+        
         this.jobService.updateJobStatus(updateObject).subscribe(
-            (data) => {
+            (data : any) => {
                 console.log(data);
+                this.updateresponse = data;
+                if(this.updateresponse?.ok){
+                    this.matches.forEach(function(element){
+                        if(element.userid == updateObject.userid && updateObject.jobid == element.jobid){
+                            element.status = updateObject.status;
+                        }
+                        return element;
+                    });
+                }else{
+                    console.log("nok");
+                }
             },
             (err) => {
 
@@ -150,8 +158,5 @@ export class VacancyDetailsComponent implements OnInit {
         );
     }
 
-    getLength(): Number{
-        
-        return this.vacancies.joblist.length
-    }
+   
 }

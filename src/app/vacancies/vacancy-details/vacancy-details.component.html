@@ -38,26 +38,6 @@
                         </div>
                         
                     </div>
-                    
-                    <!--<ul class="d-flex justify-content-between align-items-center" 
-                        id="{{i}}" 
-                        *ngFor="let vacancy of vacancies.joblist; index as i" 
-                        (click)="viewVacancy(vacancy,i)" >
-                        <ul>    
-                            <li [routerLink]="['/vacancy-details', vacancy.jobid]">
-                                <p [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }" >{{vacancy.jobName}}</p>
-                            </li>
-                            <ul  class="display-grid" 
-                            [attr.data-index]="i" 
-                            *ngIf="vacancy.jobid == jobidFromRoute" >  
-                                <a href="#">Sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span></a>
-                                <a href="#">Afgewezen sollicitanten <span class="badge badge-secondary badge-pill">{{getLength()}}</span> </a>
-                                <a href="#">(Vacature statistieken)</a>
-                            </ul>
-                            
-
-                        </ul>
-                    </ul>   -->
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-8">
@@ -146,12 +126,17 @@
                                         </div>
                                     </div>
                                     <div class="row ml-2">
-                                        <div class="col">
+                                        <div class="col"    *ngIf="match.status == 'liked'">
                                             <button type="button" class="btn btn-success btn-circle" (click)="updateStatus(match.userid,true,match.jobid)">
                                                 <fa-icon [icon]="icons.faCheck"></fa-icon> 
                                             </button>
                                             <button type="button" class="btn btn-danger btn-circle" (click)="updateStatus(match.userid,false,match.jobid)"> 
                                                 <fa-icon [icon]="icons.faTimes"></fa-icon> </button>
+                                        </div>
+                                        <div class="col"    *ngIf="match.status == 'accepted'">
+                                            <button type="button" class="btn btn-info btn-circle">
+                                                <fa-icon [icon]="icons.faCommentDots"></fa-icon>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

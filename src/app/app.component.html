@@ -102,10 +102,60 @@
                 </li>
             </ul>            
         </nav>
+        
         <!-- Page Content -->
-        <div class="container-fluid body-padding" id="main-content">
+        <div class="container-fluid body-padding" id="main-content" style="padding-right: 5vw;">
             <router-outlet></router-outlet>
             <alert></alert>
         </div>
     </div>
+   <div class="chatbar" >
+        <div class="row"  *ngFor="let room of this.chatService.rooms.roomlist; index as i">
+            <div class="col-12" >
+                <img src="assets/img/heads/{{i + 1}}.jpeg" class="chatImageCircle">
+            </div>
+        </div>
+    </div> 
+    <div style="position: fixed;right: 5vw;width:20vw;height: 100vh; z-index: 2;padding-top: 50px;">
+        <div class="row"  class="box sb1" [ngClass]="{'showoff': room.active}" *ngFor="let room of this.chatService.rooms.roomlist; index as i" style="margin-top:{{i*60}}px" >
+            <div class="col-12" >
+                <div class="row chathead" >
+                    <div class="col-12" style="height:50px;line-height: 50px;">Zyad Osseyran</div>
+                </div>
+                <div  class="row chatBoxBody">
+                    <ul class="row"  *ngFor="let chatmessage of this.chatService.rooms.roomlist[i].roommessage; index as i" style="width: 100%;">
+                        <li class="messageleft" *ngIf="!chatmessage.me">{{chatmessage.message}}</li>
+                        <li class="messageRight" *ngIf="chatmessage.me">{{chatmessage.message}}</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-9">
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-3">
+                        <button class="btn-sm btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+
 </div>
+ <!-- 
+<div style="position: fixed;bottom:0;right:0;  height: 40vh; width:80vw">
+    <div class="row" style="min-height: 100vh;">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <div class="row" style="background-color: rgba(185, 223, 204, 0.664);border-top-right-radius: 20px;border-top-left-radius: 20px;padding:10px 5px 5px 10px; ">
+                <div class="col-3"><img src="/assets/img/splash.jpg" style="width: 50px;height:50px;border-radius: 50px;"></div>
+                <div class="col-9" style="height:50px;line-height: 50px;">Zyad Osseyran</div>
+            </div>
+            <div class="row" >
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+-->

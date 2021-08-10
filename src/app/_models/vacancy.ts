@@ -31,3 +31,8 @@ export interface VacancyUpdate{
         status: string;
         jobid: number;
 }
+
+export interface UpdateSolication{
+    ok: boolean;
+    reason: string;
+}
