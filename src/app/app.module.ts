@@ -30,6 +30,9 @@ import { VerificationcheckComponent } from './verificationcheck/verificationchec
 import { TrackCapsDirective } from './trackcaps.directive';
 import { VacancyDetailsComponent } from './vacancies/vacancy-details/vacancy-details.component';
 import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
+import { UsermanagementComponent } from './user-management/user-overview/user-management.component';
+import { UserDetailsComponent } from './user-management/user-details/user-details.component';
+import { UserNewComponent } from './user-management/user-new/user-new.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
     VacancyOverviewComponent,
     VacancyDetailsComponent,
     SubMenuComponent,
+    UsermanagementComponent,
+    UserDetailsComponent,
+    UserNewComponent,
   ],
   imports: [
     BrowserModule,

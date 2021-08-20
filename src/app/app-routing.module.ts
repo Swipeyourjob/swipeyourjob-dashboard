@@ -12,10 +12,13 @@ import {ForgotPasswordComponent} from './login/forgot-password/forgot-password.c
 import {VerificationComponent} from './verification/verification.component';
 import {VerificationcheckComponent} from './verificationcheck/verificationcheck.component';
 import {VacancyOverviewComponent} from './vacancies/vacancy-overview/vacancy-overview.component';
-import { VacancyDetailsComponent } from './vacancies/vacancy-details/vacancy-details.component';
+import {VacancyDetailsComponent} from './vacancies/vacancy-details/vacancy-details.component';
 import {AuthGuard} from './_helpers';
 import {CompanyProfileComponent} from './company-profile/company-profile.component';
 import {JobofferComponent} from './joboffer/joboffer.component';
+import {UsermanagementComponent} from './user-management/user-overview/user-management.component';
+import {UserDetailsComponent} from './user-management/user-details/user-details.component';
+import {UserNewComponent} from "./user-management/user-new/user-new.component";
 
 const routes: Routes = [
 
@@ -32,6 +35,9 @@ const routes: Routes = [
   {path: 'my-vacancies', component: VacancyOverviewComponent, canActivate: [AuthGuard]},
   {path: 'vacancy-details/:vacancyId', component: VacancyDetailsComponent},
   {path: 'verification', component: VerificationComponent},
+  {path: 'user-overview', component: UsermanagementComponent},
+  {path: 'user-new', component: UserNewComponent},
+  {path: 'user-details/:userId', component: UserDetailsComponent},
   {path: 'new-vacancy', component: JobofferComponent, canActivate: [AuthGuard]},
   {path: 'verify', component: VerificationcheckComponent},
   {path: '**', redirectTo: '', canActivate: [AuthGuard]}
