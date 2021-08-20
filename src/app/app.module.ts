@@ -25,6 +25,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { authInterceptorProviders } from '@app/helpers';
 import {VerificationComponent} from './verification/verification.component';
+import {UsermanagementComponent} from './usermanagement/usermanagement.component';
 import {JobofferComponent} from './joboffer/joboffer.component';
 import { VerificationcheckComponent } from './verificationcheck/verificationcheck.component';
 import { TrackCapsDirective } from './trackcaps.directive';
@@ -50,6 +51,7 @@ import { SubMenuComponent } from './_components/sub-menu/sub-menu.component';
     CompanyProfileComponent,
     JobofferComponent,
     VerificationcheckComponent,
+    UsermanagementComponent,
     TrackCapsDirective,
     WidgetComponent,
     CardVacancyComponent,

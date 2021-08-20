@@ -1,0 +1,13 @@
+.card-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.card-container .form-group input {
+  margin: 0 auto;
+}
+
+.card-container .form-group button {
+  margin: 0 auto;
+}
