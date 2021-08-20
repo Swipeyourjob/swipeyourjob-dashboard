@@ -11,13 +11,11 @@ import { Title } from '@angular/platform-browser';
 })
 export class ForgotPasswordComponent implements OnInit {
 
+    isLoggedIn = false;
+
     form: ForgotPassword = { 
         email: ""
     };
-
-    isLoggedIn = false;
-
-    //public forgotPasswordForm: any;
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private alertService: AlertService, private titleService: Title) { }
 

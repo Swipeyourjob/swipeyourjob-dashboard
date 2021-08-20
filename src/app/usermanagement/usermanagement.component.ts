@@ -47,20 +47,20 @@ export class UsermanagementComponent implements OnInit {
     return this.passwordOk;
   }
   onSubmit(): void {
-    const {
-      password
-    } = this.form;
-    if (this.passwordOk) {
-      this.authService.companySetPassword(
-        password
-      ).subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
-    }
+    // const {
+    //   password
+    // } = this.form;
+    // if (this.passwordOk) {
+    //   this.authService.companySetPassword(
+    //     password
+    //   ).subscribe(
+    //     data => {
+    //       console.log(data);
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     }
+    //   );
+    // }
   }
 }

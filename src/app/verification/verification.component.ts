@@ -1,6 +1,8 @@
 import { Title } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {PasswordValidator} from 'app/_helpers/passwordvalidator';
+import { ChangedPassword, NewPassword } from '@app/models';
 import {AuthService, TokenStorageService} from '@app/services';
 
 @Component({
@@ -9,9 +11,18 @@ import {AuthService, TokenStorageService} from '@app/services';
   styleUrls: ['./verification.component.css']
 })
 export class VerificationComponent implements OnInit {
-  form: any = {
-    password: null
+  
+  isLoggedIn = false;
+
+  form: ChangedPassword = { 
+    password: "",
+    password2: ""
   };
+
+  email: any;
+  code: any;
+
+
   passwordchecks: any = {
     passwordCapitalCheck: false,
     passwordNumberCheck: false,
@@ -20,17 +31,37 @@ export class VerificationComponent implements OnInit {
   dialogChecks: any = {
     passwordDialog: false
   };
-  isLoggedIn = false;
   passwordOk = true;
 
-  constructor(private titleService: Title,private authService: AuthService, private passwordvalidator: PasswordValidator) {
-  }
+  constructor(private titleService: Title, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle("SwipeYourJob - Verificatie")
-    return;
+    this.titleService.setTitle("Swipe Your Job - Wachtwoord wijzigen")
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+    }
+    this.activatedRoute.queryParams.subscribe(params => {
+      //console.log(params);
+      this.email = params['emai'];
+      this.code= parseInt(params['code']);
+    });
   }
 
+  public validatePassword(): void {
+    const newPasswordForm: NewPassword = { password: this.form.password, email: this.email, code: this.code };
+    console.log(newPasswordForm);
+    this.authService.setNewPassword(newPasswordForm).subscribe(
+        data => {
+            console.log(data);
+            //this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });               
+        },
+        err => {
+            console.log(err);
+        }
+    );
+  }
+
+  /*
   validatePassword(): boolean {
     console.log('validate password');
     const password = this.form.password;
@@ -63,4 +94,5 @@ export class VerificationComponent implements OnInit {
       );
     }
   }
+  */
 }
