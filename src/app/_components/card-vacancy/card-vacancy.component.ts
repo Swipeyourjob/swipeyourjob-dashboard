@@ -17,9 +17,14 @@ export class CardVacancyComponent implements OnInit {
       this.vacancy.daysValid = 0;
   }
 
-  getUrl()
+  getUrl1()
   {
-    return `linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), url(${this.vacancy.images[0]}) no-repeat center center`;
+    return `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), url(${this.vacancy.images[0]}) center`;
+  }
+
+  getUrl2()
+  {
+    return `webkit-linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), url(${this.vacancy.images[0]}) no-repeat center center`;
   }
 
   getFilter()

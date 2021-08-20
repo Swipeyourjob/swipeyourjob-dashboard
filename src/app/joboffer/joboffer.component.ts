@@ -1,7 +1,9 @@
-import {Title} from '@angular/platform-browser';
-import {Component, OnInit, OnChanges, ViewChild, ElementRef} from '@angular/core';
-import {AlertService, JobService, EstablishmentService} from '@app/services';
-import {Job, Establishments} from '@app/models';
+import { Title } from '@angular/platform-browser';
+import { Component, OnInit, OnChanges, ViewChild, ElementRef } from '@angular/core';
+import { AlertService, JobService, EstablishmentService } from '@app/services';
+import { Job, Establishments } from '@app/models';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ImageserviceService } from 'app/_services/imageservice.service';
 
 @Component({
   selector: 'app-verification',
@@ -9,88 +11,96 @@ import {Job, Establishments} from '@app/models';
   styleUrls: ['./joboffer.component.css']
 })
 export class JobofferComponent implements OnInit {
-  form: any = {
-    jobName: null,
-    jobDescription: null,
-    jobImage: null,
-    // jobStreet: null,
-    // jobCity: null,
-    availability: [
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      },
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      },
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      },
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      },
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      },
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      },
-      {
-        morning: false,
-        afternoon: false,
-        evening: false,
-        night: false
-      }
-    ],
-    tags: [],
-    minimumAgeYesNo: null,
-    minimumAge: null,
-    wages: {
-      age16: null,
-      age17: null,
-      age18: null,
-      age19: null,
-      age20: null,
-      age21: null
-    },
-    setPeriodYesNo: null,
-    startdate: null,
-    enddate: null
-  };
-  tagField: any;
-  dialogChecks: any = {
-    passwordDialog: false
-  };
-  isLoggedIn = false;
-  wagesInputEnabled: any = {
-    wages16: null,
-    wages17: null,
-    wages18: null,
-    wages19: null,
-    wages20: null,
-    wages21: null
-  };
-  setPeriod = false;
-  estamblishmentList!: Establishments;
+    form: any = {
+        jobName: null,
+        jobDescription: null,
+        jobImage: null,
+        // jobStreet: null,
+        // jobCity: null,
+        availability: [
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            },
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            },
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            },
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            },
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            },
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            },
+            {
+                morning: false,
+                afternoon: false,
+                evening: false,
+                night: false
+            }
+        ],
+        tags: [],
+        minimumAgeYesNo: null,
+        minimumAge: null,
+        wages: {
+            age16: null,
+            age17: null,
+            age18: null,
+            age19: null,
+            age20: null,
+            age21: null
+        },
+        setPeriodYesNo: null,
+        startdate: null,
+        enddate: null
+    };
+    tagField: any;
+    dialogChecks: any = {
+        passwordDialog: false
+    };
+    isLoggedIn = false;
+    wagesInputEnabled: any = {
+        wages16: null,
+        wages17: null,
+        wages18: null,
+        wages19: null,
+        wages20: null,
+        wages21: null
+    };
+    setPeriod = false;
+    estamblishmentList!: Establishments;
+    workplace = "";
+    constructor(
+        private router: Router,
+        private titleService: Title,
+        private alertService: AlertService,
+        private jobService: JobService,
+        private establishmentService: EstablishmentService,
+        private imageService: ImageserviceService,
 
-  constructor(private titleService: Title, private alertService: AlertService, private jobService: JobService, private establishmentService: EstablishmentService) {
+        ) {
 
   }
 
@@ -143,28 +153,43 @@ export class JobofferComponent implements OnInit {
     console.log(this.wagesInputEnabled);
   }
 
-  addTag(): void {
-    // Runs when the button 'Voeg tag toe' is clicked
-    const {tagInput} = this.form;
-    if (tagInput != '' && tagInput != undefined) {
-      this.form.tags.push(tagInput);
-      this.updateTags();
-      this.form.tagInput = '';
-    } else {
-      this.alertService.error('Tag kon niet worden toegevoegd, er is niets ingevuld.');
+    addTag(): void {
+        // Runs when the button 'Voeg tag toe' is clicked
+        const { tagInput } = this.form;
+        if (tagInput != '' && tagInput != undefined) {
+            this.form.tags.push(tagInput);
+            this.updateTags();
+            this.form.tagInput = '';
+        } else {
+            this.alertService.error('Tag kon niet worden toegevoegd, er is niets ingevuld.');
+        }
     }
-  }
+    onImageChange(fileInput : any ) {
 
-  updateTags(): void {
-    // Updates the visible list of all the tags so it matches the array with all the tags
-    const tagsHtml: any[] = [];
-    const htmlTagList: any = document.getElementById('selected-tag-list');
-    // tslint:disable-next-line:only-arrow-functions
-    htmlTagList.innerHTML = '';
-    this.form.tags.forEach((value: any) => {
-      this.addSingleTag(value);
-    });
-  }
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            const file: File = fileInput.target.files[0];
+            const reader = new FileReader();
+            this.imageService.uploadCompanyImg(file).subscribe(
+                (data: any) => {
+                   console.log(data);
+                   this.workplace = data.url;
+                },
+                (err: any) => {
+                    //console.log(err);
+                }
+                );
+        }
+      }
+    updateTags(): void {
+        // Updates the visible list of all the tags so it matches the array with all the tags
+        const tagsHtml: any[] = [];
+        const htmlTagList: any = document.getElementById('selected-tag-list');
+        // tslint:disable-next-line:only-arrow-functions
+        htmlTagList.innerHTML = '';
+        this.form.tags.forEach((value: any) => {
+            this.addSingleTag(value);
+        });
+    }
 
   addSingleTag(value: any): any {
     // Add the html element for a single tag
@@ -225,30 +250,36 @@ export class JobofferComponent implements OnInit {
     this.alertService.clear(); // clear all alerts
 
 
-    // check all inputs
-    this.validateInput();
-    var jobbie = this.convertFormtoJob(this.form)
-    console.log(jobbie);
-    //send job to server
+        // check all inputs
+        this.validateInput();
 
-    this.jobService.createJob(jobbie).subscribe(
-      data => {
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+        this.form.jobImage = this.workplace;
+        var jobbie = this.convertFormtoJob(this.form)
 
-  }
+        //send job to server
 
-  converWagestoarray(wages: Object) {
-    let salary = new Array();
-    let counter = 15;
-    for (const [key, value] of Object.entries(wages)) {
-      console.log(`${key}: ${value}`);
-      if (value) {
-        salary.push({"age": counter + 1, "salary": value})
+       this.jobService.createJob(jobbie).subscribe(
+            data => {
+                if(data.hasOwnProperty("ok")){
+                    if((data as any).ok) {
+                        this.router.navigate(['/my-vacancies']);
+                    }
+                }
+
+            },
+            err => {
+                console.log(err);
+            }
+        );
+
+    }
+    converWagestoarray(wages:Object){
+        let salary = new Array();
+        let counter = 15;
+        for (const [key, value] of Object.entries(wages)) {
+            console.log(`${key}: ${value}`);
+            if (value){
+                salary.push({"age": counter+1, "salary": value})
 
       }
       counter++;

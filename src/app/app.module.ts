@@ -53,6 +53,7 @@ import { UserNewComponent } from './user-management/user-new/user-new.component'
     CompanyProfileComponent,
     JobofferComponent,
     VerificationcheckComponent,
+    UsermanagementComponent,
     TrackCapsDirective,
     WidgetComponent,
     CardVacancyComponent,

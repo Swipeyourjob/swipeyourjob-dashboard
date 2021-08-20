@@ -7,8 +7,10 @@ import {ZipcodeValidator} from '@app/helpers';
 import * as InlineEditor from '@ckeditor/ckeditor5-build-inline';
 import {faInstagram,faFacebook,faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+import { ImageserviceService } from 'app/_services/imageservice.service';
+import { CompanyProfile } from '@app/models';
 
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-company-profile',
@@ -17,22 +19,25 @@ import { faCheck, faTimes, faToggleOff } from '@fortawesome/free-solid-svg-icons
 })
 export class CompanyProfileComponent implements OnInit {
 
-    public form: any = {
-        CompanyIntroduction: null,
-        Companylogo: null,
-        Firstname: null,
-        Lastname: null,
-        profileUrl: null,
-        CompanyUrl: null,
-        facebooklink: null,
-        instagramlink: null,
-        linkedinlink: null,
-        Place: null,
-        Streetname: null,
-        housenumber: null,
-        zipcode: null,
+ 
+    form: CompanyProfile = {
+        establishmentid: 0,
+        introduction: "",
+        logo: "",
+        ownerFirstName: "",
+        ownerLastname: "",
+        ownerPicture: "",
+        weburl: "",
+        facebookUrl: "",
+        instagramUrl: "",
+        linkedinUrl:"",
+        place: "",
+        streetname: "",
+        housenumber: "",
+        zipcode: ""
     };
-    public imgFile: any;
+    public companyLogo: any;
+    public profilePicture: any;
     public icons: any = {
         faInstagram: faInstagram,
         faFacebook: faFacebook,
@@ -46,6 +51,7 @@ export class CompanyProfileComponent implements OnInit {
         invalidCheck: false,
         lengthCheck: false
     };
+
     public dialogChecks: any = {
         companyNamedialog: false,
         zipcodeNameDialog: false,
@@ -55,16 +61,19 @@ export class CompanyProfileComponent implements OnInit {
         kvkdDialog: false
     };
 
+
     public constructor(
         private tokenStorage: TokenStorageService,
         private establishmentService: EstablishmentService,
         private titleService: Title,
-        private zipcodeValidator: ZipcodeValidator
+        private zipcodeValidator: ZipcodeValidator,
+        private imageService: ImageserviceService,
+        private router: Router
     ) { }
 
     public ngOnInit(): void {
         this.titleService.setTitle('SwipeYourJob - Bedrijfsprofiel aanmaken');
-        
+    
         this.establishmentService.getUserEstamblishments().subscribe(
             (data: any) => {
                 let establishment = {... data};
@@ -72,6 +81,8 @@ export class CompanyProfileComponent implements OnInit {
                 if(establishmentlen > 0){
                     if(establishmentlen == 1){
                         let estaid = (establishment[0].hasOwnProperty('id')) ? establishment[0].id:false;
+                        this.form.establishmentid = estaid;
+                        console.log(estaid);
                         this.loadEstamblishment(estaid);
                     }else{
                         // let html = '';
@@ -87,17 +98,7 @@ export class CompanyProfileComponent implements OnInit {
                 console.log(err);
             }
         )
-        let userinfo = this.tokenStorage.getUserInfo();
-        if (userinfo != null) {
-            this.form.Firstname =
-                userinfo['firstname'] != null && userinfo['firstname'] != ''
-                    ? userinfo['firstname']
-                    : null;
-            this.form.Lastname =
-                userinfo['lastname'] != null && userinfo['lastname'] != ''
-                    ? userinfo['lastname']
-                    : null;
-        }
+        
     }
     public zipcodechange():void {
         let zipcode = this.form.zipcode;
@@ -107,34 +108,51 @@ export class CompanyProfileComponent implements OnInit {
         this.zipcodecheck.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
     }
     public onSubmit(f: NgForm): void {
+        this.form.logo = this.companyLogo;
+        this.form.ownerPicture  = this.profilePicture;
+        this.establishmentService.updateCompanyProfile(this.form).subscribe(
+            (data) => {
+                console.log(data);
+                if(data){
+                    this.router.navigate(['/']);
+                }
+            }
+        );
         
-        console.log(f);
     }
-    onImageChange() {
-
+    onImageChange(fileInput : any,uploadtype : string ) {
+        
+        if (fileInput.target.files && fileInput.target.files[0]) {
+            const file: File = fileInput.target.files[0];
+            const reader = new FileReader();    
+            this.imageService.uploadCompanyImg(file).subscribe(
+                (data: any) => {
+                    if(uploadtype == 'companylogo'){
+                        this.companyLogo = data.url;
+                    }else{
+                        this.profilePicture = data.url;
+                    }
+                   
+                },
+                (err: any) => {
+                    //console.log(err);
+                }
+                );
+        }
       }
     public loadEstamblishment(id: number){
-        try{
-            if (id){
-                this.establishmentService.getEstamblishmentByID(id).subscribe(
-                    (data: any) => {
-                        console.log(data);
-                        this.form = data;
-                    },
-                    (err: any) => {
-                        console.log(err);
-                    }
-                );
+        this.establishmentService.getEstamblishmentByID(id).subscribe(
+            (data) =>
+            {
+                this.form = data as CompanyProfile;
+                this.companyLogo = this.form.logo;
+                console.log(this.form);
+                this.profilePicture = this.form.ownerPicture;
             }
-            
-        } catch(error){
-            return false;
-        }
-        return false;
+        );
     }
     public companydescriptionChanged(event: KeyboardEvent): void {
-        console.log(event);
-        if (this.form.CompanyIntroduction != null) {
+       /* if (this.form.CompanyIntroduction != null) {
             // regex to remove all the html tag
             var regex = /(<([^>]+)>)/gi;
             const wordcounter = this.form.CompanyIntroduction.replace(
@@ -148,7 +166,7 @@ export class CompanyProfileComponent implements OnInit {
             }
         } else {
             this.wordcount = 1;
-        }
+        }*/
     }
 
     

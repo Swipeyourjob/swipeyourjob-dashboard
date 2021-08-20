@@ -63,12 +63,9 @@ export class AuthService {
         }
     }
 
-    public forgotPassword(forgotinfo: ForgotPassword) {
-        // throw new Error('Method not implemented.');
-        console.log(forgotinfo);
-        //TODO :: add api call to send mailinfo to server
-        return true;
+    public forgotPassword(email: string) {
+        return this.http.post<Response>(environment.apiUrl + '/forgotpassword', {
+            email
+        }, httpOptions);
     }
-
-
 }

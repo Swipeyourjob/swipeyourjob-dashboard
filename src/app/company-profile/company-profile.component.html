@@ -10,53 +10,60 @@
             <div class="card companyprofile col-md-9    ">
                 <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
                     <div class="form-control-group">
-                        <label for="CompanyIntroduction">Bedrijfs omschrijving:</label>
+                        <label for="introduction">Bedrijfs omschrijving:</label>
                         <div class="form-control-group">
-                            <ckeditor [editor]="Editor"></ckeditor>
+                            <ckeditor [editor]="Editor" name="introduction" [(ngModel)]="form.introduction"></ckeditor>
                         </div>
                         <div id="word-count"></div>
                     </div>
                     <div class="form-control-group">
                         <label for="Companylogo">Bedrijfslogo</label>
-                        <input type="file" class="input-full-width" name="Companylogo" accept="image/png, image/jpeg" [(ngModel)]="form.Companylogo" #Companylogo="ngModel" (change)="onImageChange()">
-                        <div class="preview" *ngIf="imgFile">
-                            <img [src]="imgFile" style="width:400px; height:250px">
+                        <input type="file" class="input-full-width" name="Companylogo" accept="image/png, image/jpeg"  (change)="onImageChange($event,'companylogo')">
+                        <div class="preview" *ngIf="companyLogo">
+                            <img [src]="companyLogo" style="width:400px;">
                         </div>
                     </div>
                     <div class="form-control-group">
                         <label for="ownerFirstName">Voornaam:</label>
-                        <input type="text" class="input-full-width" name="ownerFirstName" [(ngModel)]="form.ownerFirstName" #ownerFirstName="ngModel">
+                        <input type="text" class="input-full-width" name="ownerFirstName" [(ngModel)]="form.ownerFirstName" #ownerFirstName="ngModel"/>
                     </div>
+                   
+                        
                     <div class="form-control-group">
                         <label for="ownerLastname">Achternaam:</label>
-                        <input type="text" class="input-full-width" name="ownerLastname" [(ngModel)]="form.ownerLastname" #ownerLastname="ngModel" value="form.ownerLastname">
+                        <input type="text" class="input-full-width" name="ownerLastname" [(ngModel)]="form.ownerLastname" #Lastname="ngModel" value="form.ownerLastname">
                     </div>
+                     
                     <div class="form-control-group">
                         <label for="ownerPicture">Profile</label>
-                        <input type="file" class="input-full-width" name="ownerPicture" accept="image/png, image/jpeg">
+                        <input type="file" class="input-full-width" name="ownerPicture" accept="image/png, image/jpeg" (change)="onImageChange($event,'ownerpicture')">
+                        <div class="preview" *ngIf="profilePicture">    
+                            <img [src]="profilePicture" style="width:400px;">
+                        </div>
                     </div>
                     <div class="form-control-group">
-                        <label for="CompanyUrl">Website van Bedrijf:</label>
-                        <input type="text" class="input-full-width" name="CompanyUrl" [(ngModel)]="form.CompanyUrl" #CompanyUrl="ngModel">
+                        <label for="weburl">Website van Bedrijf:</label>
+                        <input type="text" class="input-full-width" name="weburl" [(ngModel)]="form.weburl" #weburl="ngModel">
                     </div>
+
                     <div class="form-control-group">
-                        <label for="facebooklink"><fa-icon [icon]="icons.faFacebook"></fa-icon>Facebook:</label>
-                        <input type="text" class="input-full-width" name="facebooklink" [(ngModel)]="form.facebooklink" #facebooklink="ngModel">
+                        <label for="facebookUrl"><fa-icon [icon]="icons.faFacebook"></fa-icon>Facebook:</label>
+                        <input type="text" class="input-full-width" name="facebookUrl" [(ngModel)]="form.facebookUrl" #facebookUrl="ngModel">
     
-                        <label for="instagramlink"><fa-icon [icon]="icons.faInstagram"></fa-icon>Instagram:</label>
-                        <input type="text" class="input-full-width" name="instagramlink" [(ngModel)]="form.instagramlink" #instagramlink="ngModel">
+                        <label for="instagramUrl"><fa-icon [icon]="icons.faInstagram"></fa-icon>Instagram:</label>
+                        <input type="text" class="input-full-width" name="instagramUrl" [(ngModel)]="form.instagramUrl" #instagramUrl="ngModel">
     
-                        <label for="linkedinlink"><fa-icon [icon]="icons.faLinkedin"></fa-icon>Linkedin:</label>
-                        <input type="text" class="input-full-width" name="linkedinlink" [(ngModel)]="form.linkedinlink" #linkedinlink="ngModel">
+                        <label for="linkedinUrl"><fa-icon [icon]="icons.faLinkedin"></fa-icon>Linkedin:</label>
+                        <input type="text" class="input-full-width" name="linkedinUrl" [(ngModel)]="form.linkedinUrl" #linkedinUrl="ngModel">
                     </div>
     
                     <div class="form-control-group">
-                        <label for="Place">Plaats:</label>
-                        <input type="text" class="input-full-width" name="Place" [(ngModel)]="form.Place" #Place="ngModel">
+                        <label for="place">Plaats:</label>
+                        <input type="text" class="input-full-width" name="place" [(ngModel)]="form.place" #place="ngModel">
                     </div>
                     <div class="form-control-group">
-                        <label for="Streetname">Straat:</label>
-                        <input type="text" class="input-full-width" name="Streetname" [(ngModel)]="form.Streetname" #Streetname="ngModel">
+                        <label for="streetname">Straat:</label>
+                        <input type="text" class="input-full-width" name="streetname" [(ngModel)]="form.streetname" #streetname="ngModel">
                     </div>
                     <div class="form-control-group">
                         <label for="housenumber">Huisnummer:</label>
@@ -90,6 +97,9 @@
                             </table>
                         </div>
                     </div>
+
+                    <!-- 
+                    -->
                     <div class="form-control-group">
                         <button type="submit" class="btn btn-primary btn-block">Opslaan</button>
                     </div>

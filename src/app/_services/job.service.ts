@@ -38,10 +38,10 @@ export class JobService {
         return this.http.get<Job[]>(`${environment.apiUrl}/getjobs`);
     }
     getLikes(){
-        return this.http.get<any>(`${environment.apiUrl}/getlikes?status=all`)
+        return this.http.get<any>(`${environment.apiUrl}/getlikes?status=liked`)
     }
     getLikesById(id: number){
-        return this.http.get<any>(`${environment.apiUrl}/getlikes/${id}?status=all`)
+        return this.http.get<any>(`${environment.apiUrl}/getlikes/${id}?status=liked`)
     }
     getById(id: string) {
         return this.http.get<Job>(`${environment.apiUrl}/getjobs?companyid=${id}`);

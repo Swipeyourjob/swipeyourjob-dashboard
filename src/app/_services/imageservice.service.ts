@@ -4,7 +4,7 @@ import { typeSourceSpan } from '@angular/compiler';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { TokenStorageService } from './token-storage.service';
-import { CompanyProfile, Establishments, imageFile } from '@app/models';
+import { Establishments, imageFile } from '@app/models';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 const httpOptions = {
@@ -15,10 +15,9 @@ const httpUploadOptions = {
 };
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root'
 })
-export class EstablishmentService {
-
+export class ImageserviceService {
     constructor(
         private router: Router,
         private http: HttpClient,
@@ -26,15 +25,10 @@ export class EstablishmentService {
     ) {
 
     }
-    public updateCompanyProfile(data: CompanyProfile){
-        return this.http.post(`${environment.apiUrl}/updateCompanyProfile`, data, httpOptions);
-    }
-
-    public getUserEstamblishments() {
-        return this.http.get<Establishments>(`${environment.apiUrl}/getEstablishmentProfile`, httpOptions);
-    }
-    public getEstamblishmentByID(id: number) {
-        return this.http.get(`${environment.apiUrl}/getEstablishmentProfile/${id}`, httpOptions);
-    }
-    
+    public uploadCompanyImg(imageFile: any): Observable<HttpEvent<any>> {
+      
+      let formData: FormData = new FormData();
+      formData.append('imageFile', imageFile);
+      return this.http.post<HttpEvent<any>>(`${environment.apiUrl}/uploadimage`, formData);
+  }
 }

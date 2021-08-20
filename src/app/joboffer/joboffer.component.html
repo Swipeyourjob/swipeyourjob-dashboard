@@ -56,8 +56,12 @@
             class="form-control col-md-12"
             name="functionimage"
             id="functionimage"
-            [(ngModel)]="form.jobImage"
+            accept="image/png, image/jpeg" 
+            (change)="onImageChange($event)"
           >
+          <div class="preview" *ngIf="workplace">    
+            <img [src]="workplace" style="width:400px;">
+          </div>
         </div>
 
 <!--        <div class="form-group">-->
