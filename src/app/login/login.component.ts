@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { faCheck, faTimes, faExclamationTriangle, faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService, AlertService, TokenStorageService } from '../_services';
 
@@ -17,6 +18,18 @@ export class LoginComponent implements OnInit {
         password: null,
         rememberMe: false
     };
+    emailField: any = {
+        empty: false
+    }
+    passwordField: any = {
+        empty: false
+    }
+    icons: any = {
+        faCheck: faCheck,
+        faTimes: faTimes,
+        faExclamationTriangle: faExclamationTriangle,
+        faExclamation: faExclamation
+    }
     isLoggedIn = false;
     isLoginFailed = false;
     roles: string[] = [];
@@ -32,6 +45,12 @@ export class LoginComponent implements OnInit {
             this.roles = this.tokenStorage.getUser().roles;
             window.location.href = '/';
         }
+    }
+
+    validateForms(): void {
+        if(this.form.email === "") this.emailField.empty = true;
+
+        if(this.form.password ==="") this.form.password.empty = true;
     }
 
     getConfigValue(key: string): any{ }

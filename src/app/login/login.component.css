@@ -41,6 +41,11 @@ form {
     margin-left: 0.05rem;
     justify-content: space-between;
 }
+.error-message {
+    color: rgba(255,30,30,0.8);
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
 input[type=checkbox]{
     transition-duration: 0.15s;
     transition-property: background-color,border,box-shadow;
