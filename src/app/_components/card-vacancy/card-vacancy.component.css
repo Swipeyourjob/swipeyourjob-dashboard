@@ -1,40 +1,40 @@
 .card-vacancy {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    transition: transform .2s;
-    cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: transform .2s;
+  cursor: pointer;
 }
 
 .card-vacancy-text {
-    font-family: 'Avenir Semibold';
-    font-size: 22px;
-    text-align: center;
-    padding-top: 75%;
-    padding-bottom: 10px;
+  font-family: 'Avenir Semibold';
+  font-size: 22px;
+  text-align: center;
+  padding-top: 75%;
+  padding-bottom: 10px;
 }
 
 .card-vacancy-time {
-    top: 25px;
-    margin-left: 5px;
-    position: absolute;
+  top: 25px;
+  margin-left: 5px;
+  position: absolute;
 }
 
 .card-vacancy-options {
-    top: 25px;
-    right: 30px;
-    position: absolute;
-    border: 3px solid;
-    border-radius: 50%;
-    border-color: white;
-    background-color: rgba(0, 0, 0, 0.2);
+  top: 25px;
+  right: 30px;
+  position: absolute;
+  border: 3px solid;
+  border-radius: 50%;
+  border-color: white;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .container-vacancy {
-    border: 6px solid #FFFFFF;
-    border-radius: 15px;
-    vertical-align: text-bottom;
+  border: 6px solid #FFFFFF;
+  border-radius: 15px;
+  vertical-align: text-bottom;
 }
 
 /*
@@ -45,20 +45,23 @@
 */
 
 .jumbotron:hover {
-    box-shadow: 0px 4px 18px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 18px 8px rgba(0, 0, 0, 0.3);
 }
 
 .jumbotron {
-    transition-duration: 0.4s;
-    color: #FFFFFF;
-    background-color: #FFFFFF;
-    padding: 0px;
-    border-radius: 25px;
-    box-shadow: 0px 2px 15px 5px rgba(0, 0, 0, 0.2);
-    -webkit-appearance: none;
-    background-size: contain;
-    
+  transition-duration: 0.4s;
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  padding: 0;
+  border-radius: 25px;
+  box-shadow: 0 2px 15px 5px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
-.addgreyfilter{
-    filter:grayscale(100%);
+
+.addgreyfilter {
+  filter: grayscale(100%);
 }

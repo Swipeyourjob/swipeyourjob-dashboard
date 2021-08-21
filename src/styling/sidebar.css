@@ -30,7 +30,7 @@
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #252F3F;
+  background: #191919;
 }
 
 #sidebar ul.components {
@@ -59,7 +59,7 @@
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
   color: #fff;
-  background: #161E2E;
+  background-image: linear-gradient(45deg, #50c6da, #3bec8d);
   border-radius: 8px;
   margin-right: 10px;
   margin-left: 10px;
@@ -85,7 +85,7 @@
   left: 0;
   height: 100vh;
   z-index: 999;
-  background: #252F3F;
+  background: #191919;
   color: #fff;
   transition: all 0.3s;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
@@ -99,7 +99,7 @@
 @media (max-width: 768px) {
   #sidebar {
       margin-left: -256px;
-      
+
   }
   #sidebar.active {
       margin-left: 0;

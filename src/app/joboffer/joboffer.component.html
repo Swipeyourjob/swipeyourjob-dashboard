@@ -15,7 +15,6 @@
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
-        novalidate
       >
 
         <div class="form-group">
@@ -39,7 +38,7 @@
             placeholder="Binnen deze functie ..."
             name="functiondescription"
             id="functiondescription"
-            maxlength="300"
+            maxlength="500"
             data-mandatory="true"
             data-error-mandatory="Het invullen van een functieomschrijving is verplicht."
             [(ngModel)]="form.jobDescription"
@@ -51,15 +50,19 @@
             Foto van de werkplek*
           </label>
           <p>Maak een leuke foto van de werkplek</p>
+<!--          <div class="mb-3">-->
+<!--            <label for="formFile" class="form-label">Default file input example</label>-->
+<!--            <input class="form-control" type="file" id="formFile">-->
+<!--          </div>-->
           <input
             type="file"
             class="form-control col-md-12"
             name="functionimage"
             id="functionimage"
-            accept="image/png, image/jpeg" 
+            accept="image/png, image/jpeg"
             (change)="onImageChange($event)"
           >
-          <div class="preview" *ngIf="workplace">    
+          <div class="preview" *ngIf="workplace">
             <img [src]="workplace" style="width:400px;">
           </div>
         </div>
