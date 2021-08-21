@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Vacancy, IVacancyList, VacancyUpdate, UpdateSolication } from '@app/models';
 import { JobService } from '@app/services';
 import { faCheck, faTimes, faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { CreateRoomRequest } from 'app/_models/chat';
 import { ChatService } from 'app/_services/chat.service';
 
 @Component({
@@ -61,6 +62,7 @@ export class VacancyDetailsComponent implements OnInit {
     matches = [
         {profileImg: "test", jobid: 0,voornaam:"placeholder", achternaam:"placeholder",age:26, availabilty:this.avaibility, userid:'placeholder', status:""}
     ]
+    newroom  : CreateRoomRequest | undefined;
     updateresponse: UpdateSolication | undefined;
     job: Vacancy| undefined;
     visiable= false;
@@ -124,7 +126,23 @@ export class VacancyDetailsComponent implements OnInit {
         
     }
     chatwithuser(userid: string, jobid: number){
-        this.chatService.createRoom(userid,jobid);
+        this.newroom =  {
+            chatjobid: jobid,
+            chatname:`${jobid}-${userid}`,
+            roomGuest:[userid]
+        };
+    
+        this.chatService.createRoom(this.newroom).subscribe(
+            (data) => {
+                if(data.ok){
+                    this.chatService.getrooms();
+                }
+                
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     }
     viewVacancy(vacancy:any, index:number): void {
         console.log( this.visiable);

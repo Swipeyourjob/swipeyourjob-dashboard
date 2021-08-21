@@ -26,17 +26,15 @@ export class AppComponent {
     ) { }
 
     ngOnInit(): void {
-        this.chatService.getrooms();
+        this.chatService.login();
         console.log(this.chatService.rooms.roomlist);
         this.tokenStorageService.useRememberMe();
         this.isLoggedIn = !!this.tokenStorageService.getToken();
 
         if(this.isLoggedIn) {
             let userInfo = this.tokenStorageService.getUserInfo();
-
             this.showAdminBoard = (userInfo.Role == 'ROLE_ADMIN');
             this.showModeratorBoard = (userInfo.Role == 'ROLE_MODERATOR');
-
             this.sidebar.nativeElement.style.display = 'block';
         }
         else {

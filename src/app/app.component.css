@@ -66,6 +66,7 @@ a[data-toggle="collapse"] {
 .chatImageCircle{
     padding-left:10%;
     width:60px;
+    min-height: 60px;
     max-height:60px;
     border-radius:60px;
     padding-bottom: 5px;

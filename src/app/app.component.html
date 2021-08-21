@@ -112,7 +112,7 @@
    <div class="chatbar" *ngIf="this.chatService.rooms.roomlist.length > 0">
         <div class="row"  *ngFor="let room of this.chatService.rooms.roomlist; index as i">
             <div class="col-12" (click)="this.chatService.setactive(room.roomid)">
-                <img src="assets/img/heads/{{i + 1}}.jpeg" class="chatImageCircle">
+                <img src="{{room.roomimage}}" class="chatImageCircle">
             </div>
         </div>
     </div> 
@@ -130,10 +130,10 @@
                 </div>
                 <div class="row">
                     <div class="col-9">
-                        <input type="text" class="form-control">
+                        <input type="text" id="chatboxinput_{{room.roomid}}" class="form-control">
                     </div>
                     <div class="col-3">
-                        <button class="btn-sm btn-primary">Send</button>
+                        <button class="btn-sm btn-primary" (click)="this.chatService.sendmessage(room.roomid)">Send</button>
                     </div>
                 </div>
             </div>
