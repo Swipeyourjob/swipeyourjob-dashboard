@@ -120,6 +120,7 @@ export class CompanyProfileComponent implements OnInit {
         );
         
     }
+    
     onImageChange(fileInput : any,uploadtype : string ) {
         
         if (fileInput.target.files && fileInput.target.files[0]) {
@@ -152,10 +153,10 @@ export class CompanyProfileComponent implements OnInit {
         );
     }
     public companydescriptionChanged(event: KeyboardEvent): void {
-       /* if (this.form.CompanyIntroduction != null) {
+       if (this.form.introduction != null) {
             // regex to remove all the html tag
             var regex = /(<([^>]+)>)/gi;
-            const wordcounter = this.form.CompanyIntroduction.replace(
+            const wordcounter = this.form.introduction.replace(
                 regex,
                 ''
             ).replace(' ', '');
@@ -166,7 +167,7 @@ export class CompanyProfileComponent implements OnInit {
             }
         } else {
             this.wordcount = 1;
-        }*/
+        }
     }
 
     

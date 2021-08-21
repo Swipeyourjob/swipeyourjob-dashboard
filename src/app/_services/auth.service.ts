@@ -44,7 +44,7 @@ export class AuthService {
 
     //Sets the new password for user based on e-mail and unique code.
     public setNewPassword(newPassword: NewPassword) {
-        return this.http.post(environment.apiUrl + '/resetPassword', newPassword, httpOptions);
+        return this.http.post<Response>(environment.apiUrl + '/resetPassword', newPassword, httpOptions);
     }
 
     public logout() {

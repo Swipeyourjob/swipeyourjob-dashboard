@@ -53,6 +53,9 @@ export class VerificationComponent implements OnInit {
     this.authService.setNewPassword(newPasswordForm).subscribe(
         data => {
             console.log(data);
+            this.tokenStorage.saveToken(data.token, false);
+            this.tokenStorage.saveUser(data);
+            window.location.href = '/';
             //this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });               
         },
         err => {

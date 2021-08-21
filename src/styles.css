@@ -1,13 +1,13 @@
-::placeholder {
-  color: #C0C0CF;
-  opacity: 1;
-}
-:-ms-input-placeholder {
-  color: #C9C9CF;
-}
-::-ms-input-placeholder {
-  color: #C9C9CF;
-}
+/*::placeholder {*/
+/*  color: #C0C0CF;*/
+/*  opacity: 1;*/
+/*}*/
+/*:-ms-input-placeholder {*/
+/*  color: #C9C9CF;*/
+/*}*/
+/*::-ms-input-placeholder {*/
+/*  color: #C9C9CF;*/
+/*}*/
 
 .lift {
   transition: all .1s ease-in-out;
@@ -19,91 +19,91 @@
   -webkit-appearance: none;
 }
 /* LINKS */
-a {
-  cursor: pointer;
-}
-a:hover {
-  text-decoration: none;
-}
+/*a {*/
+/*  cursor: pointer;*/
+/*}*/
+/*a:hover {*/
+/*  text-decoration: none;*/
+/*}*/
 
-.btn {
-  font-weight: bold;
-  border: none !important;
-  height: 45px;
-  
-}
-.btn:focus {
-  outline: none !important;
-  border: none !important;
-}
-.btn:active {
-  outline: none !important;
-  border: none !important;
-  transform: translate3d(0px, 1px, 0);
-}
-.btn-primary {
-  font-weight: bold;
-  border: none !important;
-}
-.btn-circle.btn-xl {
-    width: 70px;
-    height: 70px;
-    padding: 10px 16px;
-    border-radius: 35px;
-    font-size: 35px;
-    line-height: 1.33;
-}
+/*.btn {*/
+/*  font-weight: bold;*/
+/*  border: none !important;*/
+/*  height: 45px;*/
 
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    padding: 6px 0px;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.42857;
-}
+/*}*/
+/*.btn:focus {*/
+/*  outline: none !important;*/
+/*  border: none !important;*/
+/*}*/
+/*.btn:active {*/
+/*  outline: none !important;*/
+/*  border: none !important;*/
+/*  transform: translate3d(0px, 1px, 0);*/
+/*}*/
+/*.btn-primary {*/
+/*  font-weight: bold;*/
+/*  border: none !important;*/
+/*}*/
+/*.btn-circle.btn-xl {*/
+/*    width: 70px;*/
+/*    height: 70px;*/
+/*    padding: 10px 16px;*/
+/*    border-radius: 35px;*/
+/*    font-size: 35px;*/
+/*    line-height: 1.33;*/
+/*}*/
+
+/*.btn-circle {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    padding: 6px 0px;*/
+/*    border-radius: 15px;*/
+/*    text-align: center;*/
+/*    font-size: 15px;*/
+/*    line-height: 1.42857;*/
+/*}*/
 
 /* INPUT */
-input {
-  border-radius: 8px;
-  border: none;
-  font-family: 'Avenir Semibold';
-  padding: 1rem;
-  width: 100%;
-  transition-duration: .15s;
-  transition-property: border,background-color,color,box-shadow;
-  transition-timing-function: ease-in;
-  overflow: visible;
-  color: #626272;
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
-  -webkit-appearance: none;
-  text-indent: 0;
-  text-shadow: none;
-}
-input:focus-visible {
-  outline-offset: 0;
-  outline: none;
-}
-input:focus {
-  outline-offset: 0;
-  outline: none;
-  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.15) !important;
-  -webkit-appearance: none;
-}
+/*input {*/
+/*  border-radius: 8px;*/
+/*  border: none;*/
+/*  font-family: 'Avenir Semibold';*/
+/*  padding: 1rem;*/
+/*  width: 100%;*/
+/*  transition-duration: .15s;*/
+/*  transition-property: border,background-color,color,box-shadow;*/
+/*  transition-timing-function: ease-in;*/
+/*  overflow: visible;*/
+/*  color: #626272;*/
+/*  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);*/
+/*  -webkit-appearance: none;*/
+/*  text-indent: 0;*/
+/*  text-shadow: none;*/
+/*}*/
+/*input:focus-visible {*/
+/*  outline-offset: 0;*/
+/*  outline: none;*/
+/*}*/
+/*input:focus {*/
+/*  outline-offset: 0;*/
+/*  outline: none;*/
+/*  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.15) !important;*/
+/*  -webkit-appearance: none;*/
+/*}*/
 
-/* The following will be deleted by Bart during the restyling of this web page */
-input[type=checkbox] {
-  border-radius: 0;
-}
-input[type=radio], input[type=checkbox] {
-  border: 3px solid red;
-  width: 20px;
-  height: 20px;
-}
-input[type=radio]:checked, input[type=checkbox]:checked {
-  background-color: blue;
-}
+/*!* The following will be deleted by Bart during the restyling of this web page *!*/
+/*input[type=checkbox] {*/
+/*  border-radius: 0;*/
+/*}*/
+/*input[type=radio], input[type=checkbox] {*/
+/*  border: 3px solid red;*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*}*/
+/*input[type=radio]:checked, input[type=checkbox]:checked {*/
+/*  background-color: blue;*/
+/*}*/
 /*  */
 .center {
     justify-content: center;
@@ -113,7 +113,7 @@ input[type=radio]:checked, input[type=checkbox]:checked {
     max-width: 35rem;
     padding: 2.5rem;
 }
-.theme {
+.theme { /* Use this to apply the Swipe Your Job Gradient on the background of an element */
     background: rgb(59, 236, 141);
     background: linear-gradient(
         45deg,
@@ -137,25 +137,25 @@ input[type=radio]:checked, input[type=checkbox]:checked {
     -ms-flex: 1 1 auto;
     flex-direction: row;
 }
-.container {
-  padding: 10px;
-}
+/*.container {*/
+/*  padding: 10px;*/
+/*}*/
 
-.btn-delete-user {
-  width: 40px;
-  text-align: center;
-  box-sizing: content-box;
-}
+/*.btn-delete-user {*/
+/*  width: 40px;*/
+/*  text-align: center;*/
+/*  box-sizing: content-box;*/
+/*}*/
 
-.syj_content {
-  display: flex;
-  flex-direction: column;
-  /* color: #FFF; */
-  height: 100%;
-}
-.syj_content > section {
-  flex: 1;
-}
+/*.syj_content {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  !* color: #FFF; *!*/
+/*  height: 100%;*/
+/*}*/
+/*.syj_content > section {*/
+/*  flex: 1;*/
+/*}*/
 
 body {
   font-family: "Avenir", Helvetica, sans-serif;
@@ -185,16 +185,17 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  background-color: var(--white-color);
-  z-index: var(--z-fixed);
+  /*background-color: var(--white-color);*/
+  /*z-index: var(--z-fixed);*/
+  z-index: 1;
   transition: .5s;
 }
 
-.jumbotron {
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
-  -webkit-appearance: none;
-}
+/*.jumbotron {*/
+/*  background-color: #FFFFFF;*/
+/*  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);*/
+/*  -webkit-appearance: none;*/
+/*}*/
 
 alert {
   position: fixed;

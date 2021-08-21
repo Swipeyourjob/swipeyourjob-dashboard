@@ -41,10 +41,10 @@ export class ForgotPasswordComponent implements OnInit {
         this.authService.forgotPassword(this.form.email).subscribe(
             data => {
                 console.log(data);
-                this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });               
+                this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });             
             },
             err => {
-                console.log("Error: " + err);
+                console.log(err);
             }
         );
     }

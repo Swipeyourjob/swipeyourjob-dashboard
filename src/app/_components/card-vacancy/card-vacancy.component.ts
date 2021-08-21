@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Vacancy} from 'app/_models/vacancy';
+import {faMapMarkerAlt, faClock, faEuroSign} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'card-vacancy',
@@ -7,6 +8,11 @@ import {Vacancy} from 'app/_models/vacancy';
   styleUrls: ['./card-vacancy.component.css']
 })
 export class CardVacancyComponent implements OnInit {
+  public icons: any = {
+    faMapMarkerAlt: faMapMarkerAlt,
+    faClock: faClock,
+    faEuroSign: faEuroSign
+  };
 
   constructor() {
   }
