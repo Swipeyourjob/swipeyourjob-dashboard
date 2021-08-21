@@ -134,7 +134,7 @@
                                                 <fa-icon [icon]="icons.faTimes"></fa-icon> </button>
                                         </div>
                                         <div class="col"    *ngIf="match.status == 'accepted'">
-                                            <button type="button" class="btn btn-info btn-circle">
+                                            <button type="button" class="btn btn-info btn-circle" (click)="chatwithuser(match.userid,match.jobid)">
                                                 <fa-icon [icon]="icons.faCommentDots"></fa-icon>
                                             </button>
                                         </div>

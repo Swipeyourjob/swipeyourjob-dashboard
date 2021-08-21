@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Vacancy, IVacancyList, VacancyUpdate, UpdateSolication } from '@app/models';
 import { JobService } from '@app/services';
 import { faCheck, faTimes, faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { ChatService } from 'app/_services/chat.service';
 
 @Component({
     selector: 'app-vacancy-details',
@@ -72,8 +73,10 @@ export class VacancyDetailsComponent implements OnInit {
     jobidFromRoute = 0;
     likedlist: any = [];
 
-    constructor( private jobService: JobService, private route: ActivatedRoute,) { 
-    }
+    constructor( 
+        public chatService: ChatService,
+        private jobService: JobService, 
+        private route: ActivatedRoute) {}
 
     ngOnInit(): void {
         this.route.paramMap.subscribe(params => {
@@ -120,7 +123,9 @@ export class VacancyDetailsComponent implements OnInit {
             ,(err) => {});
         
     }
-    
+    chatwithuser(userid: string, jobid: number){
+        this.chatService.createRoom(userid,jobid);
+    }
     viewVacancy(vacancy:any, index:number): void {
         console.log( this.visiable);
         console.log( this.jobidFromRoute);

@@ -25,5 +25,4 @@ export class Message{
     sender!: string;
     me!: boolean;
     message!:string;
-    
 }

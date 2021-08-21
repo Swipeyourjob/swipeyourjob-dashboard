@@ -111,7 +111,7 @@
     </div>
    <div class="chatbar" *ngIf="this.chatService.rooms.roomlist.length > 0">
         <div class="row"  *ngFor="let room of this.chatService.rooms.roomlist; index as i">
-            <div class="col-12" >
+            <div class="col-12" (click)="this.chatService.setactive(room.roomid)">
                 <img src="assets/img/heads/{{i + 1}}.jpeg" class="chatImageCircle">
             </div>
         </div>

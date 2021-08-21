@@ -60,6 +60,7 @@ a[data-toggle="collapse"] {
     max-height: 350px;;
     overflow-y: auto;
     background-color:#e0dddd;
+    min-height: 200px;
 }
 
 .chatImageCircle{
