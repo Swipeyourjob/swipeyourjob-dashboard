@@ -31,6 +31,7 @@ export class Message{
     sender!: string;
     me!: boolean;
     message!:string;
+    roomid  ?: number | null;
 }
 
 export class CreateroomResponse {

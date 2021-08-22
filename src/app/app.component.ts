@@ -27,6 +27,7 @@ export class AppComponent {
 
     ngOnInit(): void {
         this.chatService.login();
+        this.chatService.addMessageListener();
         console.log(this.chatService.rooms.roomlist);
         this.tokenStorageService.useRememberMe();
         this.isLoggedIn = !!this.tokenStorageService.getToken();
