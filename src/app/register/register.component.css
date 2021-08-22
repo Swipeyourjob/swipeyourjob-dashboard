@@ -38,29 +38,9 @@ form {
   overflow: auto !important;
 }
 
-@media (max-width: 768px) {
-  .card {
-    width: 100%
-  }
-
-  .card-container {
-    margin-top: 2rem !important;
-  }
-}
-
 @media (max-width: 520px) {
-  .center {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 420px) {
   .card {
-    padding: 25px 25px 12px 25px;
-  }
-
-  .center {
-    padding: 10px;
+    padding: 25px;
   }
 }
 
@@ -69,19 +49,13 @@ form {
 }
 
 .center {
-  margin-top: 0rem !important;
-  padding-top: 0rem !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-label {
+.legal-statement {
   margin-left: 2px;
   margin-right: 2px;
-}
-
-.label-with-link {
-  margin-top: 1rem;
-  margin-left: 0.05rem;
-  justify-content: space-between;
 }
 
 input[type=checkbox] {
@@ -112,17 +86,6 @@ input[type=checkbox] {
   z-index: 4;
 }
 
-.btn-grad {
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  border: solid 3px transparent;
-  border-radius: 100rem;
-  outline: none;
-  box-shadow: 1px 2px 15px 0px rgba(0, 0, 0, 0.2);
-  margin-top: 5px;
-}
-
 label {
   margin-top: 10px !important;
 }
@@ -139,7 +102,7 @@ label {
   margin-bottom: -10px;
 }
 
-.btn-grad:hover {
+.btn-theme:hover {
   background-position: right center;
   color: #fff;
   text-decoration: none;
@@ -157,4 +120,8 @@ label {
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
+}
+
+.small-link {
+  text-align: center;
 }

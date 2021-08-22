@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Vacancy} from 'app/_models/vacancy';
-import {faMapMarkerAlt, faClock, faEuroSign} from '@fortawesome/free-solid-svg-icons';
+import {faClock, faEuroSign, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'card-vacancy',

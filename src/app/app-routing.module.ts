@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'admin', component: BoardAdminComponent, canActivate: [AuthGuard]},
   {path: 'companyprofile', component: CompanyProfileComponent, canActivate: [AuthGuard]},
   {path: 'my-vacancies', component: VacancyOverviewComponent, canActivate: [AuthGuard]},
-  {path: 'vacancy-details/:vacancyId', component: VacancyDetailsComponent},
+  {path: 'vacancy-details/:vacancyId', component: VacancyDetailsComponent, canActivate: [AuthGuard]},
   {path: 'verification', component: VerificationComponent},
   {path: 'usermanagement', component: UsermanagementComponent},
   {path: 'new-vacancy', component: JobofferComponent, canActivate: [AuthGuard]},

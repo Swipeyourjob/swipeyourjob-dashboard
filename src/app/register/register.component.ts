@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
-import { faCheck, faTimes, faExclamationTriangle, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faTimes, faExclamationTriangle, faExclamation, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import { TokenStorageService, AuthService } from '@app/services';
 import { PasswordValidator, ZipcodeValidator } from '@app/helpers';
 import { Title } from '@angular/platform-browser';
@@ -42,7 +42,8 @@ export class RegisterComponent implements OnInit {
         faCheck: faCheck,
         faTimes: faTimes,
         faExclamationTriangle: faExclamationTriangle,
-        faExclamation: faExclamation
+        faExclamation: faExclamation,
+      faArrowLeft: faArrowLeft
     };
     passwordChecks: any = {
         passwordCapitalCheck: false,

@@ -52,7 +52,7 @@
           <input type="password" class="input-full-width form-control" name="password" placeholder="Wachtwoord"
                  [(ngModel)]="form.password" (keyup)=passwordchange($event) required #password="ngModel"/>
 
-          <span *ngIf="capsOn" class="caps-on badge theme">Uw caps lock staat aan</span>
+          <span *ngIf="capsOn" class="caps-on badge background-theme">Uw caps lock staat aan</span>
 
           <div class="col-8 password-checks" *ngIf="dialogChecks.passwordDialog">
             <div class="password-capital-check">
@@ -80,12 +80,15 @@
             Wachtwoord komt niet overeen.
           </div>
         </div>
-        <label for="terms">Door op onderstaande knop te drukken ga je akkoord met onze <a href="#" target="_blank">Algemene
-          Voorwaarden</a> en <a href="#" target="_blank">Privacyverklaring</a></label><br>
+        <div class="legal-statement">Door op onderstaande knop te drukken ga je akkoord met onze <a href="assets/files/Algemene%20Voorwaarden.pdf" target="_blank">Algemene
+          Voorwaarden</a> en <a href="assets/files/Privacyverklaring.pdf" target="_blank">Privacyverklaring</a></div><br>
         <div class="form-group mb-3">
-          <button type="submit" (click)="validateForms()" class="btn btn-grad btn-primary btn-block lift">
+          <button type="submit" (click)="validateForms()" class="btn btn-theme btn-block">
             Bedrijf registreren
           </button>
+        </div>
+        <div class="form-group small-link">
+          <small>Heb je al een account? <a routerLink="/login" class="text-theme">Terug naar inloggen</a></small>
         </div>
       </form>
     </div>

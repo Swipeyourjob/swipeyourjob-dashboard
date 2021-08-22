@@ -86,31 +86,16 @@ input[type=checkbox]{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  position: absolute; 
-  top: 0; 
-  left: 0; 
+  position: absolute;
+  top: 0;
+  left: 0;
   min-width: 100%;
   min-height: 100%;
   overflow: auto;
   z-index: 4;
 }
-.btn-grad {
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  border: solid 3px transparent;
-  border-radius: 100rem;
-  outline: none;
-  box-shadow: 1px 2px 15px 0px rgba(0, 0, 0, 0.2);
-  margin-top: 5px;
-}
 label {
   margin-top: 10px !important;
-}
-.btn-grad:hover {
-  background-position: right center;
-  color: #fff;
-  text-decoration: none;
 }
 .arrow {
   border: solid #626272;

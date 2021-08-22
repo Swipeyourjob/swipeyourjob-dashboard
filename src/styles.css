@@ -9,15 +9,6 @@
 /*  color: #C9C9CF;*/
 /*}*/
 
-.lift {
-  transition: all .1s ease-in-out;
-}
-.lift:hover {
-  box-shadow: 0 2px 25px 1px rgba(0, 0, 0, 0.2) !important;
-  transform: translate3d(0px, -1px, 0);
-  -webkit-transform: translate3d(0px, -1px, 0);
-  -webkit-appearance: none;
-}
 /* LINKS */
 /*a {*/
 /*  cursor: pointer;*/
@@ -113,7 +104,7 @@
     max-width: 35rem;
     padding: 2.5rem;
 }
-.theme { /* Use this to apply the Swipe Your Job Gradient on the background of an element */
+.background-theme { /* Use this to apply the Swipe Your Job Gradient on the background of an element */
     background: rgb(59, 236, 141);
     background: linear-gradient(
         45deg,
@@ -121,9 +112,44 @@
         rgba(80, 198, 218, 1) 100%
     );
 }
-.theme-links a {
-    color: #fff;
-    text-shadow: 1px 1px #000;
+
+.text-theme {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(59, 236, 141, 1) 0%,
+    rgba(80, 198, 218, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-theme {
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  color: #FFFFFF;
+  border: solid 3px transparent;
+  border-radius: 100rem;
+  outline: none;
+  box-shadow: 1px 2px 15px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  transition: all .1s ease-in-out;
+}
+.btn-theme.active, .btn-theme:active, .btn-theme:hover, .btn-theme:focus {
+  color: white;
+  border: solid 3px transparent;
+}
+.btn-theme:hover {
+  box-shadow: 0 2px 25px 1px rgba(0, 0, 0, 0.2) !important;
+  transform: translate3d(0px, -1px, 0);
+  -webkit-transform: translate3d(0px, -1px, 0);
+  -webkit-appearance: none;
+}
+.btn-theme:active {
+  box-shadow: 1px 2px 15px 0 rgba(0, 0, 0, 0.2);
+  transform: initial;
+  -webkit-transform: initial;
+  -webkit-appearance: initial;
 }
 /* END */
 

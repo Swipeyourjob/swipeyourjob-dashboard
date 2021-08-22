@@ -8,19 +8,19 @@ import { AuthService, TokenStorageService } from '../_services';
   styleUrls: ['./verificationcheck.component.css']
 })
 export class VerificationcheckComponent implements OnInit {
-  status = "nok";
+  status = 'nok';
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
-      let email = params['email'];
-      let verificationcode = params['verification'];
+      const email = params['email'];
+      const verificationcode = params['verification'];
       console.log(email);
       console.log(verificationcode);
-      this.authService.verify(email,verificationcode).subscribe(
+      this.authService.verify(email, verificationcode).subscribe(
         data => {
-          this.tokenStorage.saveToken(data.token,false);
+          this.tokenStorage.saveToken(data.token, false);
           this.tokenStorage.saveUser(data);
           window.location.href = '/';
         },
@@ -29,7 +29,6 @@ export class VerificationcheckComponent implements OnInit {
           console.log(err.status);
         }
       );
-      
 
     });
   }

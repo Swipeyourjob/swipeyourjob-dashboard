@@ -1,8 +1,8 @@
-import { Title } from '@angular/platform-browser';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Title} from '@angular/platform-browser';
+import {Router, ActivatedRoute} from '@angular/router';
 import {Component, OnInit, OnChanges} from '@angular/core';
 import {PasswordValidator} from 'app/_helpers/passwordvalidator';
-import { ChangedPassword, NewPassword } from '@app/models';
+import {ChangedPassword, NewPassword} from '@app/models';
 import {AuthService, TokenStorageService} from '@app/services';
 
 @Component({
@@ -11,17 +11,15 @@ import {AuthService, TokenStorageService} from '@app/services';
   styleUrls: ['./verification.component.css']
 })
 export class VerificationComponent implements OnInit {
-  
   isLoggedIn = false;
 
-  form: ChangedPassword = { 
-    password: "",
-    password2: ""
+  form: ChangedPassword = {
+    password: '',
+    password2: ''
   };
 
   email: any;
   code: any;
-
 
   passwordchecks: any = {
     passwordCapitalCheck: false,
@@ -33,34 +31,35 @@ export class VerificationComponent implements OnInit {
   };
   passwordOk = true;
 
-  constructor(private titleService: Title, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private activatedRoute: ActivatedRoute) { }
+  constructor(private titleService: Title, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
-    this.titleService.setTitle("Swipe Your Job - Wachtwoord wijzigen")
+    this.titleService.setTitle('Swipe Your Job - Wachtwoord wijzigen')
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
     }
     this.activatedRoute.queryParams.subscribe(params => {
-      //console.log(params);
-      this.email = params['emai'];
-      this.code= parseInt(params['code']);
+      // console.log(params);
+      this.email = params['email'];
+      this.code = parseInt(params['code']);
     });
   }
 
   public validatePassword(): void {
-    const newPasswordForm: NewPassword = { password: this.form.password, email: this.email, code: this.code };
+    const newPasswordForm: NewPassword = {password: this.form.password, email: this.email, code: this.code};
     console.log(newPasswordForm);
     this.authService.setNewPassword(newPasswordForm).subscribe(
-        data => {
-            console.log(data);
-            this.tokenStorage.saveToken(data.token, false);
-            this.tokenStorage.saveUser(data);
-            window.location.href = '/';
-            //this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });               
-        },
-        err => {
-            console.log(err);
-        }
+      data => {
+        console.log(data);
+        this.tokenStorage.saveToken(data.token, false);
+        this.tokenStorage.saveUser(data);
+        window.location.href = '/';
+        // this.alertService.success('The link has been sent, please check your email to reset your password.', { keepAfterRouteChange: true });
+      },
+      err => {
+        console.log(err);
+      }
     );
   }
 
