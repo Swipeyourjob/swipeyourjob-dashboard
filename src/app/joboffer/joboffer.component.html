@@ -7,9 +7,6 @@
 <div class="card card-container verify-form">
   <div class="card-row">
     <div class="col-12">
-      <h4>Nieuwe vacature aanmaken</h4>
-    </div>
-    <div class="col-12">
       <form
         *ngIf="!isLoggedIn"
         name="form"
@@ -45,13 +42,13 @@
           ></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="functionimage">
             Foto van de werkplek*
           </label>
           <p>Maak een leuke foto van de werkplek</p>
+          <input class="form-control" type="file" id="formFile">
           <div class="mb-3">
-            <label for="formFile" class="form-label">Default file input example</label>
             <input class="form-control" type="file" id="formFile">
           </div>
           <input
