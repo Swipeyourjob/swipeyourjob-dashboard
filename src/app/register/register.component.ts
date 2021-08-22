@@ -18,33 +18,32 @@ import { Company } from '@app/models';
 })
 export class RegisterComponent implements OnInit {
     form: Company = {
-        companyname: "",
-        zipcode: "",
-        kvk: "",
-        email: "",
-        password: "",
-        passwordrepeat: "",
+        companyname: '',
+        zipcode: '',
+        kvk: '',
+        email: '',
+        password: '',
+        passwordrepeat: '',
         subscribe: false,
         terms: false
     };
 
     companyNameField: any = {
         empty: false
-    }
+    };
     zipcodeField: any = {
         empty: false
-    }
+    };
     kvkField: any = {
         empty: false,
         taken: false
-    }
-
+    };
     icons: any = {
         faCheck: faCheck,
         faTimes: faTimes,
         faExclamationTriangle: faExclamationTriangle,
         faExclamation: faExclamation
-    }
+    };
     passwordChecks: any = {
         passwordCapitalCheck: false,
         passwordNumberCheck: false,
@@ -57,7 +56,7 @@ export class RegisterComponent implements OnInit {
     kvkChecks: any = {
         lengthCheck: false
     };
-    passwordvalidrepeat: boolean = false;
+    passwordvalidrepeat = false;
     dialogChecks: any = {
         companyNamedialog: false,
         zipcodeNameDialog: false,
@@ -92,22 +91,22 @@ export class RegisterComponent implements OnInit {
     adddialog(attributeName: string): void {
         this.dialogChecks[attributeName] = true;
     }
-    zipcodechange():void {
-        let zipcode = this.form.zipcode;
+    zipcodechange(): void {
+        const zipcode = this.form.zipcode;
 
-        this.dialogChecks.zipcodeNameDialog = true
+        this.dialogChecks.zipcodeNameDialog = true;
         this.zipcodeChecks.invalidCheck = this.zipcodeValidator.checkRegex(zipcode);
         this.zipcodeChecks.lengthCheck = this.zipcodeValidator.checkLength(zipcode);
     }
-    kvkchange():void {
-        let kvk = this.form.kvk;
-        let kvkBool = (kvk.length <= 8) ? false : true;
+    kvkchange(): void {
+        const kvk = this.form.kvk;
+        const kvkBool = (kvk.length > 8);
         this.dialogChecks.kvkdDialog = true;
         this.kvkChecks.lengthCheck = kvkBool;
     }
     ngOnInit(): void {
         console.log(this.form);
-        this.titleService.setTitle("SwipeYourJob - Registeren")
+        this.titleService.setTitle('SwipeYourJob - Registeren');
         if (this.tokenStorage.getToken()) {
             this.isLoggedIn = true;
         }
@@ -115,14 +114,14 @@ export class RegisterComponent implements OnInit {
     onSubmit(): void {
         this.authService.companyRegister(this.form).subscribe(
             data => {
-                if(data.hasOwnProperty("token")){
-                    if((data as any).token == 'Check mail') {
+                if (data.hasOwnProperty('token')){
+                    if ((data as any).token === 'Check mail') {
                         this.router.navigate(['/registered']);
                     }
                     }
             },
             err => {
-                if((err as any).error.text == 'Kvk is already taken') {
+                if ((err as any).error.text === 'Kvk is already taken') {
                     this.kvkField.taken = true;
                 }
             }
@@ -130,22 +129,22 @@ export class RegisterComponent implements OnInit {
     }
 
     validateForms(): void {
-        let name = this.form.companyname;
-        if(name === "") this.companyNameField.empty = true;
+        const name = this.form.companyname;
+        if (name === '') { this.companyNameField.empty = true; }
 
-        let zip = this.form.zipcode;
-        if(zip ==="") this.zipcodeField.empty = true;
+        const zip = this.form.zipcode;
+        if (zip === '') { this.zipcodeField.empty = true; }
 
-        let kvk = this.form.kvk;
-        if(kvk === "" || kvk.length != 8) this.kvkField.empty = true;
+        const kvk = this.form.kvk;
+        if (kvk === '' || kvk.length !== 8) { this.kvkField.empty = true; }
 
-        if(this.companyNameField.empty || this.zipcodeField.empty || this.kvkField.empty) {
+        if (this.companyNameField.empty || this.zipcodeField.empty || this.kvkField.empty) {
             const el = document.getElementById('#scrollId');
             el!.scrollIntoView();
         }
     }
 
-    back() {
+    back(): void {
         this.router.navigate(['/login']);
     }
 }
