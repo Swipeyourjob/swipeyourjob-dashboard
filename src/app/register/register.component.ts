@@ -17,7 +17,7 @@ import { Company } from '@app/models';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-    form: Company = { 
+    form: Company = {
         companyname: "",
         zipcode: "",
         kvk: "",
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         empty: false,
         taken: false
     }
-    
+
     icons: any = {
         faCheck: faCheck,
         faTimes: faTimes,
@@ -69,18 +69,27 @@ export class RegisterComponent implements OnInit {
     capsOn: any;
 
     isLoggedIn = false;
-    constructor(private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService, private passwordvalidator: PasswordValidator, private titleService: Title, private zipcodeValidator: ZipcodeValidator) { }
+    constructor(
+      private router: Router,
+      private authService: AuthService,
+      private tokenStorage: TokenStorageService,
+      private passwordvalidator: PasswordValidator,
+      private titleService: Title,
+      private zipcodeValidator: ZipcodeValidator
+    ) { }
     passwordchange(event: KeyboardEvent): void {
-        let password = this.form.password;
-        
+        const password = this.form.password;
         this.dialogChecks.passwordDialog = true;
         this.passwordChecks.passwordCapitalCheck = this.passwordvalidator.checkCapital(password);
         this.passwordChecks.passwordNumberCheck = this.passwordvalidator.checkNumber(password);
         this.passwordChecks.passwordLengthCheck = this.passwordvalidator.checkLength(password);
     }
     passwordrepeatf(event: KeyboardEvent): void {
-        const { passwordrepeat, password } = this.form;
-        let passval = this.passwordvalidator.passwordeqauls(password, passwordrepeat);
+        const { password, passwordrepeat } = this.form;
+        console.log(password);
+        console.log(passwordrepeat);
+        const passval = this.passwordvalidator.passwordeqauls(password, passwordrepeat);
+        console.log(passval);
         this.dialogChecks.passwordRepeatDialog = !passval;
     }
     adddialog(attributeName: string): void {
@@ -138,7 +147,7 @@ export class RegisterComponent implements OnInit {
             el!.scrollIntoView();
         }
     }
-    
+
     back() {
         this.router.navigate(['/login']);
     }
