@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { TokenStorageService } from './token-storage.service';
 import { environment } from '../../environments/environment';
-import { User, ForgotPassword, Response, Company } from '@app/models';
+import { User, NewPassword, Response, Company } from '@app/models';
 
 
 const httpOptions = {
@@ -38,19 +38,16 @@ export class AuthService {
         }, httpOptions);
     }
 
-  public companyRegister(companyInfo:Company) {
-    return this.http.post(environment.apiUrl + '/newCompany', companyInfo, httpOptions);
-  }
+    public companyRegister(companyInfo:Company) {
+        return this.http.post(environment.apiUrl + '/newCompany', companyInfo, httpOptions);
+    }
 
-    public companySetPassword(
-        password: string) {
-        return this.http.post(environment.apiUrl + '/setCompanyPassword', {
-            password
-        }, httpOptions);
+    //Sets the new password for user based on e-mail and unique code.
+    public setNewPassword(newPassword: NewPassword) {
+        return this.http.post<Response>(environment.apiUrl + '/resetPassword', newPassword, httpOptions);
     }
 
     public logout() {
-
         return this.tokenService.signOut();
     }
 
@@ -63,12 +60,10 @@ export class AuthService {
         }
     }
 
-    public forgotPassword(forgotinfo: ForgotPassword) {
-        // throw new Error('Method not implemented.');
-        console.log(forgotinfo);
-        //TODO :: add api call to send mailinfo to server
-        return true;
+    //Sends a verification email to specified e-mailaddress.
+    public forgotPassword(email: string) {
+        return this.http.post<Response>(environment.apiUrl + '/forgotpassword', {
+            email
+        }, httpOptions);
     }
-
-
 }

@@ -1,13 +1,16 @@
 <div class="container">
-    <div class="vacancy-margin">
-    <h2 *ngIf="activeVacancies.length <= 0 && initialized" class="h2-active">Er zijn momenteel geen actieve vacatures</h2>
+  <div class="vacancy-margin">
+    <h2 *ngIf="activeVacancies.length <= 0 && initialized" class="h2-active">Er zijn momenteel geen actieve
+      vacatures</h2>
     <h2 *ngIf="activeVacancies.length > 0 && initialized" class="h2-active">Actieve vacatures</h2>
     <div class="row">
-        <card-vacancy *ngFor="let vacancy of activeVacancies" [vacancy]="vacancy" class="col-12 col-sm-6 col-lg-4"></card-vacancy>
+      <card-vacancy *ngFor="let vacancy of activeVacancies" [vacancy]="vacancy"
+                    class="col-12 col-sm-6 col-lg-4"></card-vacancy>
     </div>
-    <h2 *ngIf="activeVacancies.length > 0 && initialized" class="h2-active h2-inactive">Inactieve vacatures</h2>
+    <h2 *ngIf="inactiveVacancies.length > 0 && initialized" class="h2-active h2-inactive">Inactieve vacatures</h2>
     <div class="row">
-        <card-vacancy *ngFor="let vacancy of inactiveVacancies" [vacancy]="vacancy" class="col-12 col-sm-6 col-lg-4"></card-vacancy>
+      <card-vacancy *ngFor="let vacancy of inactiveVacancies" [vacancy]="vacancy"
+                    class="col-12 col-sm-6 col-lg-4"></card-vacancy>
     </div>
-</div>
+  </div>
 </div>

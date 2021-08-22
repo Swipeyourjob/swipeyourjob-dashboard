@@ -23,10 +23,10 @@ export class VacancyOverviewComponent implements OnInit {
         if(vacanciesLength > 0){
           for (let i = 0; i < vacanciesLength; i++) {
             let vacancy = vacancies.joblist[i];
-            if(vacancy.daysValid > 0){
+            console.log(vacancy);
+            if (vacancy.status === 'Valid' || 'Unlimited') {
               this.activeVacancies.push(vacancy);
-            }
-            else {
+            } else {
               this.inactiveVacancies.push(vacancy);
             }
           }

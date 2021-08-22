@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService, TokenStorageService } from '../_services';
 

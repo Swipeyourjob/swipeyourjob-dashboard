@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Vacancy } from 'app/_models/vacancy';
+import {Component, Input, OnInit} from '@angular/core';
+import {Vacancy} from 'app/_models/vacancy';
+import {faMapMarkerAlt, faClock, faEuroSign} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'card-vacancy',
@@ -7,28 +8,32 @@ import { Vacancy } from 'app/_models/vacancy';
   styleUrls: ['./card-vacancy.component.css']
 })
 export class CardVacancyComponent implements OnInit {
+  public icons: any = {
+    faMapMarkerAlt: faMapMarkerAlt,
+    faClock: faClock,
+    faEuroSign: faEuroSign
+  };
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input() vacancy!: Vacancy;
 
   ngOnInit(): void {
-    if(this.vacancy.daysValid < 0)
+    if (this.vacancy.daysValid < 0) {
       this.vacancy.daysValid = 0;
+    }
   }
 
-  getUrl1()
-  {
-    return `linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), url(${this.vacancy.images[0]}) no-repeat center center`;
+  getUrl1(): string {
+    return `url(${this.vacancy.images[0]})`;
   }
 
-  getUrl2()
-  {
-    return `webkit-linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), url(${this.vacancy.images[0]}) no-repeat center center`;
+  getUrl2(): string {
+    return `webkit-linear-gradient(url(${this.vacancy.images[0]})`;
   }
 
-  getFilter()
-  {
+  getFilter(): string {
     return this.vacancy.daysValid <= 0 ? 'grayscale(100%)' : '';
   }
 }

@@ -1,18 +1,18 @@
-<div class="card-vacancy" [routerLink]="['/vacancy-details', vacancy.jobid]">
-    <div class="fadeAnimation">
-        <div class="jumbotron" [ngStyle]="{'background': getUrl1(), 'webkit-background': getUrl2()} " [ngClass]="{'addgreyfilter': vacancy.daysValid <= 0}" >
-            <div class="container-vacancy">
-                <div class="card-vacancy-text">
-                    {{vacancy.jobName}}
-                </div>
-                <div class="card-vacancy-time" *ngIf="vacancy.daysValid > 0">
-                    <img src="/assets/img/icon_time.svg" width="20%" alt="image">
-                    {{vacancy.daysValid}} dagen
-                </div>
-                <div class="card-vacancy-options">
-                    <img src="/assets/img/icon_menu_dots.svg" width="100%" alt="image">
-                </div>
-            </div>
-        </div>
-    </div>
+<div
+  class="card-vacancy"
+  [routerLink]="['/vacancy-details', vacancy.jobid]"
+  [ngStyle]="{'background-image': getUrl1(), 'webkit-background-image': getUrl2()}"
+  [ngClass]="{'addgreyfilter': vacancy.daysValid <= 0}"
+>
+  <div class="card-vacancy-text">
+    <span class="vacancy-title">{{vacancy.jobName}}</span>
+    <span class="vacancy-company">Bij [Companyname]</span>
+    <span class="vacancy-info vacancy-location"><fa-icon [icon]="icons.faMapMarkerAlt"></fa-icon> Utrecht</span>
+    <span class="vacancy-info vacancy-hours"><fa-icon [icon]="icons.faClock"></fa-icon> 0 uur per week</span>
+    <span class="vacancy-info vacancy-salary"><fa-icon [icon]="icons.faEuroSign"></fa-icon> 0,00 per uur</span>
+  </div>
+  <!--    <div class="card-vacancy-time" *ngIf="vacancy.daysValid > 0">-->
+  <!--      <img src="/assets/img/icon_time.svg" width="20%" alt="image">-->
+  <!--      {{vacancy.daysValid}} dagen-->
+  <!--    </div>-->
 </div>
