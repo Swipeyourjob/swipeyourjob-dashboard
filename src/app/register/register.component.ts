@@ -86,10 +86,7 @@ export class RegisterComponent implements OnInit {
     }
     passwordrepeatf(event: KeyboardEvent): void {
         const { password, passwordrepeat } = this.form;
-        console.log(password);
-        console.log(passwordrepeat);
-        const passval = this.passwordvalidator.passwordeqauls(password, passwordrepeat);
-        console.log(passval);
+        const passval = this.passwordvalidator.passwordequals(password, passwordrepeat);
         this.dialogChecks.passwordRepeatDialog = !passval;
     }
     adddialog(attributeName: string): void {
