@@ -72,7 +72,7 @@ export class JobofferComponent implements OnInit {
       age20: null,
       age21: null
     },
-    setPeriodYesNo: null,
+    setPeriodYesNo: false,
     startdate: null,
     enddate: null
   };

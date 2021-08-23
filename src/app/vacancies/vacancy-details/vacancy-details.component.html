@@ -13,47 +13,49 @@
                 *ngFor="let vacancy of vacancies.joblist; index as i"
                 (click)="viewVacancy(vacancy,i)">
               <div [routerLink]="['/vacancy-details', vacancy.jobid]">
-                   <span class="jobtitle" [ngClass]="{'link-info': vacancy.jobid == jobidFromRoute }">
+                   <span class="jobtitle">
                      {{vacancy.jobName}}
                    </span>
               </div>
               <div [attr.data-index]="i" *ngIf="vacancy.jobid == jobidFromRoute">
                 <a href="/vacancy-details/{{vacancy.jobid}}">
                   Sollicitanten <span
-                  class="badge badge-secondary badge-pill {{ vacancy.amountofreactions > 0 ? 'minimum' : '' }}">{{vacancy.amountofreactions}}</span>
+                  class="badge bg-secondary rounded-pill {{ vacancy.amountofreactions > 0 ? 'minimum' : '' }}">{{vacancy.amountofreactions}}</span>
                 </a>
                 <a>Afgewezen <span
-                  class="badge badge-secondary badge-pill">{{ vacancy.amountofrejections ? vacancy.amountofrejections : '0' }}</span>
+                  class="badge bg-secondary rounded-pill">{{ vacancy.amountofrejections ? vacancy.amountofrejections : '0' }}</span>
                 </a>
-                <a>Statistieken</a>
+                <!--                <a>Statistieken</a>-->
               </div>
             </li>
           </ul>
         </div>
         <div class="col-12 col-lg-8 col-xl-9">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h4>Likes op deze vacature</h4>
-            </div>
-          </div>
-          <div class="row" *ngFor="let match of matches; index as i">
-            <div class="card mb-3 col-12">
+          <h4>Likes op deze vacature</h4>
+          <div *ngFor="let match of matches; index as i">
+            <div class="profile card mb-3 col-12">
               <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="{{match.profileImg}}" class="img-fluid rounded-start"
-                       alt="Profielfoto {{match.voornaam}} {{match.achternaam}}">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{match.voornaam}} {{match.achternaam}} - {{match.age}} jaar</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                      additional content. This content is a little bit longer.</p>
+                <div class="col-12">
+                  <div class="image-holder">
+                    <!--                  <img src="{{match.profileImg}}" class="profile-image img-fluid"-->
+                    <!--                       alt="Profielfoto {{match.voornaam}} {{match.achternaam}}">-->
+                    <img src="/assets/img/heads/4.jpeg" class="profile-image img-fluid"
+                         alt="Profielfoto {{match.voornaam}} {{match.achternaam}}">
+                  </div>
+                  <div class="info-holder">
+                    <div class="card-body">
+                      <h5 class="card-title">{{match.voornaam}} {{match.achternaam}} - {{match.age}} jaar</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                    </div>
                   </div>
                 </div>
-                <div class="card-footer col-12 col-sm-6">
+                <div class="card-footer col col-sm-6">
                   <small class="text-muted">Gematcht op ../../....</small>
                 </div>
-                <div class="card-footer col-12 col-sm-6 accept-buttons">
+                <div class="card-footer col col-sm-6 accept-buttons">
                   <button type="button" class="btn btn-success col-6"
                           (click)="updateStatus(match.userid,true,match.jobid)">
                     <fa-icon [icon]="icons.faCheck"></fa-icon>

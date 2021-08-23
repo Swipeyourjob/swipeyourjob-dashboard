@@ -21,24 +21,29 @@ input {
   margin:5px;
 }
 .vacancy-detail {
-  padding: 0 0;
   border-radius: 5px;
+  margin-bottom: 15px;
 }
-.active{
+.list-group-item{
+  color: #626272;
+}
+.list-group-item.active{
   background-color: #eeeeee;
   color: #626272;
   border-color: rgba(0, 0, 0, .125);
 }
+
 .item{
   border-bottom: solid 1px black;
   border-radius: 20px;
 }
-.vacancy-detail .badge-pill {
+.vacancy-detail .badge {
   float: right;
   height: 20px;
+  line-height: 12px;
   font-size: 14px;
 }
-.vacancy-detail .badge-pill.minimum {
+.vacancy-detail .badge.minimum {
   background-image: linear-gradient(45deg, #50c6da, #3bec8d)
 }
 .vacancy-detail a {
@@ -49,6 +54,65 @@ input {
 }
 .vacancy-detail a:hover {
   background-color: #cccccc;
+}
+
+.profile {
+  padding: 0;
+}
+.profile .image-holder {
+  width: 200px;
+  height: 200px;
+  float: left;
+  padding-left: 0;
+}
+.profile .image-holder img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  border-radius: .2rem 0 0 0;
+}
+.profile .info-holder {
+  width: calc(100% - 200px);
+  height: 200px;
+  float: right;
+}
+.profile .info-holder .card-title {
+  height: 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.profile .info-holder .card-text {
+  height: calc(200px - 24px - 8px - 16px*2);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+@media (max-width: 575px) {
+  .profile {
+  }
+  .profile .image-holder {
+    width: 100%;
+    height: auto;
+  }
+  .profile .image-holder img {
+    border-radius: .2rem .2rem 0 0;
+  }
+  .profile .info-holder {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+  }
+  .profile .info-holder .card-title {
+  }
+  .profile .info-holder .card-text {
+    height: auto;
+    max-height: calc(400px - 24px - 8px - 16px*2);
+  }
 }
 
 .card-footer {

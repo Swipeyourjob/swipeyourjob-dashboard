@@ -1,7 +1,4 @@
 .companyprofile {
-    margin-top: 20px;
-    padding: 5px;
-    width: 100%;
 }
 
 :host ::ng-deep textarea {
@@ -9,7 +6,3 @@
     min-width: 100%;
 }
 
-.form-control-group label {
-  font-weight: bold;
-  font-family:"Avenir Semibold", Helvetica, sans-serif;
-}

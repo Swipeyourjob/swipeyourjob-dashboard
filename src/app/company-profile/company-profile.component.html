@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Bedrijfsprofiel aanmaken</h1>
 </div>
-<div class="container card card-container companyprofile col-md-9">
+<div class="container card card-container companyprofile">
   <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
     <div class="form-control-group">
       <label for="introduction">Bedrijfs omschrijving:</label>
@@ -20,66 +20,66 @@
       </div>
     </div>
     <div class="form-control-group">
-      <label for="ownerFirstName">Voornaam:</label>
-      <input type="text" class="form-control" name="ownerFirstName" [(ngModel)]="form.ownerFirstName"
+      <label for="ownerFirstName">Voornaam</label>
+      <input type="text" class="form-control" name="ownerFirstName" id="ownerFirstName"
+             [(ngModel)]="form.ownerFirstName"
              #ownerFirstName="ngModel"/>
     </div>
 
-
     <div class="form-control-group">
-      <label for="ownerLastname">Achternaam:</label>
-      <input type="text" class="form-control" name="ownerLastname" [(ngModel)]="form.ownerLastname"
+      <label for="ownerLastname">Achternaam</label>
+      <input type="text" class="form-control" name="ownerLastname" id="ownerLastname" [(ngModel)]="form.ownerLastname"
              #Lastname="ngModel" value="form.ownerLastname">
     </div>
 
     <div class="form-control-group">
       <label for="ownerPicture">Profile</label>
-      <input type="file" class="form-control" name="ownerPicture" accept="image/png, image/jpeg"
+      <input type="file" class="form-control" name="ownerPicture" id="ownerPicture" accept="image/png, image/jpeg"
              (change)="onImageChange($event,'ownerpicture')">
       <div class="preview" *ngIf="profilePicture">
         <img [src]="profilePicture" style="width:400px;">
       </div>
     </div>
     <div class="form-control-group">
-      <label for="weburl">Website van Bedrijf:</label>
-      <input type="text" class="form-control" name="weburl" [(ngModel)]="form.weburl" #weburl="ngModel">
+      <label for="weburl">Website van Bedrijf</label>
+      <input type="text" class="form-control" name="weburl" id="weburl" [(ngModel)]="form.weburl" #weburl="ngModel">
     </div>
 
     <div class="form-control-group">
       <label for="facebookUrl">
-        <fa-icon [icon]="icons.faFacebook"></fa-icon>
-        Facebook:</label>
-      <input type="text" class="form-control" name="facebookUrl" [(ngModel)]="form.facebookUrl"
+        <fa-icon [icon]="icons.faFacebook"></fa-icon> Facebook</label>
+      <input type="text" class="form-control" name="facebookUrl" id="facebookUrl" [(ngModel)]="form.facebookUrl"
              #facebookUrl="ngModel">
-
+    </div>
+    <div class="form-control-group">
       <label for="instagramUrl">
-        <fa-icon [icon]="icons.faInstagram"></fa-icon>
-        Instagram:</label>
-      <input type="text" class="form-control" name="instagramUrl" [(ngModel)]="form.instagramUrl"
+        <fa-icon [icon]="icons.faInstagram"></fa-icon> Instagram</label>
+      <input type="text" class="form-control" name="instagramUrl" id="instagramUrl" [(ngModel)]="form.instagramUrl"
              #instagramUrl="ngModel">
-
+    </div>
+    <div class="form-control-group">
       <label for="linkedinUrl">
-        <fa-icon [icon]="icons.faLinkedin"></fa-icon>
-        Linkedin:</label>
-      <input type="text" class="form-control" name="linkedinUrl" [(ngModel)]="form.linkedinUrl"
+        <fa-icon [icon]="icons.faLinkedin"></fa-icon> Linkedin</label>
+      <input type="text" class="form-control" name="linkedinUrl" id="linkedinUrl" [(ngModel)]="form.linkedinUrl"
              #linkedinUrl="ngModel">
     </div>
 
     <div class="form-control-group">
-      <label for="place">Plaats:</label>
+      <label for="place">Plaats</label>
       <input type="text" class="form-control" name="place" [(ngModel)]="form.place" #place="ngModel">
     </div>
     <div class="form-control-group">
-      <label for="streetname">Straat:</label>
+      <label for="streetname">Straat</label>
       <input type="text" class="form-control" name="streetname" [(ngModel)]="form.streetname"
              #streetname="ngModel">
     </div>
     <div class="form-control-group">
-      <label for="housenumber">Huisnummer:</label>
+      <label for="housenumber">Huisnummer</label>
       <input type="text" class="form-control" name="housenumber" [(ngModel)]="form.housenumber"
              #housenumber="ngModel">
     </div>
     <div class="form-control-group">
+      <label for="housenumber">Postcode</label>
       <input type="text" class="form-control" name="zipcode" placeholder="Postcode" [(ngModel)]="form.zipcode"
              (keyup)="zipcodechange()" required #zipcode="ngModel"/>
       <div class="alert alert-danger col-md-6  " role="alert" *ngIf="dialogChecks.zipcodeNameDialog">
@@ -87,7 +87,6 @@
         <table>
           <tr>
             <td>Poscode te kort:</td>
-
             <td *ngIf="zipcodecheck.lengthCheck; else falseLength">
               <fa-icon [icon]="icons.faCheck"></fa-icon>
             </td>
@@ -97,7 +96,6 @@
           </tr>
           <tr>
             <td>Poscode invalid:</td>
-
             <td *ngIf="zipcodecheck.invalidCheck; else validZipcode">
               <fa-icon [icon]="icons.faCheck"></fa-icon>
             </td>

@@ -53,6 +53,25 @@
   -webkit-transform: initial;
   -webkit-appearance: initial;
 }
+
+.form-control-group {
+  margin-bottom: 20px;
+}
+.form-control-group label {
+  font-weight: bold;
+  font-family:"Avenir Semibold", Helvetica, sans-serif;
+}
+.form-control-group .input-description {
+  margin-bottom: 0;
+}
+.form-control-group table {
+  color: inherit;
+  margin-bottom: 0;
+}
+
+.card-container {
+  padding: 15px;
+}
 /* END */
 
 .app-container {
@@ -149,15 +168,15 @@ alert {
   text-align: center;
 }
 
-.form-control-group {
-  margin-bottom: 1rem;
-}
+/*.form-control-group {*/
+/*  margin-bottom: 1rem;*/
+/*}*/
 
-.form-control-group.accept-group {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0;
-}
+/*.form-control-group.accept-group {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  margin: 2rem 0;*/
+/*}*/
 .form-check-input:checked {
   /*background-image: linear-gradient(url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e))*/
   background-image: linear-gradient(
