@@ -104,10 +104,16 @@ export class ChatService {
   public setactive(roomnumber: number){
     if(this.rooms.roomlist.length > 0){
       let currentid = this.rooms.roomlist.findIndex(item => item.roomid == roomnumber);
-      for(let i = 0; i < this.rooms.roomlist.length;i++){
-            this.rooms.roomlist[i].active = (i == currentid);
-      }
       let active_room = this.rooms.roomlist[currentid];
+      if(active_room.active){
+        active_room.active = false;
+      }else{  
+        for(let i = 0; i < this.rooms.roomlist.length;i++){
+              this.rooms.roomlist[i].active = (i == currentid);
+        }
+      }
+      
+      
       this.getChatMessages(active_room.roomid).subscribe(
         (data) => {
             active_room.roommessage = data;
