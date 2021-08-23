@@ -53,7 +53,8 @@
                 <div class="card-footer col-12 col-sm-6">
                   <small class="text-muted">Gematcht op ../../....</small>
                 </div>
-                <div class="card-footer col-12 col-sm-6 accept-buttons">
+
+                <div class="card-footer col-12 col-sm-6 accept-buttons" *ngIf="match.status == 'liked'">
                   <button type="button" class="btn btn-success col-6"
                           (click)="updateStatus(match.userid,true,match.jobid)">
                     <fa-icon [icon]="icons.faCheck"></fa-icon>
@@ -63,6 +64,13 @@
                     <fa-icon [icon]="icons.faTimes"></fa-icon>
                   </button>
                 </div>
+                <div class="card-footer col-12 col-sm-6 accept-buttons"    *ngIf="match.status == 'accepted'">
+                  <button type="button" class="btn btn-info btn-circle" (click)="chatwithuser(match.userid,match.jobid)">
+                      <fa-icon [icon]="icons.faCommentDots"></fa-icon>
+                  </button>
+                </div>
+                
+                
               </div>
             </div>
           </div>
