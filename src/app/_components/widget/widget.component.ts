@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'widget-component',
@@ -9,9 +9,10 @@ export class WidgetComponent implements OnInit {
 
   content?: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.content = "This is a widget!";
+    this.content = 'This is a widget!';
   }
 }

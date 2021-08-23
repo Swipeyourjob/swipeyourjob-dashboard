@@ -1,113 +1,122 @@
-<div class="col-md-12">
-    <div class="container">
-        <div class="">
-            <div class="text-center">
-                <h3 id="title" class="title">Bedrijfsprofiel aanmaken:</h3>
-                <p class="sub-title">* Deze gegevens kunnen laten nog worden aangepast.</p>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="card companyprofile col-md-9    ">
-                <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
-                    <div class="form-control-group">
-                        <label for="introduction">Bedrijfs omschrijving:</label>
-                        <div class="form-control-group">
-                            <ckeditor [editor]="Editor" name="introduction" [(ngModel)]="form.introduction"></ckeditor>
-                        </div>
-                        <div id="word-count"></div>
-                    </div>
-                    <div class="form-control-group">
-                        <label for="Companylogo">Bedrijfslogo</label>
-                        <input type="file" class="input-full-width" name="Companylogo" accept="image/png, image/jpeg"  (change)="onImageChange($event,'companylogo')">
-                        <div class="preview" *ngIf="companyLogo">
-                            <img [src]="companyLogo" style="width:400px;">
-                        </div>
-                    </div>
-                    <div class="form-control-group">
-                        <label for="ownerFirstName">Voornaam:</label>
-                        <input type="text" class="input-full-width" name="ownerFirstName" [(ngModel)]="form.ownerFirstName" #ownerFirstName="ngModel"/>
-                    </div>
-                   
-                        
-                    <div class="form-control-group">
-                        <label for="ownerLastname">Achternaam:</label>
-                        <input type="text" class="input-full-width" name="ownerLastname" [(ngModel)]="form.ownerLastname" #Lastname="ngModel" value="form.ownerLastname">
-                    </div>
-                     
-                    <div class="form-control-group">
-                        <label for="ownerPicture">Profile</label>
-                        <input type="file" class="input-full-width" name="ownerPicture" accept="image/png, image/jpeg" (change)="onImageChange($event,'ownerpicture')">
-                        <div class="preview" *ngIf="profilePicture">    
-                            <img [src]="profilePicture" style="width:400px;">
-                        </div>
-                    </div>
-                    <div class="form-control-group">
-                        <label for="weburl">Website van Bedrijf:</label>
-                        <input type="text" class="input-full-width" name="weburl" [(ngModel)]="form.weburl" #weburl="ngModel">
-                    </div>
-
-                    <div class="form-control-group">
-                        <label for="facebookUrl"><fa-icon [icon]="icons.faFacebook"></fa-icon>Facebook:</label>
-                        <input type="text" class="input-full-width" name="facebookUrl" [(ngModel)]="form.facebookUrl" #facebookUrl="ngModel">
-    
-                        <label for="instagramUrl"><fa-icon [icon]="icons.faInstagram"></fa-icon>Instagram:</label>
-                        <input type="text" class="input-full-width" name="instagramUrl" [(ngModel)]="form.instagramUrl" #instagramUrl="ngModel">
-    
-                        <label for="linkedinUrl"><fa-icon [icon]="icons.faLinkedin"></fa-icon>Linkedin:</label>
-                        <input type="text" class="input-full-width" name="linkedinUrl" [(ngModel)]="form.linkedinUrl" #linkedinUrl="ngModel">
-                    </div>
-    
-                    <div class="form-control-group">
-                        <label for="place">Plaats:</label>
-                        <input type="text" class="input-full-width" name="place" [(ngModel)]="form.place" #place="ngModel">
-                    </div>
-                    <div class="form-control-group">
-                        <label for="streetname">Straat:</label>
-                        <input type="text" class="input-full-width" name="streetname" [(ngModel)]="form.streetname" #streetname="ngModel">
-                    </div>
-                    <div class="form-control-group">
-                        <label for="housenumber">Huisnummer:</label>
-                        <input type="text" class="input-full-width" name="housenumber" [(ngModel)]="form.housenumber" #housenumber="ngModel">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="input-full-width" name="zipcode" placeholder="Postcode" [(ngModel)]="form.zipcode" (keyup)="zipcodechange()" required #zipcode="ngModel" />
-                        <div class="alert alert-danger col-md-6  " role="alert" *ngIf="dialogChecks.zipcodeNameDialog">
-    
-                            <table>
-                                <tr>
-                                    <td>Poscode te kort: </td>
-    
-                                    <td *ngIf="zipcodecheck.lengthCheck; else falseLength">
-                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
-                                    </td>
-                                    <ng-template #falseLength>
-                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
-                                    </ng-template>
-                                </tr>
-                                <tr>
-                                    <td>Poscode invalid: </td>
-    
-                                    <td *ngIf="zipcodecheck.invalidCheck; else validZipcode">
-                                        <fa-icon [icon]="icons.faCheck"></fa-icon>
-                                    </td>
-                                    <ng-template #validZipcode>
-                                        <fa-icon [icon]="icons.faTimes"></fa-icon>
-                                    </ng-template>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- 
-                    -->
-                    <div class="form-control-group">
-                        <button type="submit" class="btn btn-primary btn-block">Opslaan</button>
-                    </div>
-    
-                </form>
-            </div>
-            <!-- <div class="card companyprofile col-md-3">
-                <upload-plus-preview></upload-plus-preview>
-            </div> -->
-        </div>
+<div class="container">
+  <h1>Bedrijfsprofiel aanmaken</h1>
+</div>
+<div class="container card card-container companyprofile col-md-9">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+    <div class="form-control-group">
+      <label for="introduction">Bedrijfs omschrijving:</label>
+      <div class="form-control-group">
+        <ckeditor [editor]="Editor" class="form-control" name="introduction" id="introduction "
+                  [(ngModel)]="form.introduction"></ckeditor>
+      </div>
+      <div id="word-count"></div>
     </div>
+    <div class="form-control-group">
+      <label for="CompanyLogo">Bedrijfslogo</label>
+      <input type="file" class="form-control" name="CompanyLogo" id="CompanyLogo" accept="image/png, image/jpeg"
+             (change)="onImageChange($event,'companylogo')">
+      <div class="preview" *ngIf="companyLogo">
+        <img [src]="companyLogo" style="width:400px;">
+      </div>
+    </div>
+    <div class="form-control-group">
+      <label for="ownerFirstName">Voornaam:</label>
+      <input type="text" class="form-control" name="ownerFirstName" [(ngModel)]="form.ownerFirstName"
+             #ownerFirstName="ngModel"/>
+    </div>
+
+
+    <div class="form-control-group">
+      <label for="ownerLastname">Achternaam:</label>
+      <input type="text" class="form-control" name="ownerLastname" [(ngModel)]="form.ownerLastname"
+             #Lastname="ngModel" value="form.ownerLastname">
+    </div>
+
+    <div class="form-control-group">
+      <label for="ownerPicture">Profile</label>
+      <input type="file" class="form-control" name="ownerPicture" accept="image/png, image/jpeg"
+             (change)="onImageChange($event,'ownerpicture')">
+      <div class="preview" *ngIf="profilePicture">
+        <img [src]="profilePicture" style="width:400px;">
+      </div>
+    </div>
+    <div class="form-control-group">
+      <label for="weburl">Website van Bedrijf:</label>
+      <input type="text" class="form-control" name="weburl" [(ngModel)]="form.weburl" #weburl="ngModel">
+    </div>
+
+    <div class="form-control-group">
+      <label for="facebookUrl">
+        <fa-icon [icon]="icons.faFacebook"></fa-icon>
+        Facebook:</label>
+      <input type="text" class="form-control" name="facebookUrl" [(ngModel)]="form.facebookUrl"
+             #facebookUrl="ngModel">
+
+      <label for="instagramUrl">
+        <fa-icon [icon]="icons.faInstagram"></fa-icon>
+        Instagram:</label>
+      <input type="text" class="form-control" name="instagramUrl" [(ngModel)]="form.instagramUrl"
+             #instagramUrl="ngModel">
+
+      <label for="linkedinUrl">
+        <fa-icon [icon]="icons.faLinkedin"></fa-icon>
+        Linkedin:</label>
+      <input type="text" class="form-control" name="linkedinUrl" [(ngModel)]="form.linkedinUrl"
+             #linkedinUrl="ngModel">
+    </div>
+
+    <div class="form-control-group">
+      <label for="place">Plaats:</label>
+      <input type="text" class="form-control" name="place" [(ngModel)]="form.place" #place="ngModel">
+    </div>
+    <div class="form-control-group">
+      <label for="streetname">Straat:</label>
+      <input type="text" class="form-control" name="streetname" [(ngModel)]="form.streetname"
+             #streetname="ngModel">
+    </div>
+    <div class="form-control-group">
+      <label for="housenumber">Huisnummer:</label>
+      <input type="text" class="form-control" name="housenumber" [(ngModel)]="form.housenumber"
+             #housenumber="ngModel">
+    </div>
+    <div class="form-control-group">
+      <input type="text" class="form-control" name="zipcode" placeholder="Postcode" [(ngModel)]="form.zipcode"
+             (keyup)="zipcodechange()" required #zipcode="ngModel"/>
+      <div class="alert alert-danger col-md-6  " role="alert" *ngIf="dialogChecks.zipcodeNameDialog">
+
+        <table>
+          <tr>
+            <td>Poscode te kort:</td>
+
+            <td *ngIf="zipcodecheck.lengthCheck; else falseLength">
+              <fa-icon [icon]="icons.faCheck"></fa-icon>
+            </td>
+            <ng-template #falseLength>
+              <fa-icon [icon]="icons.faTimes"></fa-icon>
+            </ng-template>
+          </tr>
+          <tr>
+            <td>Poscode invalid:</td>
+
+            <td *ngIf="zipcodecheck.invalidCheck; else validZipcode">
+              <fa-icon [icon]="icons.faCheck"></fa-icon>
+            </td>
+            <ng-template #validZipcode>
+              <fa-icon [icon]="icons.faTimes"></fa-icon>
+            </ng-template>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!--
+    -->
+    <div class="form-control-group">
+      <button type="submit" class="btn btn-theme col-12">Opslaan</button>
+    </div>
+
+  </form>
+</div>
+<!-- <div class="card companyprofile col-md-3">
+    <upload-plus-preview></upload-plus-preview>
+</div> -->

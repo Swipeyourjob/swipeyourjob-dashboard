@@ -1,25 +1,40 @@
 .widget {
-    margin-left: 20px;
-    margin-right: 20px;
+  height: 500px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #f7f8fa;
+  border: 5px solid white;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 1px 2px 15px 0 rgba(0, 0, 0, 0.2);
+  transition: all .1s ease-in-out;
+}
+.widget:hover {
+  box-shadow: 0 2px 25px 1px rgba(0, 0, 0, 0.2) !important;
 }
 
-.widget-card {
-    width: 300px;
-    height: 200px;
-}
+/*.widget {*/
+/*  margin-left: 20px;*/
+/*  margin-right: 20px;*/
+/*}*/
 
-.jumbotron {
-    /*background: url('http://placekitten.com/800/500') no-repeat center center;*/
-    background-color: #FFFFFF;
-    background-size: cover;
-    padding-top: 20%;
-    padding-bottom: 20%;
-}
+/*.widget-card {*/
+/*  width: 300px;*/
+/*  height: 200px;*/
+/*}*/
 
+/*.jumbotron {*/
+/*  !*background: url('http://placekitten.com/800/500') no-repeat center center;*!*/
+/*  background-color: #FFFFFF;*/
+/*  background-size: cover;*/
+/*  padding-top: 20%;*/
+/*  padding-bottom: 20%;*/
+/*}*/
 
-@media (max-width: 768px) {
-    .widget-card {
-        width: 200px;
-        height: 125px;
-    }
-}
+/*@media (max-width: 768px) {*/
+/*  .widget-card {*/
+/*    width: 200px;*/
+/*    height: 125px;*/
+/*  }*/
+/*}*/

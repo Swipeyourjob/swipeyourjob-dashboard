@@ -8,3 +8,8 @@
     min-height: 100px;
     min-width: 100%;
 }
+
+.form-control-group label {
+  font-weight: bold;
+  font-family:"Avenir Semibold", Helvetica, sans-serif;
+}

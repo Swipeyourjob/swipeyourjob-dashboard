@@ -195,13 +195,24 @@ export class JobofferComponent implements OnInit {
   addSingleTag(value: any): any {
     // Add the html element for a single tag
     const tagElement = document.createElement('div');
-    tagElement.textContent = value;
 
     const button = document.createElement('button');
-    button.className = 'btn btn-primary btn-small';
-    button.textContent = 'x';
+
+    const span = document.createElement('span');
 
     tagElement.appendChild(button);
+
+    tagElement.appendChild(span);
+
+    tagElement.className = 'tag-element';
+
+    button.className = 'btn btn-theme btn-small';
+    button.textContent = 'x';
+    button.style.setProperty('margin-right', '15px');
+    button.style.setProperty('width', '40px');
+
+    span.textContent = value;
+
     const selectedTagList: HTMLElement | null = document.getElementById('selected-tag-list');
     if (selectedTagList) {
       selectedTagList.appendChild(tagElement);

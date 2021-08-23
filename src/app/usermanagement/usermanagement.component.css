@@ -4,10 +4,10 @@
   text-align: center;
 }
 
-.card-container .form-group input {
+.card-container .form-control-group input {
   margin: 0 auto;
 }
 
-.card-container .form-group button {
+.card-container .form-control-group button {
   margin: 0 auto;
 }

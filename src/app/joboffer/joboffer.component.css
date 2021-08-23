@@ -2,20 +2,39 @@
   padding-top: 15px;
   padding-bottom: 15px;
 }
-.card-container .form-group label {
+.card-container .form-control-group label {
   font-weight: bold;
   font-family:"Avenir Semibold", Helvetica, sans-serif;
 }
-.card-container .form-group table {
+.card-container .form-control-group table {
   color: inherit;
+  margin-bottom: 0;
 }
-.card-container .form-group table.table-hours th .period-time {
+.card-container .form-control-group table.table-hours th .period-time {
   font-weight: normal;
   font-family:"Avenir", Helvetica, sans-serif;
 }
 
-.card-container .form-group table.table-wages td:last-child, .card-container .form-group table.table-wages th:last-child {
+.card-container .form-control-group table.table-wages td:last-child, .card-container .form-control-group table.table-wages th:last-child {
   text-align: center;
 }
 
+.card-container .form-control-group table.table-hours td input[type=checkbox] {
+  width: 32px;
+  height: 32px;
+  background-size: 1000px 1000px;
+  margin: auto;
+  display: block;
+}
+.card-container .form-control-group table.table-hours td input[type=checkbox]::after {
+  font-size: 16px;
+}
 
+#selected-tag-list .tag-element {
+  border: 15px solid red;
+}
+
+#selected-tag-list ::slotted(.btn) {
+  margin-right: 20px;
+  width: 40px;
+}

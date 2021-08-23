@@ -1,11 +1,8 @@
 <div class="container">
-
-  <div class="row">
-    <div class="col-12"><h2>Nieuwe vacature</h2></div>
-  </div>
+  <h1>Nieuwe vacature</h1>
 </div>
-<div class="card card-container verify-form">
-  <div class="card-row">
+<div class="container card card-container verify-form">
+  <div class="row">
     <div class="col-12">
       <form
         *ngIf="!isLoggedIn"
@@ -14,7 +11,7 @@
         #f="ngForm"
       >
 
-        <div class="form-group">
+        <div class="form-control-group">
           <label for="function">Functie*</label>
           <input
             type="text"
@@ -28,7 +25,7 @@
           >
         </div>
 
-        <div class="form-group">
+        <div class="form-control-group">
           <label for="functiondescription">Functieomschrijving*</label>
           <textarea
             class="form-control col-md-12"
@@ -42,15 +39,11 @@
           ></textarea>
         </div>
 
-        <div class="form-group mb-3">
+        <div class="form-control-group mb-3">
           <label for="functionimage">
             Foto van de werkplek*
           </label>
           <p>Maak een leuke foto van de werkplek</p>
-          <input class="form-control" type="file" id="formFile">
-          <div class="mb-3">
-            <input class="form-control" type="file" id="formFile">
-          </div>
           <input
             type="file"
             class="form-control col-md-12"
@@ -64,35 +57,35 @@
           </div>
         </div>
 
-<!--        <div class="form-group">-->
-<!--          <div class="row">-->
-<!--            <label for="street" class="col-md-6">Adres van de functie</label>-->
-<!--            <label for="street" class="col-md-6">Plaats van de functie</label>-->
-<!--            <input-->
-<!--              type="text"-->
-<!--              class="form-control col-md-6"-->
-<!--              placeholder="Kalverstraat 140"-->
-<!--              name="street"-->
-<!--              id="street"-->
-<!--              [(ngModel)]="form.jobStreet"-->
-<!--            >-->
-<!--            <input-->
-<!--              type="text"-->
-<!--              class="form-control col-md-6"-->
-<!--              placeholder="Amsterdam"-->
-<!--              name="city"-->
-<!--              id="city"-->
-<!--              [(ngModel)]="form.jobCity"-->
-<!--            >-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="form-control-group">-->
+        <!--          <div class="row">-->
+        <!--            <label for="street" class="col-md-6">Adres van de functie</label>-->
+        <!--            <label for="street" class="col-md-6">Plaats van de functie</label>-->
+        <!--            <input-->
+        <!--              type="text"-->
+        <!--              class="form-control col-md-6"-->
+        <!--              placeholder="Kalverstraat 140"-->
+        <!--              name="street"-->
+        <!--              id="street"-->
+        <!--              [(ngModel)]="form.jobStreet"-->
+        <!--            >-->
+        <!--            <input-->
+        <!--              type="text"-->
+        <!--              class="form-control col-md-6"-->
+        <!--              placeholder="Amsterdam"-->
+        <!--              name="city"-->
+        <!--              id="city"-->
+        <!--              [(ngModel)]="form.jobCity"-->
+        <!--            >-->
+        <!--          </div>-->
+        <!--        </div>-->
 
-        <div class="form-group">
-          <label for="functionimage">
+        <div class="form-control-group">
+          <label>
             Werkdagen
           </label>
           <div class="table-responsive">
-            <table class="table table-sm table-hover table-hours">
+            <table class="table table-sm table-bordered table-hours">
               <caption>Hierboven kunt u aangeven voor welke dag(delen) u personeel zoekt.</caption>
               <thead>
               <tr>
@@ -118,69 +111,91 @@
               <tbody>
               <tr>
                 <th scope="row">Maandag</th>
-                <!--                <td><input type="checkbox" name="jobTimesMondayMorning" [(ngModel)]="form.jobTimes.hoi"></td>-->
-                <td><input type="checkbox" name="jobTimesMondayMorning" [(ngModel)]="form.availability[0].morning"></td>
-                <td><input type="checkbox" name="jobTimesMondayAfternoon" [(ngModel)]="form.availability[0].afternoon">
+                <!--                <td><input type="checkbox" class="form-check-input" name="jobTimesMondayMorning" [(ngModel)]="form.jobTimes.hoi"></td>-->
+                <td><input type="checkbox" class="form-check-input" name="jobTimesMondayMorning"
+                           [(ngModel)]="form.availability[0].morning"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesMondayAfternoon"
+                           [(ngModel)]="form.availability[0].afternoon">
                 </td>
-                <td><input type="checkbox" name="jobTimesMondayEvening" [(ngModel)]="form.availability[0].evening"></td>
-                <td><input type="checkbox" name="jobTimesMondayNight" [(ngModel)]="form.availability[0].night"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesMondayEvening"
+                           [(ngModel)]="form.availability[0].evening"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesMondayNight"
+                           [(ngModel)]="form.availability[0].night"></td>
               </tr>
               <tr>
                 <th scope="row">Dinsdag</th>
-                <td><input type="checkbox" name="jobTimesTuesdayMorning" [(ngModel)]="form.availability[1].morning">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesTuesdayMorning"
+                           [(ngModel)]="form.availability[1].morning">
                 </td>
-                <td><input type="checkbox" name="jobTimesTuesdayAfternoon"
+                <td><input type="checkbox" class="form-check-input" name="jobTimesTuesdayAfternoon"
                            [(ngModel)]="form.availability[1].afternoon"></td>
-                <td><input type="checkbox" name="jobTimesTuesdayEvening" [(ngModel)]="form.availability[1].evening">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesTuesdayEvening"
+                           [(ngModel)]="form.availability[1].evening">
                 </td>
-                <td><input type="checkbox" name="jobTimesTuesdayNight" [(ngModel)]="form.availability[1].night"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesTuesdayNight"
+                           [(ngModel)]="form.availability[1].night"></td>
               </tr>
               <tr>
                 <th scope="row">Woensdag</th>
-                <td><input type="checkbox" name="jobTimesWednesdayMorning"
+                <td><input type="checkbox" class="form-check-input" name="jobTimesWednesdayMorning"
                            [(ngModel)]="form.availability[2].morning"></td>
-                <td><input type="checkbox" name="jobTimesWednesdayAfternoon"
+                <td><input type="checkbox" class="form-check-input" name="jobTimesWednesdayAfternoon"
                            [(ngModel)]="form.availability[2].afternoon"></td>
-                <td><input type="checkbox" name="jobTimesWednesdayEvening"
+                <td><input type="checkbox" class="form-check-input" name="jobTimesWednesdayEvening"
                            [(ngModel)]="form.availability[2].evening"></td>
-                <td><input type="checkbox" name="jobTimesWednesdayNight" [(ngModel)]="form.availability[2].night">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesWednesdayNight"
+                           [(ngModel)]="form.availability[2].night">
                 </td>
               </tr>
               <tr>
                 <th scope="row">Donderdag</th>
-                <td><input type="checkbox" name="jobTimesThursdayMorning" [(ngModel)]="form.availability[3].morning">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesThursdayMorning"
+                           [(ngModel)]="form.availability[3].morning">
                 </td>
-                <td><input type="checkbox" name="jobTimesThursdayAfternoon"
+                <td><input type="checkbox" class="form-check-input" name="jobTimesThursdayAfternoon"
                            [(ngModel)]="form.availability[3].afternoon"></td>
-                <td><input type="checkbox" name="jobTimesThursdayEvening" [(ngModel)]="form.availability[3].evening">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesThursdayEvening"
+                           [(ngModel)]="form.availability[3].evening">
                 </td>
-                <td><input type="checkbox" name="jobTimesThursdayNight" [(ngModel)]="form.availability[3].night"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesThursdayNight"
+                           [(ngModel)]="form.availability[3].night"></td>
               </tr>
               <tr>
                 <th scope="row">Vrijdag</th>
-                <td><input type="checkbox" name="jobTimesFridayMorning" [(ngModel)]="form.availability[4].morning"></td>
-                <td><input type="checkbox" name="jobTimesFridayAfternoon" [(ngModel)]="form.availability[4].afternoon">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesFridayMorning"
+                           [(ngModel)]="form.availability[4].morning"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesFridayAfternoon"
+                           [(ngModel)]="form.availability[4].afternoon">
                 </td>
-                <td><input type="checkbox" name="jobTimesFridayEvening" [(ngModel)]="form.availability[4].evening"></td>
-                <td><input type="checkbox" name="jobTimesFridayNight" [(ngModel)]="form.availability[4].night"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesFridayEvening"
+                           [(ngModel)]="form.availability[4].evening"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesFridayNight"
+                           [(ngModel)]="form.availability[4].night"></td>
               </tr>
               <tr>
                 <th scope="row">Zaterdag</th>
-                <td><input type="checkbox" name="jobTimesSaturdayMorning" [(ngModel)]="form.availability[5].morning">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSaturdayMorning"
+                           [(ngModel)]="form.availability[5].morning">
                 </td>
-                <td><input type="checkbox" name="jobTimesSaturdayAfternoon"
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSaturdayAfternoon"
                            [(ngModel)]="form.availability[5].afternoon"></td>
-                <td><input type="checkbox" name="jobTimesSaturdayEvening" [(ngModel)]="form.availability[5].evening">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSaturdayEvening"
+                           [(ngModel)]="form.availability[5].evening">
                 </td>
-                <td><input type="checkbox" name="jobTimesSaturdayNight" [(ngModel)]="form.availability[5].night"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSaturdayNight"
+                           [(ngModel)]="form.availability[5].night"></td>
               </tr>
               <tr>
                 <th scope="row">Zondag</th>
-                <td><input type="checkbox" name="jobTimesSundayMorning" [(ngModel)]="form.availability[6].morning"></td>
-                <td><input type="checkbox" name="jobTimesSundayAfternoon" [(ngModel)]="form.availability[6].afternoon">
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSundayMorning"
+                           [(ngModel)]="form.availability[6].morning"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSundayAfternoon"
+                           [(ngModel)]="form.availability[6].afternoon">
                 </td>
-                <td><input type="checkbox" name="jobTimesSundayEvening" [(ngModel)]="form.availability[6].evening"></td>
-                <td><input type="checkbox" name="jobTimesSundayNight" [(ngModel)]="form.availability[6].night"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSundayEvening"
+                           [(ngModel)]="form.availability[6].evening"></td>
+                <td><input type="checkbox" class="form-check-input" name="jobTimesSundayNight"
+                           [(ngModel)]="form.availability[6].night"></td>
               </tr>
               </tbody>
             </table>
@@ -189,7 +204,7 @@
 
         <div class="row">
           <div class="col-sm-6">
-            <div class="form-group">
+            <div class="form-control-group">
               <label for="tags" class="form-label">Tags</label>
               <input class="form-control" name="tagInput" list="tag-list" id="tags" placeholder="Zoek een tag..."
                      [(ngModel)]="form.tagInput" #tagInput="ngModel">
@@ -200,15 +215,16 @@
                 <option value="Flexibel">
                 <option value="Gezellig team">
               </datalist>
-              <button class="btn btn-primary" type="button" (click)="addTag()">Voeg tag toe</button>
+            </div>
+            <div class="form-control-group">
+              <button class="btn btn-theme col-12" type="button" (click)="addTag()">Voeg tag toe</button>
             </div>
           </div>
           <div class="col-sm-6" id="selected-tag-list">
-
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-control-group">
           <p class="form-check-label">
             Is er een wettelijke minimum leeftijd voor deze vacature?
           </p>
@@ -233,7 +249,7 @@
 
         <!--        Checkboxes uit de tabel, verder wordt dit nog gevalideerd -->
 
-        <div class="form-group">
+        <div class="form-control-group">
           <label>
             Uurloon
           </label>
@@ -252,27 +268,33 @@
               <tbody>
               <tr>
                 <th scope="row">16 jaar</th>
-                <td><input type="number" step="0.01" min="1" name="wages-16" [(ngModel)]="form.wages.age16"></td>
+                <td><input type="number" class="form-control" step="0.01" min="1" name="wages-16"
+                           [(ngModel)]="form.wages.age16"></td>
               </tr>
               <tr>
                 <th scope="row">17 jaar</th>
-                <td><input type="number" step="0.01" min="1" name="wages-17" [(ngModel)]="form.wages.age17"></td>
+                <td><input type="number" class="form-control" step="0.01" min="1" name="wages-17"
+                           [(ngModel)]="form.wages.age17"></td>
               </tr>
               <tr>
                 <th scope="row">18 jaar</th>
-                <td><input type="number" step="0.01" min="1" name="wages-18" [(ngModel)]="form.wages.age18"></td>
+                <td><input type="number" class="form-control" step="0.01" min="1" name="wages-18"
+                           [(ngModel)]="form.wages.age18"></td>
               </tr>
               <tr>
                 <th scope="row">19 jaar</th>
-                <td><input type="number" step="0.01" min="1" name="wages-19" [(ngModel)]="form.wages.age19"></td>
+                <td><input type="number" class="form-control" step="0.01" min="1" name="wages-19"
+                           [(ngModel)]="form.wages.age19"></td>
               </tr>
               <tr>
                 <th scope="row">20 jaar</th>
-                <td><input type="number" step="0.01" min="1" name="wages-20" [(ngModel)]="form.wages.age20"></td>
+                <td><input type="number" class="form-control" step="0.01" min="1" name="wages-20"
+                           [(ngModel)]="form.wages.age20"></td>
               </tr>
               <tr>
                 <th scope="row">21 jaar en ouder</th>
-                <td><input type="number" step="0.01" min="1" name="wages-21" [(ngModel)]="form.wages.age21"></td>
+                <td><input type="number" class="form-control" step="0.01" min="1" name="wages-21"
+                           [(ngModel)]="form.wages.age21"></td>
               </tr>
               </tbody>
             </table>
@@ -281,7 +303,7 @@
 
         <!--        Als hier nee wordt gekozen, date pickers onzichtbaar maken -->
 
-        <div class="form-group">
+        <div class="form-control-group">
           <p class="form-check-label">
             Is deze vacature voor een bepaalde tijd?
           </p>
@@ -298,20 +320,20 @@
         </div>
 
         <div class="row">
-          <div class="form-group col-sm-6">
+          <div class="form-control-group col-sm-6">
             <label for="date-start" class="form-label">Van</label>
             <input type="date" class="form-control" name="date-start" id="date-start" [disabled]="!setPeriod"
                    [(ngModel)]="form.startdate">
           </div>
-          <div class="form-group col-sm-6">
+          <div class="form-control-group col-sm-6">
             <label for="date-end" class="form-label">Tot</label>
             <input type="date" class="form-control" name="date-end" id="date-end" [disabled]="!setPeriod"
                    [(ngModel)]="form.enddate">
           </div>
         </div>
 
-        <div class="form-group">
-          <button class="btn btn-primary btn-block col-md-5">
+        <div class="form-control-group">
+          <button class="btn btn-theme col-12">
             Vacature aanmaken
           </button>
         </div>
@@ -330,7 +352,7 @@
   <div class="col-md-4"><h3>Bedrijfsgegevens</h3></div>
   <div class="col-md-8"></div>
 </div>
-<div class="form-group">
+<div class="form-control-group">
   <label for="companyname">Bedrijfsnaam:</label>
   <input
     type="text"
