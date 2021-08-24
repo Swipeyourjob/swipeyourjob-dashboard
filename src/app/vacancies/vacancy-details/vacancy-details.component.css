@@ -116,10 +116,16 @@ input {
 }
 
 .card-footer {
-  padding-top: 18px;
+  /*padding-top: 18px;*/
 }
 
-.accept-buttons .btn {
-  padding: 0;
-  height: 28px;
+.accept-buttons {
+  /*padding-top: 12px;*/
+}
+.accept-buttons button {
+  /*padding: 0;*/
+  /*height: 28px;*/
+}
+.chat-button button {
+  width: 100%;
 }

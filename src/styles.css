@@ -26,7 +26,7 @@
 }
 
 .btn-theme {
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #50C6DA, #3BEC8D);
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(45deg, #50C6DA, #3BEC8D);
   background-origin: border-box;
   background-clip: content-box, border-box;
   color: #FFFFFF;

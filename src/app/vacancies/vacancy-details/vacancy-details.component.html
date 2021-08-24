@@ -52,10 +52,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer col col-sm-6">
-                  <small class="text-muted">Gematcht op ../../....</small>
+                <div class="card-footer col col-sm-6 col-md-5 col-lg-6 col-xl-4">
+                  <span class="text-footer">Deze gebruiker heeft je geliked op ../../....</span>
                 </div>
-                <div class="card-footer col col-sm-6 accept-buttons">
+                <div class="card-footer col col-sm-6 col-md-7 col-lg-6 col-xl-8 accept-buttons" *ngIf="match.status == 'liked'">
                   <button type="button" class="btn btn-success col-6"
                           (click)="updateStatus(match.userid,true,match.jobid)">
                     <fa-icon [icon]="icons.faCheck"></fa-icon>
@@ -63,6 +63,11 @@
                   <button type="button" class="btn btn-danger col-6"
                           (click)="updateStatus(match.userid,false,match.jobid)">
                     <fa-icon [icon]="icons.faTimes"></fa-icon>
+                  </button>
+                </div>
+                <div class="card-footer col col-sm-6 col-md-7 col-lg-6 col-xl-8 accept-buttons chat-button" *ngIf="match.status == 'accepted'">
+                  <button type="button" class="btn btn-theme" style="margin-top: 0;" (click)="chatwithuser(match.userid,match.jobid)">
+                      <fa-icon [icon]="icons.faCommentDots"></fa-icon> Open de chat
                   </button>
                 </div>
               </div>
